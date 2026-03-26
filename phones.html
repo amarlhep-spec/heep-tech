@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الهواتف - متجر الإلكترونيات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mobile-fix.css">
+    <style>
+        /* نفس أنماط الصفحة الرئيسية */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --light-color: #f8f9fa;
+            --gray-color: #95a5a6;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        main {
+            min-height: 70vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* ===== الهيدر ===== */
+        .header {
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            padding: 1rem 0;
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .nav-brand .logo img {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+        
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu ul li {
+            margin: 0 5px;
+        }
+        
+        .nav-menu ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-menu ul li a:hover,
+        .nav-menu ul li a.active {
+            background-color: rgba(255,255,255,0.1);
+            color: var(--secondary-color);
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .cart-btn {
+            position: relative;
+            color: white;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 0.8rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+    
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* ===== ترويسة الصفحة ===== */
+        .page-header {
+            text-align: center;
+            margin: 40px 0;
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('images/pattern.png') repeat;
+            opacity: 0.1;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* ===== قسم الفلاتر ===== */
+        .filters-section {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
+            animation: slideUp 0.6s ease-out 0.1s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .filter-header h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* فلاتر العلامات التجارية */
+        .brands-filter {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .brand-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .brand-checkbox:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+        
+        .brand-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .brand-checkbox label {
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        /* فلاتر السعر */
+        .price-filter {
+            margin: 25px 0;
+        }
+        
+        .price-range {
+            margin: 15px 0;
+        }
+        
+        .range-slider {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: linear-gradient(to right, #eee 0%, var(--secondary-color) 100%);
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+        
+        .range-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+        
+        .range-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: var(--gray-color);
+        }
+        
+        /* أزرار الفلاتر */
+        .filter-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+        }
+        
+        /* ===== معلومات النتائج ===== */
+        .results-info {
+            background: white;
+            padding: 20px 25px;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--box-shadow);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .results-count {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        .sort-by {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* ===== قائمة المنتجات ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid #f0f0f0;
+            position: relative;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: white;
+            z-index: 2;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .badge-featured {
+            background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+        }
+        
+        .badge-offer {
+            background: linear-gradient(135deg, var(--accent-color), #c0392b);
+        }
+        
+        .badge-new {
+            background: linear-gradient(135deg, var(--success-color), #229954);
+        }
+        
+        .quick-view {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 3;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .product-card:hover .quick-view {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-name {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            line-height: 1.4;
+            height: 70px;
+            overflow: hidden;
+        }
+        
+        .category-tag {
+            background: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--gray-color);
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            height: 80px;
+            overflow: hidden;
+        }
+        
+        .price-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .old-price {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            text-decoration: line-through;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn-icon {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            flex: 1;
+        }
+        
+        /* ===== رسالة عدم وجود منتجات ===== */
+        .no-products {
+            text-align: center;
+            padding: 60px 20px;
+            grid-column: 1 / -1;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .no-products i {
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .no-products h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .no-products p {
+            color: var(--gray-color);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== الفوتر ===== */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .footer-logo {
+            width: 100px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-about {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+            padding-right: 10px;
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 30px;
+        }
+        
+        /* ===== الأنيميشن ===== */
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        /* ===== التوافق مع الأجهزة المحمولة ===== */
+        @media (max-width: 992px) {
+            .nav-menu ul {
+                flex-direction: column;
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background: var(--primary-color);
+                width: 250px;
+                height: calc(100vh - 70px);
+                padding: 20px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+                z-index: 999;
+            }
+            
+            .nav-menu ul.show {
+                right: 0;
+            }
+            
+            .nav-menu ul li {
+                margin: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .brands-filter {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .results-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 40px 20px;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <a href="index.html" class="logo">
+                        <img id="site-logo" src="images/logo.png" alt="شعار المتجر">
+                        <span id="site-name">متجر الإلكترونيات</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                        <li><a href="products.html"><i class="fas fa-box"></i> جميع المنتجات</a></li>
+                        <li><a href="phones.html" class="active"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
+                        <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
+                        <li><a href="accessories.html"><i class="fas fa-headphones"></i> إكسسوارات</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="menu-toggle" id="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- محتوى صفحة الهواتف -->
+    <main class="phones-page">
+        <div class="container">
+            <!-- ترويسة الصفحة -->
+            <div class="page-header">
+                <h1><i class="fas fa-mobile-alt"></i> الهواتف الذكية</h1>
+                <p>اكتشف أحدث الهواتف الذكية من أفضل العلامات التجارية بأفضل الأسعار</p>
+            </div>
+            
+            <!-- قسم الفلاتر -->
+            <div class="filters-section">
+                <div class="filter-header">
+                    <h3><i class="fas fa-filter"></i> تصفية الهواتف</h3>
+                    <button class="btn btn-outline btn-sm" onclick="resetFilters()">
+                        <i class="fas fa-redo"></i> إعادة تعيين
+                    </button>
+                </div>
+                
+                <!-- فلاتر العلامات التجارية -->
+                <div class="filter-group">
+                    <label><i class="fas fa-tags"></i> العلامة التجارية:</label>
+                    <div class="brands-filter">
+                        <div class="brand-checkbox">
+                            <input type="checkbox" id="brand-apple" name="brand" value="apple" onchange="filterPhones()">
+                            <label for="brand-apple">Apple</label>
+                        </div>
+                        <div class="brand-checkbox">
+                            <input type="checkbox" id="brand-samsung" name="brand" value="samsung" onchange="filterPhones()">
+                            <label for="brand-samsung">Samsung</label>
+                        </div>
+                        <div class="brand-checkbox">
+                            <input type="checkbox" id="brand-huawei" name="brand" value="huawei" onchange="filterPhones()">
+                            <label for="brand-huawei">Huawei</label>
+                        </div>
+                        <div class="brand-checkbox">
+                            <input type="checkbox" id="brand-xiaomi" name="brand" value="xiaomi" onchange="filterPhones()">
+                            <label for="brand-xiaomi">Xiaomi</label>
+                        </div>
+                        <div class="brand-checkbox">
+                            <input type="checkbox" id="brand-oppo" name="brand" value="oppo" onchange="filterPhones()">
+                            <label for="brand-oppo">OPPO</label>
+                        </div>
+                        <div class="brand-checkbox">
+                            <input type="checkbox" id="brand-nokia" name="brand" value="nokia" onchange="filterPhones()">
+                            <label for="brand-nokia">Nokia</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- فلاتر السعر -->
+                <div class="filter-group price-filter">
+                    <label><i class="fas fa-dollar-sign"></i> نطاق السعر:</label>
+                    <div class="price-range">
+                        <input type="range" min="0" max="2000" value="2000" 
+                               class="range-slider" id="price-range" oninput="updatePriceRange()">
+                        <div class="range-values">
+                            <span id="min-price">$0</span>
+                            <span id="max-price">$2,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- فلاتر أخرى -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 25px;">
+                    <div class="filter-group">
+                        <label><i class="fas fa-sort-amount-down"></i> الترتيب:</label>
+                        <select id="sort-select" class="form-control" onchange="sortPhones()">
+                            <option value="newest">الأحدث أولاً</option>
+                            <option value="price-low">السعر: من الأقل للأعلى</option>
+                            <option value="price-high">السعر: من الأعلى للأقل</option>
+                            <option value="name">الاسم من أ إلى ي</option>
+                            <option value="popular">الأكثر شعبية</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label><i class="fas fa-memory"></i> الذاكرة:</label>
+                        <select id="memory-filter" class="form-control" onchange="filterPhones()">
+                            <option value="all">جميع الذواكر</option>
+                            <option value="64">64GB فأكثر</option>
+                            <option value="128">128GB فأكثر</option>
+                            <option value="256">256GB فأكثر</option>
+                            <option value="512">512GB فأكثر</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- أزرار التصفية -->
+                <div class="filter-actions">
+                    <button class="btn btn-primary" onclick="applyFilters()">
+                        <i class="fas fa-check"></i> تطبيق الفلاتر
+                    </button>
+                    <button class="btn btn-outline" onclick="clearFilters()">
+                        <i class="fas fa-times"></i> مسح الكل
+                    </button>
+                </div>
+            </div>
+            
+            <!-- معلومات النتائج -->
+            <div class="results-info">
+                <div class="results-count">
+                    <span id="phones-count">0</span> هاتف
+                </div>
+                
+                <div class="sort-by">
+                    <span>عرض النتائج:</span>
+                </div>
+            </div>
+            
+            <!-- قائمة الهواتف -->
+            <div class="products-grid" id="phones-container">
+                <!-- سيتم تعبئتها بالجافاسكريبت -->
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img id="footer-logo" src="images/logo.png" alt="شعار المتجر" class="footer-logo">
+                    <p id="footer-text" class="footer-about">
+                        متجر الإلكترونيات - نقدم لكم أحدث المنتجات التكنولوجية بأفضل الأسعار. نضمن لكم تجربة تسوق آمنة ومميزة.
+                    </p>
+                    <div class="social-links" id="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                        <li><a href="products.html"><i class="fas fa-box"></i> المنتجات</a></li>
+                        <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
+                        <li><a href="accessories.html"><i class="fas fa-headphones"></i> إكسسوارات</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>معلومات الاتصال</h3>
+                    <div class="contact-info" id="contact-info">
+                        <p><i class="fas fa-phone"></i> <span id="contact-phone">+963 123 456 789</span></p>
+                        <p><i class="fas fa-envelope"></i> <span id="contact-email">info@store.com</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">دمشق، سوريا</span></p>
+                        <p><i class="fas fa-clock"></i> <span>9:00 ص - 6:00 م</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p id="copyright-text">© 2024 متجر الإلكترونيات. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- الروابط الخارجية -->
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // ===== إدارة الفلاتر والتصفية =====
+        
+        // متغيرات التصفية
+        let currentBrands = [];
+        let currentSort = 'newest';
+        let currentMemory = 'all';
+        let currentPrice = 2000;
+        
+        // تحميل الموقع عند بدء التشغيل
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSiteData();
+            loadPhones();
+            
+            // إعداد القائمة المتحركة
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('show');
+                });
+                
+                // إغلاق القائمة عند النقر خارجها
+                document.addEventListener('click', function(event) {
+                    if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                        navMenu.classList.remove('show');
+                    }
+                });
+            }
+            
+            // إعداد الأنيميشن
+            setupAnimations();
+            
+            // تحديث نطاق السعر
+            updatePriceDisplay();
+        });
+        
+        // تحميل الهواتف
+        function loadPhones() {
+            const container = document.getElementById('phones-container');
+            if (!container) return;
+            
+            // الحصول على هواتف من قاعدة البيانات
+            let phones = db.getProductsByCategory('phones');
+            
+            // تطبيق الفلاتر
+            phones = applyPhoneFilters(phones);
+            
+            // حساب عدد الهواتف
+            const totalPhones = phones.length;
+            document.getElementById('phones-count').textContent = totalPhones.toLocaleString();
+            
+            // إذا لم توجد هواتف
+            if (phones.length === 0) {
+                container.innerHTML = `
+                    <div class="no-products animate-in">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>لا توجد هواتف مطابقة للبحث</h3>
+                        <p>حاول تغيير فلاتر البحث أو مسح الفلاتر</p>
+                        <button class="btn btn-primary" onclick="clearFilters()">
+                            <i class="fas fa-times"></i> مسح جميع الفلاتر
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            // عرض الهواتف
+            container.innerHTML = phones.map((phone, index) => createPhoneCard(phone, index)).join('');
+        }
+        
+        // إنشاء بطاقة الهاتف
+        function createPhoneCard(phone, index) {
+            // البادجات
+            const badges = [];
+            if (phone.featured) badges.push('<span class="product-badge badge-featured">مميز</span>');
+            if (phone.specialOffer) badges.push('<span class="product-badge badge-offer">عرض خاص</span>');
+            if (isNewProduct(phone)) badges.push('<span class="product-badge badge-new">جديد</span>');
+            
+            return `
+                <div class="product-card animate-in delay-${index % 5}">
+                    <div class="product-image">
+                        <img src="${phone.images[0] || 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'}" 
+                             alt="${phone.name}" 
+                             loading="lazy">
+                        ${badges.join('')}
+                        <div class="quick-view" onclick="viewProduct('${phone.id}')">
+                            <i class="fas fa-eye"></i> معاينة سريعة
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                            <h3 class="product-name">${phone.name}</h3>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                            ${phone.brand ? `<span class="category-tag">${phone.brand}</span>` : ''}
+                            ${phone.storage ? `<span class="category-tag">${phone.storage}</span>` : ''}
+                            ${phone.color ? `<span class="category-tag">${phone.color}</span>` : ''}
+                        </div>
+                        
+                        <p class="product-description">${phone.description ? phone.description.substring(0, 80) + (phone.description.length > 80 ? '...' : '') : 'لا يوجد وصف للهاتف'}</p>
+                        
+                        <div class="price-section">
+                            <span class="current-price">$${phone.price.toFixed(2)}</span>
+                            ${phone.oldPrice && phone.oldPrice > phone.price ? 
+                                `<span class="old-price">$${phone.oldPrice.toFixed(2)}</span>` : ''}
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-icon" onclick="viewProduct('${phone.id}')">
+                                <i class="fas fa-eye"></i> التفاصيل
+                            </button>
+                            <button class="btn btn-outline btn-icon" onclick="addToCart('${phone.id}')">
+                                <i class="fas fa-cart-plus"></i> أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // التحقق إذا كان المنتج جديداً
+        function isNewProduct(product) {
+            if (!product.createdAt) return false;
+            
+            const productDate = new Date(product.createdAt);
+            const now = new Date();
+            const diffTime = Math.abs(now - productDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            return diffDays <= 7;
+        }
+        
+        // تطبيق فلاتر الهواتف
+        function applyPhoneFilters(phones) {
+            let filteredPhones = [...phones];
+            
+            // فلترة حسب العلامة التجارية
+            if (currentBrands.length > 0) {
+                filteredPhones = filteredPhones.filter(phone => 
+                    phone.brand && currentBrands.includes(phone.brand.toLowerCase())
+                );
+            }
+            
+            // فلترة حسب السعر
+            filteredPhones = filteredPhones.filter(phone => phone.price <= currentPrice);
+            
+            // فلترة حسب الذاكرة
+            if (currentMemory !== 'all') {
+                filteredPhones = filteredPhones.filter(phone => {
+                    if (!phone.storage) return false;
+                    const storageNum = parseInt(phone.storage);
+                    return storageNum >= parseInt(currentMemory);
+                });
+            }
+            
+            // الترتيب
+            filteredPhones.sort((a, b) => {
+                switch(currentSort) {
+                    case 'price-low':
+                        return a.price - b.price;
+                    case 'price-high':
+                        return b.price - a.price;
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    case 'popular':
+                        return (b.rating || 0) - (a.rating || 0);
+                    case 'newest':
+                    default:
+                        return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+                }
+            });
+            
+            return filteredPhones;
+        }
+        
+        // فلترة حسب العلامات التجارية
+        function filterPhones() {
+            const checkboxes = document.querySelectorAll('input[name="brand"]:checked');
+            currentBrands = Array.from(checkboxes).map(cb => cb.value);
+            loadPhones();
+        }
+        
+        // تحديث نطاق السعر
+        function updatePriceRange() {
+            const slider = document.getElementById('price-range');
+            currentPrice = parseInt(slider.value);
+            updatePriceDisplay();
+        }
+        
+        // تحديث عرض السعر
+        function updatePriceDisplay() {
+            document.getElementById('max-price').textContent = `$${currentPrice.toLocaleString()}`;
+        }
+        
+        // ترتيب الهواتف
+        function sortPhones() {
+            currentSort = document.getElementById('sort-select').value;
+            loadPhones();
+        }
+        
+        // تطبيق الفلاتر
+        function applyFilters() {
+            loadPhones();
+            showNotification('تم تطبيق الفلاتر بنجاح', 'success');
+        }
+        
+        // مسح الفلاتر
+        function clearFilters() {
+            // إعادة تعيين كل الفلاتر
+            currentBrands = [];
+            currentSort = 'newest';
+            currentMemory = 'all';
+            currentPrice = 2000;
+            
+            // إعادة تعيين عناصر واجهة المستخدم
+            document.querySelectorAll('input[name="brand"]').forEach(cb => cb.checked = false);
+            document.getElementById('sort-select').value = 'newest';
+            document.getElementById('memory-filter').value = 'all';
+            document.getElementById('price-range').value = 2000;
+            
+            updatePriceDisplay();
+            loadPhones();
+            showNotification('تم مسح جميع الفلاتر', 'success');
+        }
+        
+        // إعادة تعيين الفلاتر
+        function resetFilters() {
+            clearFilters();
+        }
+        
+        // إعداد الأنيميشن
+        function setupAnimations() {
+            const elements = document.querySelectorAll('.animate-in');
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 100 + (index * 100));
+            });
+        }
+        
+        // عرض منتج
+        function viewProduct(productId) {
+            window.location.href = `product.html?id=${productId}`;
+        }
+        
+        // إضافة إلى السلة
+        function addToCart(productId, quantity = 1) {
+            if (db.addToCart(productId, quantity)) {
+                showNotification('تمت إضافة المنتج إلى السلة', 'success');
+            } else {
+                showNotification('حدث خطأ في إضافة المنتج', 'error');
+            }
+        }
+        
+        // إشعارات
+        function showNotification(message, type = 'success') {
+            if (typeof window.showEnhancedNotification === 'function') {
+                window.showEnhancedNotification(message, type);
+            } else {
+                // إنشاء إشعار بسيط
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <div style="position: fixed; top: 20px; left: 20px; right: 20px; background: ${type === 'success' ? '#27ae60' : '#e74c3c'}; color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 9999; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                        <span>${message}</span>
+                    </div>
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // إزالة الإشعار بعد 3 ثوانٍ
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+        }
+        
+        // جعل الدوال متاحة عالمياً
+        window.filterPhones = filterPhones;
+        window.updatePriceRange = updatePriceRange;
+        window.sortPhones = sortPhones;
+        window.applyFilters = applyFilters;
+        window.clearFilters = clearFilters;
+        window.resetFilters = resetFilters;
+        window.viewProduct = viewProduct;
+        window.addToCart = addToCart;
+    </script>
+    <script src="menu-fix.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!-- الهيدر المشترك لجميع الصفحات -->
+<header class="header">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <img id="site-logo" src="images.jfif" alt="شعار المتجر">
+                    <span id="site-name">متجر الإلكترونيات</span>
+                </a>
+            </div>
+            
+            <!-- القائمة -->
+            <div class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="products.html"><i class="fas fa-box"></i> جميع المنتجات</a></li>
+                    <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
+                    <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
+                    <li><a href="accessories.html"><i class="fas fa-headphones"></i> إكسسوارات</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <!-- الأزرار -->
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <!-- زر القائمة -->
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+// JavaScript للقائمة (يتم تحميله مرة واحدة فقط)
+(function() {
+    if (window.headerLoaded) return;
+    window.headerLoaded = true;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (menuToggle && navMenu) {
+            // إنشاء الطبقة الخلفية
+            let overlay = document.querySelector('.nav-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'nav-overlay';
+                document.body.appendChild(overlay);
+            }
+            
+            const menuList = navMenu.querySelector('ul');
+            
+            // حدث فتح/إغلاق القائمة
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (menuList) {
+                    menuList.classList.toggle('show');
+                    overlay.classList.toggle('show');
+                }
+            });
+            
+            // إغلاق بالنقر خارج القائمة
+            overlay.addEventListener('click', function() {
+                if (menuList) {
+                    menuList.classList.remove('show');
+                    overlay.classList.remove('show');
+                }
+            });
+            
+            // إغلاق بالنقر على رابط
+            if (menuList) {
+                menuList.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuList.classList.remove('show');
+                        overlay.classList.remove('show');
+                    });
+                });
+            }
+            
+            // إغلاق عند التمرير
+            window.addEventListener('scroll', function() {
+                if (menuList && menuList.classList.contains('show')) {
+                    menuList.classList.remove('show');
+                    overlay.classList.remove('show');
+                }
+            });
+        }
+    });
+})();
+</script>

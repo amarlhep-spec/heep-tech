@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأكيد الطلب - متجر الإلكترونيات</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- الهيدر -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <a href="index.html" class="logo">
+                        <img id="site-logo" src="images/logo.png" alt="شعار المتجر">
+                        <span id="site-name">متجر الإلكترونيات</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                        <li><a href="products.html"><i class="fas fa-box"></i> جميع المنتجات</a></li>
+                        <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
+                        <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
+                        <li><a href="accessories.html"><i class="fas fa-headphones"></i> إكسسوارات</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="menu-toggle" id="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- صفحة تأكيد الطلب -->
+    <main class="confirmation-page">
+        <div class="container">
+            <div class="confirmation-box">
+                <div class="confirmation-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                
+                <h1>تم استلام طلبك بنجاح!</h1>
+                <p class="text-muted">شكراً لك على شرائك من متجرنا</p>
+                
+                <div class="order-details">
+                    <div class="detail-row">
+                        <span>رقم الطلب:</span>
+                        <strong id="order-id">#</strong>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span>التاريخ:</span>
+                        <span id="order-date">--</span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span>الإجمالي:</span>
+                        <strong id="order-total">0 SP</strong>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span>الحالة:</span>
+                        <span id="order-status" class="badge badge-warning">قيد المعالجة</span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span>طريقة الدفع:</span>
+                        <span id="payment-method">شام كاش</span>
+                    </div>
+                </div>
+                
+                <!-- خطوات المتابعة -->
+                <div class="order-timeline">
+                    <h4><i class="fas fa-list-ol"></i> خطوات متابعة الطلب:</h4>
+                    
+                    <div class="timeline">
+                        <div class="timeline-step active">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h5>تم استلام الطلب</h5>
+                                <p>تم تسجيل طلبك في نظامنا</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h5>التحقق من الدفع</h5>
+                                <p>سيتم التحقق من إشعار التحويل</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h5>تجهيز الطلب</h5>
+                                <p>سيتم تجهيز طلبك للشحن</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h5>التوصيل</h5>
+                                <p>سيتم توصيل طلبك إلى عنوانك</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- معلومات المتابعة -->
+                <div class="follow-up" style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 30px 0;">
+                    <h4><i class="fas fa-info-circle"></i> معلومات المتابعة:</h4>
+                    <ul style="padding-right: 20px; margin-top: 10px;">
+                        <li>تم إرسال تفاصيل الطلب إلى بريدك الإلكتروني ورقم هاتفك</li>
+                        <li>يمكنك متابعة حالة طلبك من خلال رقم الطلب أعلاه</li>
+                        <li>لأي استفسار، يمكنك التواصل معنا عبر وسائل الاتصال المذكورة أدناه</li>
+                    </ul>
+                </div>
+                
+                <!-- أزرار التنقل -->
+                <div class="action-buttons" style="display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-home"></i> العودة للرئيسية
+                    </a>
+                    
+                    <a href="products.html" class="btn btn-outline">
+                        <i class="fas fa-shopping-bag"></i> مواصلة التسوق
+                    </a>
+                    
+                    <a href="contact.html" class="btn btn-outline">
+                        <i class="fas fa-headset"></i> الاتصال بالدعم
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img id="footer-logo" src="images/logo.png" alt="شعار المتجر" class="footer-logo">
+                    <p id="footer-text" class="footer-about">
+                        متجر الإلكترونيات - نقدم لكم أحدث المنتجات التكنولوجية بأفضل الأسعار.
+                    </p>
+                    <div class="social-links" id="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+                        <li><a href="phones.html">الهواتف</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>معلومات الاتصال</h3>
+                    <div class="contact-info" id="contact-info">
+                        <p><i class="fas fa-phone"></i> <span id="contact-phone">+963 123 456 789</span></p>
+                        <p><i class="fas fa-envelope"></i> <span id="contact-email">info@store.com</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">دمشق، سوريا</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p id="copyright-text">© 2024 متجر الإلكترونيات. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- الروابط الخارجية -->
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // تحميل الموقع عند بدء التشغيل
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSiteData();
+            loadOrderDetails();
+            
+            // إعداد القائمة المتحركة
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('show');
+                });
+            }
+        });
+        
+        // تحميل تفاصيل الطلب
+        function loadOrderDetails() {
+            // الحصول على معرف الطلب من الرابط
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            
+            if (!orderId) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // البحث عن الطلب
+            const orders = db.getOrders();
+            const order = orders.find(o => o.id === orderId);
+            
+            if (!order) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // تحديث بيانات الطلب
+            document.getElementById('order-id').textContent = order.id;
+            document.getElementById('order-date').textContent = new Date(order.createdAt).toLocaleDateString('ar-SA');
+            document.getElementById('order-total').textContent = order.total.toLocaleString() + ' SP';
+            document.getElementById('payment-method').textContent = 
+                order.paymentMethod === 'sham-cash' ? 'شام كاش' : order.paymentMethod;
+            
+            // تحديث حالة الطلب
+            const statusElement = document.getElementById('order-status');
+            const statusMap = {
+                'pending': { text: 'قيد الانتظار', class: 'badge-warning' },
+                'processing': { text: 'قيد المعالجة', class: 'badge-info' },
+                'shipped': { text: 'تم الشحن', class: 'badge-primary' },
+                'completed': { text: 'مكتمل', class: 'badge-success' },
+                'cancelled': { text: 'ملغي', class: 'badge-danger' }
+            };
+            
+            const statusInfo = statusMap[order.status] || statusMap.pending;
+            statusElement.textContent = statusInfo.text;
+            statusElement.className = 'badge ' + statusInfo.class;
+            
+            // تحديث عنوان الصفحة
+            document.title = `طلب #${order.id} - تأكيد الطلب`;
+        }
+    </script>
+    
+    <style>
+        .confirmation-page {
+            padding: 60px 0;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .confirmation-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .confirmation-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        
+        .order-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .timeline {
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .timeline-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .timeline-step.active {
+            opacity: 1;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #ddd;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+        
+        .timeline-step.active .step-number {
+            background: var(--secondary-color);
+        }
+        
+        .step-content {
+            text-align: right;
+        }
+        
+        .step-content h5 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .badge-warning {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .badge-info {
+            background: #3498db;
+            color: white;
+        }
+        
+        .badge-primary {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .badge-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .badge-danger {
+            background: #e74c3c;
+            color: white;
+        }
+    </style>
+</body>
+</html>
