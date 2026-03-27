@@ -1,4 +1,4 @@
-const DB_KEYS = {
+﻿const DB_KEYS = {
     products: 'store_products',
     orders: 'store_orders',
     cart: 'cartItems',
@@ -11,11 +11,11 @@ const DB_KEYS = {
 const DEFAULT_PRODUCTS = [
     {
         id: 'phone-1',
-        name: 'سامسونج جلاكسي S23',
-        description: 'هاتف ذكي بشاشة 6.1 بوصة، كاميرا رئيسية 50 ميجابكسل، ذاكرة 256GB، بطارية 3900 ملي أمبير',
+        name: 'Ø³Ø§Ù…Ø³ÙˆÙ†Ø¬ Ø¬Ù„Ø§ÙƒØ³ÙŠ S23',
+        description: 'Ù‡Ø§ØªÙ Ø°ÙƒÙŠ Ø¨Ø´Ø§Ø´Ø© 6.1 Ø¨ÙˆØµØ©ØŒ ÙƒØ§Ù…ÙŠØ±Ø§ Ø±Ø¦ÙŠØ³ÙŠØ© 50 Ù…ÙŠØ¬Ø§Ø¨ÙƒØ³Ù„ØŒ Ø°Ø§ÙƒØ±Ø© 256GBØŒ Ø¨Ø·Ø§Ø±ÙŠØ© 3900 Ù…Ù„ÙŠ Ø£Ù…Ø¨ÙŠØ±',
         price: 899.99,
         category: 'phones',
-        subcategory: 'سامسونج',
+        subcategory: 'Ø³Ø§Ù…Ø³ÙˆÙ†Ø¬',
         images: ['images/products/phone1.jpg'],
         stock: 15,
         featured: true,
@@ -23,11 +23,11 @@ const DEFAULT_PRODUCTS = [
     },
     {
         id: 'phone-2',
-        name: 'آيفون 14 برو',
-        description: 'هاتف آيفون بشاشة 6.1 بوصة، معالج A16 بايونيك، كاميرا ثلاثية 48+12+12 ميجابكسل',
+        name: 'Ø¢ÙŠÙÙˆÙ† 14 Ø¨Ø±Ùˆ',
+        description: 'Ù‡Ø§ØªÙ Ø¢ÙŠÙÙˆÙ† Ø¨Ø´Ø§Ø´Ø© 6.1 Ø¨ÙˆØµØ©ØŒ Ù…Ø¹Ø§Ù„Ø¬ A16 Ø¨Ø§ÙŠÙˆÙ†ÙŠÙƒØŒ ÙƒØ§Ù…ÙŠØ±Ø§ Ø«Ù„Ø§Ø«ÙŠØ© 48+12+12 Ù…ÙŠØ¬Ø§Ø¨ÙƒØ³Ù„',
         price: 1099.99,
         category: 'phones',
-        subcategory: 'آيفون',
+        subcategory: 'Ø¢ÙŠÙÙˆÙ†',
         images: ['images/products/phone2.jpg'],
         stock: 8,
         featured: true,
@@ -35,11 +35,11 @@ const DEFAULT_PRODUCTS = [
     },
     {
         id: 'phone-3',
-        name: 'شاومي ريدمي نوت 12',
-        description: 'هاتف ذكي بشاشة 6.67 بوصة AMOLED، كاميرا 108 ميجابكسل، بطارية 5000 ملي أمبير',
+        name: 'Ø´Ø§ÙˆÙ…ÙŠ Ø±ÙŠØ¯Ù…ÙŠ Ù†ÙˆØª 12',
+        description: 'Ù‡Ø§ØªÙ Ø°ÙƒÙŠ Ø¨Ø´Ø§Ø´Ø© 6.67 Ø¨ÙˆØµØ© AMOLEDØŒ ÙƒØ§Ù…ÙŠØ±Ø§ 108 Ù…ÙŠØ¬Ø§Ø¨ÙƒØ³Ù„ØŒ Ø¨Ø·Ø§Ø±ÙŠØ© 5000 Ù…Ù„ÙŠ Ø£Ù…Ø¨ÙŠØ±',
         price: 299.99,
         category: 'phones',
-        subcategory: 'شاومي',
+        subcategory: 'Ø´Ø§ÙˆÙ…ÙŠ',
         images: ['images/products/phone3.jpg'],
         stock: 25,
         featured: false,
@@ -47,11 +47,11 @@ const DEFAULT_PRODUCTS = [
     },
     {
         id: 'accessory-1',
-        name: 'سماعات بلوتوث لاسلكية',
-        description: 'سماعات لاسلكية عالية الجودة مع تقنية إلغاء الضوضاء، بطارية تعمل 30 ساعة',
+        name: 'Ø³Ù…Ø§Ø¹Ø§Øª Ø¨Ù„ÙˆØªÙˆØ« Ù„Ø§Ø³Ù„ÙƒÙŠØ©',
+        description: 'Ø³Ù…Ø§Ø¹Ø§Øª Ù„Ø§Ø³Ù„ÙƒÙŠØ© Ø¹Ø§Ù„ÙŠØ© Ø§Ù„Ø¬ÙˆØ¯Ø© Ù…Ø¹ ØªÙ‚Ù†ÙŠØ© Ø¥Ù„ØºØ§Ø¡ Ø§Ù„Ø¶ÙˆØ¶Ø§Ø¡ØŒ Ø¨Ø·Ø§Ø±ÙŠØ© ØªØ¹Ù…Ù„ 30 Ø³Ø§Ø¹Ø©',
         price: 89.99,
         category: 'accessories',
-        subcategory: 'سماعات',
+        subcategory: 'Ø³Ù…Ø§Ø¹Ø§Øª',
         images: ['images/products/headphones.jpg'],
         stock: 40,
         featured: true,
@@ -59,11 +59,11 @@ const DEFAULT_PRODUCTS = [
     },
     {
         id: 'accessory-2',
-        name: 'شاحن سريع 65 واط',
-        description: 'شاحن سريع متوافق مع جميع الأجهزة، كابل USB-C مضمن',
+        name: 'Ø´Ø§Ø­Ù† Ø³Ø±ÙŠØ¹ 65 ÙˆØ§Ø·',
+        description: 'Ø´Ø§Ø­Ù† Ø³Ø±ÙŠØ¹ Ù…ØªÙˆØ§ÙÙ‚ Ù…Ø¹ Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø£Ø¬Ù‡Ø²Ø©ØŒ ÙƒØ§Ø¨Ù„ USB-C Ù…Ø¶Ù…Ù†',
         price: 34.99,
         category: 'accessories',
-        subcategory: 'شواحن',
+        subcategory: 'Ø´ÙˆØ§Ø­Ù†',
         images: ['images/products/charger.jpg'],
         stock: 50,
         featured: false,
@@ -71,11 +71,11 @@ const DEFAULT_PRODUCTS = [
     },
     {
         id: 'accessory-3',
-        name: 'حافظة هواتف مقاومة للصدمات',
-        description: 'حافظة سيليكون عالية الجودة مع حماية الشاشة والكاميرا',
+        name: 'Ø­Ø§ÙØ¸Ø© Ù‡ÙˆØ§ØªÙ Ù…Ù‚Ø§ÙˆÙ…Ø© Ù„Ù„ØµØ¯Ù…Ø§Øª',
+        description: 'Ø­Ø§ÙØ¸Ø© Ø³ÙŠÙ„ÙŠÙƒÙˆÙ† Ø¹Ø§Ù„ÙŠØ© Ø§Ù„Ø¬ÙˆØ¯Ø© Ù…Ø¹ Ø­Ù…Ø§ÙŠØ© Ø§Ù„Ø´Ø§Ø´Ø© ÙˆØ§Ù„ÙƒØ§Ù…ÙŠØ±Ø§',
         price: 19.99,
         category: 'accessories',
-        subcategory: 'حافظات',
+        subcategory: 'Ø­Ø§ÙØ¸Ø§Øª',
         images: ['images/products/case.jpg'],
         stock: 100,
         featured: false,
@@ -83,11 +83,11 @@ const DEFAULT_PRODUCTS = [
     },
     {
         id: 'used-1',
-        name: 'سامسونج جلاكسي S20 (مستعمل)',
-        description: 'هاتف مستعمل بحالة ممتازة، شاشة 6.2 بوصة، كاميرا 64 ميجابكسل',
+        name: 'Ø³Ø§Ù…Ø³ÙˆÙ†Ø¬ Ø¬Ù„Ø§ÙƒØ³ÙŠ S20 (Ù…Ø³ØªØ¹Ù…Ù„)',
+        description: 'Ù‡Ø§ØªÙ Ù…Ø³ØªØ¹Ù…Ù„ Ø¨Ø­Ø§Ù„Ø© Ù…Ù…ØªØ§Ø²Ø©ØŒ Ø´Ø§Ø´Ø© 6.2 Ø¨ÙˆØµØ©ØŒ ÙƒØ§Ù…ÙŠØ±Ø§ 64 Ù…ÙŠØ¬Ø§Ø¨ÙƒØ³Ù„',
         price: 349.99,
         category: 'used-phones',
-        subcategory: 'سامسونج',
+        subcategory: 'Ø³Ø§Ù…Ø³ÙˆÙ†Ø¬',
         images: ['images/products/used1.jpg'],
         stock: 5,
         featured: false,
@@ -95,11 +95,11 @@ const DEFAULT_PRODUCTS = [
     },
     {
         id: 'used-2',
-        name: 'آيفون 11 (مستعمل)',
-        description: 'هاتف آيفون مستعمل بحالة جيدة جدا، بطارية 85%، شاشة 6.1 بوصة',
+        name: 'Ø¢ÙŠÙÙˆÙ† 11 (Ù…Ø³ØªØ¹Ù…Ù„)',
+        description: 'Ù‡Ø§ØªÙ Ø¢ÙŠÙÙˆÙ† Ù…Ø³ØªØ¹Ù…Ù„ Ø¨Ø­Ø§Ù„Ø© Ø¬ÙŠØ¯Ø© Ø¬Ø¯Ø§ØŒ Ø¨Ø·Ø§Ø±ÙŠØ© 85%ØŒ Ø´Ø§Ø´Ø© 6.1 Ø¨ÙˆØµØ©',
         price: 449.99,
         category: 'used-phones',
-        subcategory: 'آيفون',
+        subcategory: 'Ø¢ÙŠÙÙˆÙ†',
         images: ['images/products/used2.jpg'],
         stock: 3,
         featured: true,
@@ -108,13 +108,13 @@ const DEFAULT_PRODUCTS = [
 ];
 
 const DEFAULT_SETTINGS = {
-    siteName: 'متجر الإلكترونيات',
+    siteName: 'Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª',
     logo: 'images/logo.png',
     mainImage: '',
-    description: 'نقدم لكم أحدث المنتجات التقنية بأفضل الأسعار.',
-    whyChooseUs: 'نقدم لك منتجات أصلية وأسعار منافسة وخدمة سريعة.',
-    footerText: 'متجر الإلكترونيات - أحدث الأجهزة والإكسسوارات بأفضل الأسعار.',
-    shippingNote: 'رسوم الشحن على شركة الشحن وتُدفع عند الاستلام.',
+    description: 'Ù†Ù‚Ø¯Ù… Ù„ÙƒÙ… Ø£Ø­Ø¯Ø« Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª Ø§Ù„ØªÙ‚Ù†ÙŠØ© Ø¨Ø£ÙØ¶Ù„ Ø§Ù„Ø£Ø³Ø¹Ø§Ø±.',
+    whyChooseUs: 'Ù†Ù‚Ø¯Ù… Ù„Ùƒ Ù…Ù†ØªØ¬Ø§Øª Ø£ØµÙ„ÙŠØ© ÙˆØ£Ø³Ø¹Ø§Ø± Ù…Ù†Ø§ÙØ³Ø© ÙˆØ®Ø¯Ù…Ø© Ø³Ø±ÙŠØ¹Ø©.',
+    footerText: 'Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª - Ø£Ø­Ø¯Ø« Ø§Ù„Ø£Ø¬Ù‡Ø²Ø© ÙˆØ§Ù„Ø¥ÙƒØ³Ø³ÙˆØ§Ø±Ø§Øª Ø¨Ø£ÙØ¶Ù„ Ø§Ù„Ø£Ø³Ø¹Ø§Ø±.',
+    shippingNote: 'Ø±Ø³ÙˆÙ… Ø§Ù„Ø´Ø­Ù† Ø¹Ù„Ù‰ Ø´Ø±ÙƒØ© Ø§Ù„Ø´Ø­Ù† ÙˆØªÙØ¯ÙØ¹ Ø¹Ù†Ø¯ Ø§Ù„Ø§Ø³ØªÙ„Ø§Ù….',
     barcode: 'images/barcode.png',
     socialMedia: {
         facebook: '',
@@ -125,15 +125,121 @@ const DEFAULT_SETTINGS = {
     contactInfo: {
         phone: '+963 123 456 789',
         email: 'info@store.com',
-        address: 'دمشق، سوريا'
+        address: 'Ø¯Ù…Ø´Ù‚ØŒ Ø³ÙˆØ±ÙŠØ§',
+        hours: '9:00 ص - 6:00 م'
     },
-    copyright: `© ${new Date().getFullYear()} متجر الإلكترونيات. جميع الحقوق محفوظة.`
+    productCategories: {
+        phones: { name: 'هواتف', subcategories: ['سامسونج', 'آيفون', 'شاومي', 'أخرى'] },
+        accessories: { name: 'إكسسوارات', subcategories: ['بنوك طاقة', 'كابلات', 'أغطية', 'شواحن', 'سماعات', 'أخرى'] },
+        'used-phones': { name: 'هواتف مستعملة', subcategories: ['آيفون', 'سامسونج', 'شاومي', 'أخرى'] }
+    },
+    accessorySettings: {
+        types: [
+            { value: 'headphones', label: 'سماعات', icon: 'fas fa-headphones' },
+            { value: 'chargers', label: 'شواحن', icon: 'fas fa-charging-station' },
+            { value: 'cases', label: 'أغطية', icon: 'fas fa-mobile-alt' },
+            { value: 'cables', label: 'كابلات', icon: 'fas fa-usb' },
+            { value: 'power-banks', label: 'بنوك طاقة', icon: 'fas fa-battery-full' },
+            { value: 'others', label: 'أخرى', icon: 'fas fa-ellipsis-h' }
+        ],
+        compatibilityOptions: [
+            { value: 'all', label: 'جميع الأجهزة' },
+            { value: 'iphone', label: 'iPhone' },
+            { value: 'samsung', label: 'Samsung' },
+            { value: 'android', label: 'Android عام' },
+            { value: 'universal', label: 'متعدد الاستخدام' }
+        ],
+        bundles: [
+            {
+                title: 'مجموعة المسافر',
+                subtitle: 'كل ما تحتاجه للسفر والتنقل',
+                currentPrice: '119.99',
+                oldPrice: '139.97',
+                savingsText: 'وفر .98',
+                buttonText: 'إضافة المجموعة للسلة',
+                items: [
+                    { name: 'بنك طاقة 20000mAh', price: '.99', image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80' },
+                    { name: 'شاحن سريع 65W', price: '.99', image: 'https://images.unsplash.com/photo-1599661046286-309c8b1c7b57?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80' },
+                    { name: 'سماعات لاسلكية', price: '.99', image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80' }
+                ]
+            },
+            {
+                title: 'مجموعة المنزل',
+                subtitle: 'إكسسوارات منزلية متكاملة',
+                currentPrice: '49.99',
+                oldPrice: '59.97',
+                savingsText: 'وفر .98',
+                buttonText: 'إضافة المجموعة للسلة',
+                items: [
+                    { name: 'محول USB متعدد', price: '.99', image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80' },
+                    { name: 'مجموعة كابلات', price: '.99', image: 'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80' },
+                    { name: 'حامل هاتف', price: '.99', image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80' }
+                ]
+            }
+        ]
+    },
+    copyright: `Â© ${new Date().getFullYear()} Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª. Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸Ø©.`
 };
 
 const DEFAULT_ADMIN_USERS = [];
 
 function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
+}
+
+function normalizeCategoryType(category, categoryType, condition) {
+    const normalizedCategory = String(category || '').trim();
+    const normalizedType = String(categoryType || condition || '').trim().toLowerCase();
+
+    if (normalizedCategory === 'used-phones') {
+        return normalizedType || 'used';
+    }
+
+    if (normalizedCategory === 'phones') {
+        return normalizedType || 'new';
+    }
+
+    return normalizedType;
+}
+
+function normalizeCategory(category, categoryType, condition) {
+    const normalizedCategory = String(category || 'products').trim();
+    const normalizedType = normalizeCategoryType(normalizedCategory, categoryType, condition);
+
+    if (normalizedCategory === 'phones' && ['used', 'refurbished'].includes(normalizedType)) {
+        return 'used-phones';
+    }
+
+    if (normalizedCategory === 'used-phones') {
+        return 'used-phones';
+    }
+
+    return normalizedCategory;
+}
+
+function normalizeProductRecord(product, fallbackId, fallbackName) {
+    const categoryType = normalizeCategoryType(product.category, product.categoryType, product.condition);
+    const category = normalizeCategory(product.category, categoryType, product.condition);
+
+    return {
+        ...product,
+        id: product.id || fallbackId || `product-${Date.now()}`,
+        name: product.name || fallbackName || 'منتج جديد',
+        description: product.description || '',
+        price: Number(product.price) || 0,
+        oldPrice: product.oldPrice != null && product.oldPrice !== '' ? Number(product.oldPrice) : null,
+        category,
+        subcategory: product.subcategory || '',
+        categoryType,
+        type: product.type || '',
+        compatibility: product.compatibility || '',
+        condition: product.condition || '',
+        images: Array.isArray(product.images) ? product.images.filter(Boolean) : [],
+        stock: Number(product.stock) || 0,
+        featured: Boolean(product.featured),
+        specialOffer: Boolean(product.specialOffer || product.special),
+        special: Boolean(product.specialOffer || product.special)
+    };
 }
 
 const db = {
@@ -171,21 +277,9 @@ const db = {
             return false;
         }
 
-        this.products = products.map((product, index) => ({
-            id: product.id || `product-imported-${Date.now()}-${index}`,
-            name: product.name || 'منتج بدون اسم',
-            description: product.description || '',
-            price: Number(product.price) || 0,
-            oldPrice: product.oldPrice != null && product.oldPrice !== '' ? Number(product.oldPrice) : null,
-            category: product.category || 'products',
-            subcategory: product.subcategory || '',
-            categoryType: product.categoryType || '',
-            images: Array.isArray(product.images) ? product.images.filter(Boolean) : [],
-            stock: Number(product.stock) || 0,
-            featured: Boolean(product.featured),
-            specialOffer: Boolean(product.specialOffer || product.special),
-            special: Boolean(product.specialOffer || product.special)
-        }));
+        this.products = products.map((product, index) =>
+            normalizeProductRecord(product, `product-imported-${Date.now()}-${index}`, 'منتج بدون اسم')
+        );
 
         return this.saveProducts();
     },
@@ -221,11 +315,8 @@ const db = {
     },
 
     getCategories() {
-        const categories = {
-            phones: { name: 'هواتف', subcategories: [] },
-            accessories: { name: 'إكسسوارات', subcategories: [] },
-            'used-phones': { name: 'هواتف مستعملة', subcategories: [] }
-        };
+        const settings = this.getSiteSettings();
+        const categories = JSON.parse(JSON.stringify((settings && settings.productCategories) || DEFAULT_SETTINGS.productCategories));
 
         this.products.forEach((product) => {
             if (!categories[product.category]) {
@@ -240,22 +331,18 @@ const db = {
         return categories;
     },
 
+    getProductCategoriesConfig() {
+        const settings = this.getSiteSettings();
+        return JSON.parse(JSON.stringify((settings && settings.productCategories) || DEFAULT_SETTINGS.productCategories));
+    },
+
+    getAccessorySettings() {
+        const settings = this.getSiteSettings();
+        return JSON.parse(JSON.stringify((settings && settings.accessorySettings) || DEFAULT_SETTINGS.accessorySettings));
+    },
+
     addProduct(product) {
-        const normalized = {
-            id: product.id || `product-${Date.now()}`,
-            name: product.name || 'منتج جديد',
-            description: product.description || '',
-            price: Number(product.price) || 0,
-            oldPrice: product.oldPrice ? Number(product.oldPrice) : null,
-            category: product.category || 'products',
-            subcategory: product.subcategory || '',
-            categoryType: product.categoryType || '',
-            images: Array.isArray(product.images) ? product.images.filter(Boolean) : [],
-            stock: Number(product.stock) || 0,
-            featured: Boolean(product.featured),
-            specialOffer: Boolean(product.specialOffer || product.special),
-            special: Boolean(product.specialOffer || product.special)
-        };
+        const normalized = normalizeProductRecord(product, `product-${Date.now()}`, 'منتج جديد');
 
         this.products.push(normalized);
         return this.saveProducts();
@@ -267,27 +354,12 @@ const db = {
             return false;
         }
 
-        const merged = {
+        let merged = {
             ...this.products[index],
             ...updatedProduct
         };
 
-        if (merged.price != null) {
-            merged.price = Number(merged.price) || 0;
-        }
-
-        if (merged.oldPrice === '') {
-            merged.oldPrice = null;
-        } else if (merged.oldPrice != null) {
-            merged.oldPrice = Number(merged.oldPrice) || null;
-        }
-
-        if (!Array.isArray(merged.images)) {
-            merged.images = [];
-        }
-
-        merged.specialOffer = Boolean(merged.specialOffer || merged.special);
-        merged.special = merged.specialOffer;
+        merged = normalizeProductRecord(merged, this.products[index].id, this.products[index].name);
 
         this.products[index] = merged;
         return this.saveProducts();
@@ -316,7 +388,7 @@ const db = {
                 productId,
                 product: product || {
                     id: productId,
-                    name: item.name || 'منتج غير معروف',
+                    name: item.name || 'Ù…Ù†ØªØ¬ ØºÙŠØ± Ù…Ø¹Ø±ÙˆÙ',
                     price: Number(item.price) || 0,
                     images: [item.image || 'images/placeholder.jpg'],
                     category: item.category || ''
@@ -425,7 +497,7 @@ const db = {
             const normalizedItems = Array.isArray(order.items)
                 ? order.items.map((item) => ({
                     productId: item.productId || item.id || '',
-                    name: item.name || (item.product && item.product.name) || 'منتج غير معروف',
+                    name: item.name || (item.product && item.product.name) || 'Ù…Ù†ØªØ¬ ØºÙŠØ± Ù…Ø¹Ø±ÙˆÙ',
                     price: Number(item.price != null ? item.price : (item.product && item.product.price)) || 0,
                     quantity: Number(item.quantity) || 1,
                     image: item.image || (item.product && item.product.image) || '',
@@ -436,7 +508,7 @@ const db = {
             return {
                 ...order,
                 id: order.id || `order-imported-${Date.now()}-${index}`,
-                customerName: order.customerName || 'غير معروف',
+                customerName: order.customerName || 'ØºÙŠØ± Ù…Ø¹Ø±ÙˆÙ',
                 customerPhone: order.customerPhone || '',
                 customerAddress: order.customerAddress || '',
                 items: normalizedItems,
@@ -473,13 +545,13 @@ const db = {
                 const itemProduct = item.product || {};
                 return {
                     productId: item.productId || item.id || itemProduct.id || '',
-                    name: item.name || itemProduct.name || 'منتج غير معروف',
+                    name: item.name || itemProduct.name || 'Ù…Ù†ØªØ¬ ØºÙŠØ± Ù…Ø¹Ø±ÙˆÙ',
                     price: Number(item.price != null ? item.price : itemProduct.price) || 0,
                     quantity: Number(item.quantity) || 1,
                     image: item.image || itemProduct.image || (itemProduct.images && itemProduct.images[0]) || '',
                     product: {
                         ...itemProduct,
-                        name: item.name || itemProduct.name || 'منتج غير معروف',
+                        name: item.name || itemProduct.name || 'Ù…Ù†ØªØ¬ ØºÙŠØ± Ù…Ø¹Ø±ÙˆÙ',
                         price: Number(item.price != null ? item.price : itemProduct.price) || 0
                     }
                 };
@@ -579,6 +651,14 @@ const db = {
             contactInfo: {
                 ...(current.contactInfo || {}),
                 ...((partialSettings && partialSettings.contactInfo) || {})
+            },
+            productCategories: {
+                ...(current.productCategories || DEFAULT_SETTINGS.productCategories),
+                ...((partialSettings && partialSettings.productCategories) || {})
+            },
+            accessorySettings: {
+                ...(current.accessorySettings || DEFAULT_SETTINGS.accessorySettings),
+                ...((partialSettings && partialSettings.accessorySettings) || {})
             }
         };
 
@@ -658,12 +738,9 @@ const db = {
             this.writeJson(DB_KEYS.cart, []);
         }
 
-        this.products = this.readJson(DB_KEYS.products, DEFAULT_PRODUCTS).map((product) => ({
-            ...product,
-            featured: Boolean(product.featured),
-            specialOffer: Boolean(product.specialOffer || product.special),
-            special: Boolean(product.specialOffer || product.special)
-        }));
+        this.products = this.readJson(DB_KEYS.products, DEFAULT_PRODUCTS).map((product, index) =>
+            normalizeProductRecord(product, product.id || `product-init-${index}`, product.name || 'منتج')
+        );
         this.orders = this.readJson(DB_KEYS.orders, []);
         this.messages = this.readJson(DB_KEYS.messages, []);
         this.updateCartCount();

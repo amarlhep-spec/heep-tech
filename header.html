@@ -1,33 +1,33 @@
-<!-- الهيدر المشترك لجميع الصفحات -->
+﻿<!-- Ø§Ù„Ù‡ÙŠØ¯Ø± Ø§Ù„Ù…Ø´ØªØ±Ùƒ Ù„Ø¬Ù…ÙŠØ¹ Ø§Ù„ØµÙØ­Ø§Øª -->
 <header class="header">
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="index.html" class="logo">
-                    <img id="site-logo" src="images.jfif" alt="شعار المتجر">
-                    <span id="site-name">متجر الإلكترونيات</span>
+                <a href="home.html" class="logo">
+                    <img id="site-logo" src="images.jfif" alt="Ø´Ø¹Ø§Ø± Ø§Ù„Ù…ØªØ¬Ø±">
+                    <span id="site-name">Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª</span>
                 </a>
             </div>
             
-            <!-- القائمة -->
+            <!-- Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© -->
             <div class="nav-menu" id="nav-menu">
                 <ul>
-                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
-                    <li><a href="products.html"><i class="fas fa-box"></i> جميع المنتجات</a></li>
-                    <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
-                    <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
-                    <li><a href="accessories.html"><i class="fas fa-headphones"></i> إكسسوارات</a></li>
-                    <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                    <li><a href="home.html" class="active"><i class="fas fa-home"></i> Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©</a></li>
+                    <li><a href="products.html"><i class="fas fa-box"></i> Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª</a></li>
+                    <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> Ø§Ù„Ù‡ÙˆØ§ØªÙ</a></li>
+                    <li><a href="used-phones.html"><i class="fas fa-mobile"></i> Ù…Ø³ØªØ¹Ù…Ù„Ø©</a></li>
+                    <li><a href="accessories.html"><i class="fas fa-headphones"></i> Ø¥ÙƒØ³Ø³ÙˆØ§Ø±Ø§Øª</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Ø§ØªØµÙ„ Ø¨Ù†Ø§</a></li>
                 </ul>
             </div>
             
-            <!-- الأزرار -->
+            <!-- Ø§Ù„Ø£Ø²Ø±Ø§Ø± -->
             <div class="nav-actions">
                 <a href="cart.html" class="cart-btn">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
                 </a>
-                <!-- زر القائمة -->
+                <!-- Ø²Ø± Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© -->
                 <button class="menu-toggle" id="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -37,7 +37,7 @@
 </header>
 
 <script>
-// JavaScript للقائمة (يتم تحميله مرة واحدة فقط)
+// JavaScript Ù„Ù„Ù‚Ø§Ø¦Ù…Ø© (ÙŠØªÙ… ØªØ­Ù…ÙŠÙ„Ù‡ Ù…Ø±Ø© ÙˆØ§Ø­Ø¯Ø© ÙÙ‚Ø·)
 (function() {
     if (window.headerLoaded) return;
     window.headerLoaded = true;
@@ -47,7 +47,7 @@
         const navMenu = document.getElementById('nav-menu');
         
         if (menuToggle && navMenu) {
-            // إنشاء الطبقة الخلفية
+            // Ø¥Ù†Ø´Ø§Ø¡ Ø§Ù„Ø·Ø¨Ù‚Ø© Ø§Ù„Ø®Ù„ÙÙŠØ©
             let overlay = document.querySelector('.nav-overlay');
             if (!overlay) {
                 overlay = document.createElement('div');
@@ -57,7 +57,7 @@
             
             const menuList = navMenu.querySelector('ul');
             
-            // حدث فتح/إغلاق القائمة
+            // Ø­Ø¯Ø« ÙØªØ­/Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©
             menuToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -68,7 +68,7 @@
                 }
             });
             
-            // إغلاق بالنقر خارج القائمة
+            // Ø¥ØºÙ„Ø§Ù‚ Ø¨Ø§Ù„Ù†Ù‚Ø± Ø®Ø§Ø±Ø¬ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©
             overlay.addEventListener('click', function() {
                 if (menuList) {
                     menuList.classList.remove('show');
@@ -76,7 +76,7 @@
                 }
             });
             
-            // إغلاق بالنقر على رابط
+            // Ø¥ØºÙ„Ø§Ù‚ Ø¨Ø§Ù„Ù†Ù‚Ø± Ø¹Ù„Ù‰ Ø±Ø§Ø¨Ø·
             if (menuList) {
                 menuList.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', function() {
@@ -86,7 +86,7 @@
                 });
             }
             
-            // إغلاق عند التمرير
+            // Ø¥ØºÙ„Ø§Ù‚ Ø¹Ù†Ø¯ Ø§Ù„ØªÙ…Ø±ÙŠØ±
             window.addEventListener('scroll', function() {
                 if (menuList && menuList.classList.contains('show')) {
                     menuList.classList.remove('show');

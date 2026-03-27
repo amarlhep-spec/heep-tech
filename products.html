@@ -1,9 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>جميع المنتجات - متجر الإلكترونيات</title>
+    <meta name="description" content="تصفح جميع منتجات متجر الإلكترونيات من الهواتف والإكسسوارات والهواتف المستعملة مع صور وأسعار واضحة.">
+    <meta name="robots" content="index,follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="جميع المنتجات - متجر الإلكترونيات">
+    <meta property="og:description" content="تصفح جميع منتجات متجر الإلكترونيات من الهواتف والإكسسوارات والهواتف المستعملة مع صور وأسعار واضحة.">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="products.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="جميع المنتجات - متجر الإلكترونيات">
+    <meta name="twitter:description" content="تصفح جميع منتجات متجر الإلكترونيات من الهواتف والإكسسوارات والهواتف المستعملة مع صور وأسعار واضحة.">
+    <meta name="twitter:image" content="images/logo.png">
+    <link rel="canonical" href="products.html">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -35,6 +47,7 @@
             color: #333;
             line-height: 1.6;
             animation: fadeIn 0.5s ease-out;
+            padding-top: 92px;
         }
         
         @keyframes fadeIn {
@@ -53,8 +66,10 @@
         .header {
             background-color: var(--primary-color);
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
         }
         
@@ -378,6 +393,63 @@
             margin-top: 25px;
             flex-wrap: wrap;
         }
+
+        .filter-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-toggle-btn {
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            border-radius: 12px;
+            background: #f7fbff;
+            color: var(--secondary-color);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 8px 18px rgba(52, 152, 219, 0.1);
+        }
+
+        .filter-toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(52, 152, 219, 0.16);
+        }
+
+        .filters-body {
+            display: grid;
+            gap: 22px;
+            margin-top: 18px;
+        }
+
+        .filters-section {
+            display: none;
+            width: 100%;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid #edf1f5;
+        }
+
+        .filters-section.filters-open {
+            display: block;
+        }
+
+        .filter-group input[type="text"],
+        .filter-group select,
+        .filter-select {
+            min-height: 52px;
+            border-radius: 14px;
+            background: #fbfdff;
+        }
+
+        .category-btn {
+            min-height: 52px;
+            border-radius: 16px;
+        }
         
         .btn {
             display: inline-flex;
@@ -435,7 +507,16 @@
             flex-wrap: wrap;
             gap: 20px;
         }
-        
+
+        .results-info-top {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
         .results-count {
             font-weight: bold;
             color: var(--primary-color);
@@ -448,40 +529,19 @@
             gap: 15px;
         }
         
-        .view-toggle {
-            display: flex;
-            gap: 10px;
-            margin-right: 15px;
-        }
-        
-        .view-btn {
-            background: white;
-            border: 2px solid #eee;
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1.1rem;
-        }
-        
-        .view-btn:hover,
-        .view-btn.active {
-            background: var(--secondary-color);
-            color: white;
-            border-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-        
         /* قائمة المنتجات */
         .products-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 20px;
+            align-items: stretch;
+        }
+
+        .products-list.showcase-mode {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
         
         .product-card {
@@ -493,6 +553,9 @@
             border: 1px solid #f0f0f0;
             position: relative;
             animation: fadeInUp 0.6s ease-out;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         @keyframes fadeInUp {
@@ -512,15 +575,20 @@
         }
         
         .product-image {
-            height: 220px;
+            height: var(--product-card-image-height);
             overflow: hidden;
             position: relative;
+            background: var(--product-card-image-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            padding: 16px;
             transition: transform 0.5s ease;
         }
         
@@ -539,6 +607,31 @@
             color: white;
             z-index: 2;
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .badge-stack {
+            position: absolute;
+            top: 15px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .badge-stack-left {
+            left: 15px;
+        }
+
+        .badge-stack-right {
+            right: 15px;
+            align-items: flex-end;
+        }
+
+        .badge-stack .product-badge {
+            position: static;
+            top: auto;
+            left: auto;
         }
         
         .badge-featured {
@@ -579,34 +672,35 @@
         
         .product-info {
             padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
         
         .product-name {
             font-size: 1.3rem;
             color: var(--primary-color);
-            margin-bottom: 12px;
-            line-height: 1.4;
-            height: 70px;
-            overflow: hidden;
-        }
-        
-        .category-tag {
-            background: #f0f0f0;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            color: var(--gray-color);
-            display: inline-block;
             margin-bottom: 15px;
+            line-height: 1.4;
+            min-height: 70px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-clamp: 2;
         }
-        
+
         .product-description {
             color: #666;
             font-size: 0.95rem;
             margin-bottom: 20px;
             line-height: 1.6;
-            height: 80px;
+            min-height: 80px;
             overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-clamp: 3;
         }
         
         .price-section {
@@ -614,6 +708,8 @@
             align-items: center;
             gap: 15px;
             margin: 20px 0;
+            min-height: 42px;
+            flex-wrap: wrap;
         }
         
         .current-price {
@@ -631,9 +727,72 @@
         .product-actions {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: auto;
+            align-items: stretch;
         }
-        
+
+        .product-actions .btn {
+            flex: 1;
+            justify-content: center;
+        }
+
+        .category-showcase {
+            margin-bottom: 42px;
+            padding: 28px;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 18px 40px rgba(44, 62, 80, 0.08);
+            border: 1px solid rgba(52, 152, 219, 0.08);
+        }
+
+        .category-showcase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        .category-showcase-header h2 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 1.6rem;
+        }
+
+        .category-showcase-header p {
+            margin: 8px 0 0;
+            color: #6b7a88;
+        }
+
+        .category-showcase-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .category-showcase-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding-bottom: 6px;
+            align-items: stretch;
+        }
+
+        .category-showcase-grid .product-card {
+            min-width: calc((100% - 48px) / 3);
+            flex: 0 0 calc((100% - 48px) / 3);
+            align-self: stretch;
+        }
+
+        .category-showcase-grid::-webkit-scrollbar {
+            display: none;
+        }
+
         .btn-icon {
             display: flex;
             align-items: center;
@@ -892,6 +1051,20 @@
             .products-list {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
+
+            .category-showcase-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .category-showcase-grid {
+                flex-wrap: nowrap;
+            }
+
+            .category-showcase-grid .product-card {
+                min-width: calc((100% - 24px) / 2);
+                flex-basis: calc((100% - 24px) / 2);
+            }
             
             .product-list-item {
                 grid-template-columns: 1fr;
@@ -924,6 +1097,15 @@
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
+
+            .category-showcase-grid {
+                flex-wrap: nowrap;
+            }
+
+            .category-showcase-grid .product-card {
+                min-width: 100%;
+                flex-basis: 100%;
+            }
             
             .products-list {
                 grid-template-columns: 1fr;
@@ -939,13 +1121,13 @@
         }
     </style>
 </head>
-<body>
+<body data-seo-title="جميع المنتجات - متجر الإلكترونيات" data-seo-description="تصفح جميع منتجات متجر الإلكترونيات من الهواتف والإكسسوارات والهواتف المستعملة مع صور وأسعار واضحة." data-seo-image="images/logo.png" data-seo-type="website">
     <!-- الهيدر -->
     <header class="header">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-brand">
-                    <a href="index.html" class="logo">
+                    <a href="home.html" class="logo">
                         <img id="site-logo" src="images/logo.png" alt="شعار المتجر">
                         <span id="site-name">متجر الإلكترونيات</span>
                     </a>
@@ -953,7 +1135,7 @@
                 
                 <div class="nav-menu" id="nav-menu">
                     <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                        <li><a href="home.html"><i class="fas fa-home"></i> الرئيسية</a></li>
                         <li><a href="products.html" class="active"><i class="fas fa-box"></i> جميع المنتجات</a></li>
                         <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
                         <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
@@ -984,103 +1166,98 @@
                 <p>تصفح مجموعتنا الكاملة من المنتجات الإلكترونية بأفضل الأسعار</p>
             </div>
             
-            <!-- قسم الفلاتر -->
-            <div class="filters-section">
-                <div class="filter-header">
-                    <h3><i class="fas fa-filter"></i> فلاتر البحث</h3>
-                    <button class="btn btn-outline btn-sm" onclick="resetFilters()">
-                        <i class="fas fa-redo"></i> إعادة تعيين
-                    </button>
-                </div>
-                
-                <!-- فلاتر الفئات -->
-                <div class="filter-group">
-                    <label><i class="fas fa-tags"></i> الفئات:</label>
-                    <div class="category-filter-buttons">
-                        <button class="category-btn active" data-category="all" onclick="filterByCategory('all')">
-                            <i class="fas fa-th"></i> الكل
-                        </button>
-                        <button class="category-btn" data-category="phones" onclick="filterByCategory('phones')">
-                            <i class="fas fa-mobile-alt"></i> الهواتف
-                        </button>
-                        <button class="category-btn" data-category="accessories" onclick="filterByCategory('accessories')">
-                            <i class="fas fa-headphones"></i> إكسسوارات
-                        </button>
-                        <button class="category-btn" data-category="used-phones" onclick="filterByCategory('used-phones')">
-                            <i class="fas fa-mobile"></i> مستعملة
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- فلاتر البحث والترتيب -->
-                <div class="filter-row">
-                    <div class="filter-group">
-                        <label><i class="fas fa-search"></i> البحث:</label>
-                        <input type="text" id="search-input" class="filter-select" 
-                               placeholder="ابحث عن منتج..." oninput="searchProducts()">
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label><i class="fas fa-sort-amount-down"></i> الترتيب:</label>
-                        <select id="sort-select" class="filter-select" onchange="sortProducts()">
-                            <option value="newest">الأحدث أولاً</option>
-                            <option value="price-low">السعر: من الأقل للأعلى</option>
-                            <option value="price-high">السعر: من الأعلى للأقل</option>
-                            <option value="name">الاسم من أ إلى ي</option>
-                            <option value="featured">المميزة أولاً</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label><i class="fas fa-fire"></i> العروض:</label>
-                        <select id="offer-filter" class="filter-select" onchange="filterProducts()">
-                            <option value="all">جميع المنتجات</option>
-                            <option value="featured">المنتجات المميزة فقط</option>
-                            <option value="offers">العروض الخاصة فقط</option>
-                            <option value="new">المنتجات الجديدة</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <!-- نطاق السعر -->
-                <div class="filter-group">
-                    <label><i class="fas fa-dollar-sign"></i> نطاق السعر:</label>
-                    <div class="price-range">
-                        <input type="range" min="0" max="2000" value="2000" 
-                               class="range-slider" id="price-range" oninput="updatePriceRange()">
-                        <div class="range-values">
-                            <span id="min-price">$0</span>
-                            <span id="max-price">$2,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- أزرار التصفية -->
-                <div class="filter-actions">
-                    <button class="btn btn-primary" onclick="applyFilters()">
-                        <i class="fas fa-check"></i> تطبيق الفلاتر
-                    </button>
-                    <button class="btn btn-outline" onclick="clearFilters()">
-                        <i class="fas fa-times"></i> مسح الكل
-                    </button>
-                </div>
-            </div>
-            
             <!-- معلومات النتائج -->
             <div class="results-info">
-                <div class="results-count">
-                    <span id="products-count">0</span> منتج
+                <div class="results-info-top">
+                    <div class="results-count">
+                        <span id="products-count">0</span> منتج
+                    </div>
+                    
+                    <div class="sort-by">
+                        <span>فلتر للمنتجات:</span>
+                        <button class="filter-toggle-btn" type="button" onclick="document.querySelector('.filters-section').classList.toggle('filters-open')" aria-label="تبديل الفلاتر">
+                            <i class="fas fa-sliders-h"></i>
+                        </button>
+                    </div>
                 </div>
-                
-                <div class="sort-by">
-                    <span>عرض:</span>
-                    <div class="view-toggle">
-                        <button class="view-btn active" onclick="changeView('grid')">
-                            <i class="fas fa-th"></i>
-                        </button>
-                        <button class="view-btn" onclick="changeView('list')">
-                            <i class="fas fa-list"></i>
-                        </button>
+
+                <div class="filters-section">
+                    <div class="filter-header">
+                        <h3><i class="fas fa-filter"></i> فلاتر البحث</h3>
+                        <div class="filter-header-actions">
+                            <button class="btn btn-outline btn-sm" onclick="resetFilters()">
+                                <i class="fas fa-redo"></i> إعادة تعيين
+                            </button>
+                        </div>
+                    </div>
+                    <div class="filters-body">
+                        <div class="filter-group">
+                            <label><i class="fas fa-tags"></i> الفئات:</label>
+                            <div class="category-filter-buttons">
+                                <button class="category-btn active" data-category="all" onclick="filterByCategory('all')">
+                                    <i class="fas fa-th"></i> الكل
+                                </button>
+                                <button class="category-btn" data-category="phones" onclick="filterByCategory('phones')">
+                                    <i class="fas fa-mobile-alt"></i> الهواتف
+                                </button>
+                                <button class="category-btn" data-category="accessories" onclick="filterByCategory('accessories')">
+                                    <i class="fas fa-headphones"></i> إكسسوارات
+                                </button>
+                                <button class="category-btn" data-category="used-phones" onclick="filterByCategory('used-phones')">
+                                    <i class="fas fa-mobile"></i> مستعملة
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-row">
+                            <div class="filter-group">
+                                <label><i class="fas fa-search"></i> البحث:</label>
+                                <input type="text" id="search-input" class="filter-select" 
+                                       placeholder="ابحث عن منتج..." oninput="searchProducts()">
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label><i class="fas fa-sort-amount-down"></i> الترتيب:</label>
+                                <select id="sort-select" class="filter-select" onchange="sortProducts()">
+                                    <option value="newest">الأحدث أولاً</option>
+                                    <option value="price-low">السعر: من الأقل للأعلى</option>
+                                    <option value="price-high">السعر: من الأعلى للأقل</option>
+                                    <option value="name">الاسم من أ إلى ي</option>
+                                    <option value="featured">المميزة أولاً</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label><i class="fas fa-fire"></i> العروض:</label>
+                                <select id="offer-filter" class="filter-select" onchange="filterProducts()">
+                                    <option value="all">جميع المنتجات</option>
+                                    <option value="featured">المنتجات المميزة فقط</option>
+                                    <option value="offers">العروض الخاصة فقط</option>
+                                    <option value="new">المنتجات الجديدة</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label><i class="fas fa-dollar-sign"></i> نطاق السعر:</label>
+                            <div class="price-range">
+                                <input type="range" min="0" max="2000" value="2000" 
+                                       class="range-slider" id="price-range" oninput="updatePriceRange()">
+                                <div class="range-values">
+                                    <span id="min-price">$0</span>
+                                    <span id="max-price">$2,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-actions">
+                            <button class="btn btn-primary" onclick="applyFilters()">
+                                <i class="fas fa-check"></i> تطبيق الفلاتر
+                            </button>
+                            <button class="btn btn-outline" onclick="clearFilters()">
+                                <i class="fas fa-times"></i> مسح الكل
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1118,7 +1295,7 @@
                 <div class="footer-col">
                     <h3>روابط سريعة</h3>
                     <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="home.html">الرئيسية</a></li>
                         <li><a href="products.html">المنتجات</a></li>
                         <li><a href="phones.html">الهواتف</a></li>
                         <li><a href="contact.html">اتصل بنا</a></li>
@@ -1131,6 +1308,7 @@
                         <p><i class="fas fa-phone"></i> <span id="contact-phone">+963 123 456 789</span></p>
                         <p><i class="fas fa-envelope"></i> <span id="contact-email">info@store.com</span></p>
                         <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">دمشق، سوريا</span></p>
+                        <p><i class="fas fa-clock"></i> <span id="contact-hours">9:00 ص - 6:00 م</span></p>
                     </div>
                 </div>
             </div>
@@ -1190,7 +1368,9 @@
         // تحميل المنتجات
         function loadProducts() {
             const container = document.getElementById('products-container');
+            const pagination = document.getElementById('pagination');
             if (!container) return;
+            container.classList.remove('showcase-mode');
             
             // الحصول على جميع المنتجات
             let products = db.getProducts();
@@ -1201,6 +1381,13 @@
             // حساب عدد المنتجات
             const totalProducts = products.length;
             document.getElementById('products-count').textContent = totalProducts.toLocaleString();
+
+            if (currentCategory === 'all') {
+                renderAllProductsSections(products);
+                if (pagination) pagination.innerHTML = '';
+                updateCategoryButtons();
+                return;
+            }
             
             // حساب الصفحات
             const totalPages = Math.ceil(totalProducts / productsPerPage);
@@ -1224,7 +1411,7 @@
                 `;
                 
                 // إخفاء الترقيم الصفحي
-                document.getElementById('pagination').innerHTML = '';
+                if (pagination) pagination.innerHTML = '';
                 return;
             }
             
@@ -1241,23 +1428,97 @@
             // تحديث حالة أزرار الفئات
             updateCategoryButtons();
         }
+
+        function getCategoryPageLink(category) {
+            const links = {
+                'phones': 'phones.html',
+                'used-phones': 'used-phones.html',
+                'accessories': 'accessories.html'
+            };
+
+            return links[category] || 'products.html';
+        }
+
+        function getCategoryDisplayName(category) {
+            const names = {
+                'phones': 'الهواتف',
+                'used-phones': 'الهواتف المستعملة',
+                'accessories': 'الإكسسوارات'
+            };
+
+            return names[category] || category;
+        }
+
+        function renderCategoryShowcase(category, products, index) {
+            const descriptions = {
+                'phones': 'أحدث الهواتف المختارة لك مباشرة من المتجر.',
+                'used-phones': 'أجهزة مستعملة مختارة بعناية وبحالة واضحة.',
+                'accessories': 'إكسسوارات مهمة ومميزة لأجهزتك اليومية.'
+            };
+            const visibleProducts = products.slice(0, 3);
+
+            if (!visibleProducts.length) {
+                return '';
+            }
+
+            return `
+                <section class="category-showcase animate-in delay-${Math.min(index + 1, 5)}">
+                    <div class="category-showcase-header">
+                        <div>
+                            <h2>${getCategoryDisplayName(category)}</h2>
+                            <p>${descriptions[category] || ''}</p>
+                        </div>
+                        <div class="category-showcase-controls">
+                            <a href="${getCategoryPageLink(category)}" class="btn btn-outline">
+                                <i class="fas fa-arrow-left"></i> عرض المزيد
+                            </a>
+                        </div>
+                    </div>
+                    <div class="category-slider-shell">
+                        <div class="category-showcase-grid" id="category-slider-${category}">
+                            ${visibleProducts.map((product, productIndex) => createProductCard(product, productIndex)).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderAllProductsSections(products) {
+            const container = document.getElementById('products-container');
+            if (!container) return;
+            container.classList.add('showcase-mode');
+
+            const orderedCategories = ['phones', 'used-phones', 'accessories'];
+            const sectionsHTML = orderedCategories.map((category, index) => {
+                const categoryProducts = products.filter(product => product.category === category);
+                return renderCategoryShowcase(category, categoryProducts, index);
+            }).join('');
+
+            if (!sectionsHTML.trim()) {
+                container.innerHTML = `
+                    <div class="no-products animate-in">
+                        <i class="fas fa-search"></i>
+                        <h3>لا توجد منتجات مطابقة للبحث</h3>
+                        <p>حاول تغيير فلاتر البحث أو مسح الفلاتر</p>
+                        <button class="btn btn-primary" onclick="clearFilters()">
+                            <i class="fas fa-times"></i> مسح جميع الفلاتر
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = sectionsHTML;
+        }
         
         // إنشاء بطاقة المنتج (نمط الشبكة)
         function createProductCard(product, index) {
-            // الحصول على اسم الفئة بالعربية
-            const categoryNames = {
-                'phones': 'هواتف',
-                'accessories': 'إكسسوارات',
-                'used-phones': 'مستعملة'
-            };
-            
-            const categoryName = categoryNames[product.category] || product.category;
-            
             // البادجات
             const badges = [];
             if (product.featured) badges.push('<span class="product-badge badge-featured">مميز</span>');
             if (product.specialOffer) badges.push('<span class="product-badge badge-offer">عرض خاص</span>');
             if (isNewProduct(product)) badges.push('<span class="product-badge badge-new">جديد</span>');
+            const secondaryBadges = badges.length ? `<div class="badge-stack badge-stack-left">${badges.join('')}</div>` : '';
             
             return `
                 <div class="product-card animate-in delay-${index % 5}">
@@ -1265,16 +1526,13 @@
                         <img src="${product.images[0] || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'}" 
                              alt="${product.name}" 
                              loading="lazy">
-                        ${badges.join('')}
+                        ${secondaryBadges}
                         <div class="quick-view" onclick="viewProduct('${product.id}')">
                             <i class="fas fa-eye"></i> معاينة سريعة
                         </div>
                     </div>
                     <div class="product-info">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                            <h3 class="product-name">${product.name}</h3>
-                            <span class="category-tag">${categoryName}</span>
-                        </div>
+                        <h3 class="product-name">${product.name}</h3>
                         
                         <p class="product-description">${product.description ? product.description.substring(0, 80) + (product.description.length > 80 ? '...' : '') : 'لا يوجد وصف للمنتج'}</p>
                         
@@ -1299,14 +1557,6 @@
         
         // إنشاء عنصر قائمة المنتج (نمط القائمة)
         function createProductListItem(product, index) {
-            const categoryNames = {
-                'phones': 'هواتف',
-                'accessories': 'إكسسوارات',
-                'used-phones': 'مستعملة'
-            };
-            
-            const categoryName = categoryNames[product.category] || product.category;
-            
             const badges = [];
             if (product.featured) badges.push('<span class="badge badge-featured" style="margin-left: 5px;">مميز</span>');
             if (product.specialOffer) badges.push('<span class="badge badge-offer" style="margin-left: 5px;">عرض</span>');
@@ -1322,7 +1572,6 @@
                     <div class="list-info">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
                             <h3 style="margin: 0; color: var(--primary-color); font-size: 1.4rem;">${product.name}</h3>
-                            <span class="category-tag">${categoryName}</span>
                         </div>
                         
                         <p style="color: #666; margin-bottom: 20px; line-height: 1.7; font-size: 1.05rem;">
@@ -1492,19 +1741,6 @@
             clearFilters();
         }
         
-        // تغيير طريقة العرض
-        function changeView(view) {
-            currentView = view;
-            
-            // تحديث أزرار العرض
-            document.querySelectorAll('.view-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.closest('.view-btn').classList.add('active');
-            
-            loadProducts();
-        }
-        
         // إنشاء الترقيم الصفحي
         function createPagination(totalPages) {
             const pagination = document.getElementById('pagination');
@@ -1630,7 +1866,6 @@
         window.applyFilters = applyFilters;
         window.clearFilters = clearFilters;
         window.resetFilters = resetFilters;
-        window.changeView = changeView;
         window.goToPage = goToPage;
         window.viewProduct = viewProduct;
         window.addToCart = addToCart;
@@ -1662,14 +1897,6 @@
         
         .btn:active {
             transform: translateY(-1px);
-        }
-        
-        .view-btn {
-            transition: all 0.3s ease;
-        }
-        
-        .view-btn:hover {
-            transform: scale(1.1);
         }
         
         .page-btn {
@@ -1711,3 +1938,10 @@
     <script src="menu-fix.js"></script>
 </body>
 </html>
+
+
+        .category-showcase-grid .product-card {
+            min-width: calc((100% - 48px) / 3);
+            flex: 0 0 calc((100% - 48px) / 3);
+        }
+

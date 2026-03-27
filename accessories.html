@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الهواتف - متجر الإلكترونيات</title>
+    <title>إكسسوارات - متجر الإلكترونيات</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="mobile-fix.css">
@@ -145,8 +145,6 @@
             font-weight: bold;
         }
         
-    
-        
         .menu-toggle {
             display: none;
             background: none;
@@ -161,7 +159,7 @@
             text-align: center;
             margin: 40px 0;
             padding: 60px 0;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
             color: white;
             border-radius: 15px;
             box-shadow: var(--box-shadow);
@@ -213,6 +211,72 @@
             line-height: 1.6;
         }
         
+        /* ===== تصنيفات الإكسسوارات ===== */
+        .categories-section {
+            margin: 50px 0;
+            animation: slideUp 0.6s ease-out 0.1s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .categories-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: #9b59b6;
+            box-shadow: 0 15px 30px rgba(155, 89, 182, 0.2);
+        }
+        
+        .category-icon {
+            font-size: 2.8rem;
+            color: #9b59b6;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .category-card:hover .category-icon {
+            transform: scale(1.2);
+        }
+        
+        .category-card h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .category-card p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
         /* ===== قسم الفلاتر ===== */
         .filters-section {
             background: white;
@@ -220,16 +284,9 @@
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             margin-bottom: 40px;
-            animation: slideUp 0.6s ease-out 0.1s forwards;
+            animation: slideUp 0.6s ease-out 0.2s forwards;
             opacity: 0;
             transform: translateY(20px);
-        }
-        
-        @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         
         .filter-header {
@@ -249,15 +306,15 @@
             gap: 12px;
         }
         
-        /* فلاتر العلامات التجارية */
-        .brands-filter {
+        /* فلاتر النوع */
+        .type-filter {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 15px;
             margin: 20px 0;
         }
         
-        .brand-checkbox {
+        .type-checkbox {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -268,21 +325,29 @@
             transition: var(--transition);
         }
         
-        .brand-checkbox:hover {
+        .type-checkbox:hover {
             background: #e9ecef;
             transform: translateY(-2px);
         }
         
-        .brand-checkbox input[type="checkbox"] {
+        .type-checkbox input[type="checkbox"] {
             width: 18px;
             height: 18px;
             cursor: pointer;
         }
         
-        .brand-checkbox label {
+        .type-checkbox label {
             cursor: pointer;
             font-weight: 500;
             color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .type-checkbox i {
+            font-size: 1.1rem;
+            color: #9b59b6;
         }
         
         /* فلاتر السعر */
@@ -298,7 +363,7 @@
             width: 100%;
             height: 8px;
             -webkit-appearance: none;
-            background: linear-gradient(to right, #eee 0%, var(--secondary-color) 100%);
+            background: linear-gradient(to right, #eee 0%, #9b59b6 100%);
             border-radius: 4px;
             outline: none;
         }
@@ -307,7 +372,7 @@
             -webkit-appearance: none;
             width: 24px;
             height: 24px;
-            background: var(--secondary-color);
+            background: #9b59b6;
             border-radius: 50%;
             cursor: pointer;
             border: 3px solid white;
@@ -328,6 +393,46 @@
             color: var(--gray-color);
         }
         
+        /* فلاتر أخرى */
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: var(--border-radius);
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-select:focus {
+            outline: none;
+            border-color: #9b59b6;
+            box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.1);
+        }
+        
         /* أزرار الفلاتر */
         .filter-actions {
             display: flex;
@@ -345,10 +450,10 @@
         .filter-toggle-btn {
             width: 48px;
             height: 48px;
-            border: 1px solid rgba(52, 152, 219, 0.18);
+            border: 1px solid rgba(155, 89, 182, 0.18);
             border-radius: 14px;
-            background: #f7fbff;
-            color: var(--secondary-color);
+            background: #fbf8ff;
+            color: #9b59b6;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -358,7 +463,7 @@
 
         .filter-toggle-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 22px rgba(52, 152, 219, 0.14);
+            box-shadow: 0 10px 22px rgba(155, 89, 182, 0.14);
         }
 
         .filters-body {
@@ -379,14 +484,14 @@
         }
 
         .filter-select,
-        .filter-group .form-control {
+        .filter-group select {
             width: 100%;
             min-height: 52px;
             border-radius: 14px;
-            background: #fbfdff;
+            background: #fcfbfe;
         }
 
-        .brand-checkbox {
+        .type-checkbox {
             min-height: 56px;
             border-radius: 16px;
         }
@@ -408,23 +513,23 @@
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
             color: white;
         }
         
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 10px 20px rgba(155, 89, 182, 0.3);
         }
         
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--secondary-color);
-            color: var(--secondary-color);
+            border: 2px solid #9b59b6;
+            color: #9b59b6;
         }
         
         .btn-outline:hover {
-            background: var(--secondary-color);
+            background: #9b59b6;
             color: white;
             transform: translateY(-3px);
         }
@@ -469,7 +574,7 @@
             gap: 15px;
         }
         
-        /* ===== قائمة المنتجات ===== */
+        /* ===== قائمة الإكسسوارات ===== */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -569,6 +674,10 @@
             background: linear-gradient(135deg, var(--success-color), #229954);
         }
         
+        .badge-accessory {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+        
         .quick-view {
             position: absolute;
             top: 50%;
@@ -609,7 +718,7 @@
             overflow: hidden;
         }
         
-        .category-tag {
+        .type-tag {
             background: #f0f0f0;
             padding: 4px 12px;
             border-radius: 15px;
@@ -659,6 +768,140 @@
             gap: 8px;
             padding: 12px 20px;
             flex: 1;
+        }
+        
+        /* ===== قسم المجموعات ===== */
+        .bundles-section {
+            margin: 80px 0;
+            animation: slideUp 0.6s ease-out 0.3s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .bundles-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .bundles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .bundle-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .bundle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .bundle-header {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bundle-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('images/pattern.png') repeat;
+            opacity: 0.1;
+        }
+        
+        .bundle-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .bundle-header p {
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .bundle-body {
+            padding: 25px;
+        }
+        
+        .bundle-items {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .bundle-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .bundle-item:hover {
+            background: #e9ecef;
+            transform: translateX(-5px);
+        }
+        
+        .bundle-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .bundle-item-info {
+            flex: 1;
+        }
+        
+        .bundle-item-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .bundle-item-price {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .bundle-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .bundle-savings {
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.1rem;
         }
         
         /* ===== رسالة عدم وجود منتجات ===== */
@@ -793,6 +1036,13 @@
         .delay-4 { animation-delay: 0.4s; }
         .delay-5 { animation-delay: 0.5s; }
         
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* ===== التوافق مع الأجهزة المحمولة ===== */
         @media (max-width: 992px) {
             .nav-menu ul {
@@ -831,8 +1081,12 @@
                 font-size: 1.1rem;
             }
             
-            .brands-filter {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            .categories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .type-filter {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             }
             
             .results-info {
@@ -843,6 +1097,10 @@
             
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .bundles-grid {
+                grid-template-columns: 1fr;
             }
             
             .product-actions {
@@ -862,6 +1120,15 @@
             
             .page-header h1 {
                 font-size: 1.8rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 15px;
+            }
+            
+            .type-filter {
+                grid-template-columns: 1fr;
             }
             
             .products-grid {
@@ -894,9 +1161,9 @@
                     <ul>
                         <li><a href="home.html"><i class="fas fa-home"></i> الرئيسية</a></li>
                         <li><a href="products.html"><i class="fas fa-box"></i> جميع المنتجات</a></li>
-                        <li><a href="phones.html" class="active"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
+                        <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
                         <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
-                        <li><a href="accessories.html"><i class="fas fa-headphones"></i> إكسسوارات</a></li>
+                        <li><a href="accessories.html" class="active"><i class="fas fa-headphones"></i> إكسسوارات</a></li>
                         <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
                     </ul>
                 </div>
@@ -914,25 +1181,24 @@
         </nav>
     </header>
 
-    <!-- محتوى صفحة الهواتف -->
-    <main class="phones-page">
+    <!-- محتوى صفحة الإكسسوارات -->
+    <main class="accessories-page">
         <div class="container">
             <!-- ترويسة الصفحة -->
             <div class="page-header">
-                <h1><i class="fas fa-mobile-alt"></i> الهواتف الذكية</h1>
-                <p>اكتشف أحدث الهواتف الذكية من أفضل العلامات التجارية بأفضل الأسعار</p>
+                <h1><i class="fas fa-headphones"></i> إكسسوارات إلكترونية</h1>
+                <p>اكتشف مجموعة واسعة من الإكسسوارات الإلكترونية لأجهزتك المفضلة</p>
             </div>
             
-            <!-- قسم الفلاتر -->
             <!-- معلومات النتائج -->
             <div class="results-info">
                 <div class="results-info-top">
                     <div class="results-count">
-                        <span id="phones-count">0</span> هاتف
+                        <span id="accessories-count">0</span> إكسسوار
                     </div>
                     
                     <div class="sort-by">
-                        <span>فلتر للهواتف:</span>
+                        <span>فلتر للإكسسوارات:</span>
                         <button class="filter-toggle-btn" type="button" onclick="document.querySelector('.filters-section').classList.toggle('filters-open')" aria-label="تبديل الفلاتر">
                             <i class="fas fa-sliders-h"></i>
                         </button>
@@ -941,7 +1207,7 @@
 
                 <div class="filters-section">
                     <div class="filter-header">
-                        <h3><i class="fas fa-filter"></i> تصفية الهواتف</h3>
+                        <h3><i class="fas fa-filter"></i> تصفية الإكسسوارات</h3>
                         <div class="filter-header-actions">
                             <button class="btn btn-outline btn-sm" onclick="resetFilters()">
                                 <i class="fas fa-redo"></i> إعادة تعيين
@@ -950,28 +1216,51 @@
                     </div>
                     <div class="filters-body">
                         <div class="filter-group">
-                            <label><i class="fas fa-tags"></i> العلامة التجارية:</label>
-                            <div class="brands-filter" id="brands-filter">
-                                <!-- يتم تعبئة العلامات التجارية من الإعدادات -->
+                            <label><i class="fas fa-tags"></i> نوع الإكسسوار:</label>
+                            <div class="type-filter">
+                                <div class="type-checkbox">
+                                    <input type="checkbox" id="type-headphones" name="type" value="headphones" onchange="syncAccessoryTypes()">
+                                    <label for="type-headphones"><i class="fas fa-headphones"></i> سماعات</label>
+                                </div>
+                                <div class="type-checkbox">
+                                    <input type="checkbox" id="type-chargers" name="type" value="chargers" onchange="syncAccessoryTypes()">
+                                    <label for="type-chargers"><i class="fas fa-charging-station"></i> شواحن</label>
+                                </div>
+                                <div class="type-checkbox">
+                                    <input type="checkbox" id="type-cases" name="type" value="cases" onchange="syncAccessoryTypes()">
+                                    <label for="type-cases"><i class="fas fa-mobile-alt"></i> أغطية</label>
+                                </div>
+                                <div class="type-checkbox">
+                                    <input type="checkbox" id="type-cables" name="type" value="cables" onchange="syncAccessoryTypes()">
+                                    <label for="type-cables"><i class="fas fa-usb"></i> كابلات</label>
+                                </div>
+                                <div class="type-checkbox">
+                                    <input type="checkbox" id="type-power-banks" name="type" value="power-banks" onchange="syncAccessoryTypes()">
+                                    <label for="type-power-banks"><i class="fas fa-battery-full"></i> بنوك طاقة</label>
+                                </div>
+                                <div class="type-checkbox">
+                                    <input type="checkbox" id="type-others" name="type" value="others" onchange="syncAccessoryTypes()">
+                                    <label for="type-others"><i class="fas fa-ellipsis-h"></i> أخرى</label>
+                                </div>
                             </div>
                         </div>
                         
                         <div class="filter-group price-filter">
                             <label><i class="fas fa-dollar-sign"></i> نطاق السعر:</label>
                             <div class="price-range">
-                                <input type="range" min="0" max="2000" value="2000" 
+                                <input type="range" min="0" max="500" value="500" 
                                        class="range-slider" id="price-range" oninput="updatePriceRange()">
                                 <div class="range-values">
                                     <span id="min-price">$0</span>
-                                    <span id="max-price">$2,000</span>
+                                    <span id="max-price">$500</span>
                                 </div>
                             </div>
                         </div>
                         
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 25px;">
+                        <div class="filter-row">
                             <div class="filter-group">
                                 <label><i class="fas fa-sort-amount-down"></i> الترتيب:</label>
-                                <select id="sort-select" class="form-control" onchange="sortPhones()">
+                                <select id="sort-select" class="filter-select" onchange="sortAccessories()">
                                     <option value="newest">الأحدث أولاً</option>
                                     <option value="price-low">السعر: من الأقل للأعلى</option>
                                     <option value="price-high">السعر: من الأعلى للأقل</option>
@@ -981,13 +1270,13 @@
                             </div>
                             
                             <div class="filter-group">
-                                <label><i class="fas fa-memory"></i> الذاكرة:</label>
-                                <select id="memory-filter" class="form-control" onchange="filterPhones()">
-                                    <option value="all">جميع الذواكر</option>
-                                    <option value="64">64GB فأكثر</option>
-                                    <option value="128">128GB فأكثر</option>
-                                    <option value="256">256GB فأكثر</option>
-                                    <option value="512">512GB فأكثر</option>
+                                <label><i class="fas fa-mobile-alt"></i> متوافق مع:</label>
+                                <select id="compatibility-filter" class="filter-select" onchange="syncAccessoryCompatibility()">
+                                    <option value="all">جميع الأجهزة</option>
+                                    <option value="iphone">iPhone</option>
+                                    <option value="samsung">Samsung</option>
+                                    <option value="android">Android عام</option>
+                                    <option value="universal">متعدد الاستخدام</option>
                                 </select>
                             </div>
                         </div>
@@ -1004,9 +1293,103 @@
                 </div>
             </div>
             
-            <!-- قائمة الهواتف -->
-            <div class="products-grid" id="phones-container">
+            <!-- قائمة الإكسسوارات -->
+            <div class="products-grid" id="accessories-container">
                 <!-- سيتم تعبئتها بالجافاسكريبت -->
+            </div>
+            
+            <!-- قسم المجموعات -->
+            <div class="bundles-section">
+                <h2><i class="fas fa-gift"></i> مجموعات الإكسسوارات المميزة</h2>
+                <div class="bundles-grid">
+                    <div class="bundle-card animate-in">
+                        <div class="bundle-header">
+                            <h3>مجموعة المسافر</h3>
+                            <p>كل ما تحتاجه للسفر والتنقل</p>
+                        </div>
+                        <div class="bundle-body">
+                            <div class="bundle-items">
+                                <div class="bundle-item">
+                                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="بنك طاقة">
+                                    <div class="bundle-item-info">
+                                        <div class="bundle-item-name">بنك طاقة 20000mAh</div>
+                                        <div class="bundle-item-price">$49.99</div>
+                                                    </div>
+            </div>
+                                <div class="bundle-item">
+                                    <img src="https://images.unsplash.com/photo-1599661046286-309c8b1c7b57?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="شاحن سريع">
+                                    <div class="bundle-item-info">
+                                        <div class="bundle-item-name">شاحن سريع 65W</div>
+                                        <div class="bundle-item-price">$29.99</div>
+                                    </div>
+                                </div>
+                                <div class="bundle-item">
+                                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="سماعات">
+                                    <div class="bundle-item-info">
+                                        <div class="bundle-item-name">سماعات لاسلكية</div>
+                                        <div class="bundle-item-price">$59.99</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bundle-price">
+                                <div>
+                                    <div class="current-price" style="font-size: 1.8rem;">$119.99</div>
+                                    <div class="old-price">$139.97</div>
+                                </div>
+                                <div class="bundle-savings">
+                                    <i class="fas fa-tag"></i> وفر $19.98
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                                <i class="fas fa-shopping-cart"></i> إضافة المجموعة للسلة
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="bundle-card animate-in delay-1">
+                        <div class="bundle-header">
+                            <h3>مجموعة المنزل</h3>
+                            <p>إكسسوارات منزلية متكاملة</p>
+                        </div>
+                        <div class="bundle-body">
+                            <div class="bundle-items">
+                                <div class="bundle-item">
+                                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="محول متعدد">
+                                    <div class="bundle-item-info">
+                                        <div class="bundle-item-name">محول USB متعدد</div>
+                                        <div class="bundle-item-price">$24.99</div>
+                                    </div>
+                                </div>
+                                <div class="bundle-item">
+                                    <img src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="كابلات">
+                                    <div class="bundle-item-info">
+                                        <div class="bundle-item-name">مجموعة كابلات</div>
+                                        <div class="bundle-item-price">$19.99</div>
+                                    </div>
+                                </div>
+                                <div class="bundle-item">
+                                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="حامل">
+                                    <div class="bundle-item-info">
+                                        <div class="bundle-item-name">حامل هاتف</div>
+                                        <div class="bundle-item-price">$14.99</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bundle-price">
+                                <div>
+                                    <div class="current-price" style="font-size: 1.8rem;">$49.99</div>
+                                    <div class="old-price">$59.97</div>
+                                </div>
+                                <div class="bundle-savings">
+                                    <i class="fas fa-tag"></i> وفر $9.98
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                                <i class="fas fa-shopping-cart"></i> إضافة المجموعة للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -1018,7 +1401,7 @@
                 <div class="footer-col">
                     <img id="footer-logo" src="images/logo.png" alt="شعار المتجر" class="footer-logo">
                     <p id="footer-text" class="footer-about">
-                        متجر الإلكترونيات - نقدم لكم أحدث المنتجات التكنولوجية بأفضل الأسعار. نضمن لكم تجربة تسوق آمنة ومميزة.
+                        متجر الإلكترونيات - نقدم لكم أحدث المنتجات التكنولوجية بأفضل الأسعار. مجموعة واسعة من الإكسسوارات لأجهزتك المفضلة.
                     </p>
                     <div class="social-links" id="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -1034,7 +1417,7 @@
                         <li><a href="home.html"><i class="fas fa-home"></i> الرئيسية</a></li>
                         <li><a href="products.html"><i class="fas fa-box"></i> المنتجات</a></li>
                         <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
-                        <li><a href="accessories.html"><i class="fas fa-headphones"></i> إكسسوارات</a></li>
+                        <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
                         <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
                     </ul>
                 </div>
@@ -1047,7 +1430,7 @@
                         <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">دمشق، سوريا</span></p>
                         <p><i class="fas fa-clock"></i> <span id="contact-hours">9:00 ص - 6:00 م</span></p>
                     </div>
-                                </div>
+                </div>
             </div>
             
             <div class="footer-bottom">
@@ -1063,16 +1446,17 @@
         // ===== إدارة الفلاتر والتصفية =====
         
         // متغيرات التصفية
-        let currentBrands = [];
+        let currentTypes = [];
         let currentSort = 'newest';
-        let currentMemory = 'all';
-        let currentPrice = 2000;
+        let currentCompatibility = 'all';
+        let currentPrice = 500;
         
         // تحميل الموقع عند بدء التشغيل
         document.addEventListener('DOMContentLoaded', function() {
             loadSiteData();
-            renderPhoneBrandFilters();
-            loadPhones();
+            renderAccessoryFilterOptions();
+            renderAccessoryBundles();
+            loadAccessories();
             
             // إعداد القائمة المتحركة
             const menuToggle = document.getElementById('menu-toggle');
@@ -1098,59 +1482,144 @@
             updatePriceDisplay();
         });
 
-        function getPhoneCategorySettings() {
-            if (window.db && typeof db.getProductCategoriesConfig === 'function') {
-                const settings = db.getProductCategoriesConfig();
-                if (settings && settings.phones && Array.isArray(settings.phones.subcategories)) {
-                    return settings.phones.subcategories;
-                }
+        function getAccessorySettingsData() {
+            if (window.db && typeof db.getAccessorySettings === 'function') {
+                return db.getAccessorySettings();
             }
 
-            return ['Apple', 'Samsung', 'Huawei', 'Xiaomi', 'OPPO', 'Nokia'];
+            return { types: [], compatibilityOptions: [], bundles: [] };
         }
 
-        function renderPhoneBrandFilters() {
-            const container = document.getElementById('brands-filter');
-            if (!container) return;
+        function getAccessoryTypeMeta(accessory) {
+            const settings = getAccessorySettingsData();
+            const configuredTypes = Array.isArray(settings.types) ? settings.types : [];
+            const rawType = String(accessory.type || accessory.subcategory || '').trim().toLowerCase();
+            const matchedType = configuredTypes.find(type => String(type.value || '').trim().toLowerCase() === rawType);
 
-            const brands = getPhoneCategorySettings();
-            container.innerHTML = brands.map((brand, index) => {
-                const brandValue = String(brand).trim().toLowerCase();
-                const safeId = `brand-${brandValue.replace(/[^a-z0-9_-]/g, '-')}-${index}`;
-                return `
-                    <div class="brand-checkbox">
-                        <input type="checkbox" id="${safeId}" name="brand" value="${brandValue}" onchange="filterPhones()">
-                        <label for="${safeId}">${brand}</label>
+            if (matchedType) {
+                return {
+                    value: rawType,
+                    label: matchedType.label || 'إكسسوار',
+                    icon: matchedType.icon || 'fas fa-tag'
+                };
+            }
+
+            const fallbackMap = {
+                'headphones': { label: 'سماعات', icon: 'fas fa-headphones' },
+                'chargers': { label: 'شاحن', icon: 'fas fa-charging-station' },
+                'cases': { label: 'غطاء', icon: 'fas fa-mobile-alt' },
+                'cables': { label: 'كابل', icon: 'fas fa-usb' },
+                'power-banks': { label: 'بنك طاقة', icon: 'fas fa-battery-full' }
+            };
+
+            if (fallbackMap[rawType]) {
+                return {
+                    value: rawType,
+                    label: fallbackMap[rawType].label,
+                    icon: fallbackMap[rawType].icon
+                };
+            }
+
+            return {
+                value: rawType,
+                label: accessory.subcategory || accessory.type || 'إكسسوار',
+                icon: 'fas fa-box'
+            };
+        }
+
+        function renderAccessoryFilterOptions() {
+            const settings = getAccessorySettingsData();
+            const typeContainer = document.querySelector('.type-filter');
+            const compatibilitySelect = document.getElementById('compatibility-filter');
+
+            if (typeContainer && Array.isArray(settings.types) && settings.types.length > 0) {
+                typeContainer.innerHTML = settings.types.map(type => `
+                    <div class="type-checkbox">
+                        <input type="checkbox" id="type-${type.value}" name="type" value="${type.value}" onchange="syncAccessoryTypes()">
+                        <label for="type-${type.value}"><i class="${type.icon || 'fas fa-tag'}"></i> ${type.label}</label>
                     </div>
-                `;
-            }).join('');
+                `).join('');
+            }
+
+            if (compatibilitySelect && Array.isArray(settings.compatibilityOptions) && settings.compatibilityOptions.length > 0) {
+                compatibilitySelect.innerHTML = settings.compatibilityOptions.map(option => `
+                    <option value="${option.value}">${option.label}</option>
+                `).join('');
+            }
         }
 
-        function getPhoneBrandValue(phone) {
-            return String(phone.brand || phone.subcategory || '').trim().toLowerCase();
+        function renderAccessoryBundles() {
+            const settings = getAccessorySettingsData();
+            const section = document.querySelector('.bundles-section');
+            if (!section || !Array.isArray(settings.bundles)) {
+                return;
+            }
+
+            if (settings.bundles.length === 0) {
+                section.style.display = 'none';
+                return;
+            }
+
+            section.style.display = '';
+            section.innerHTML = `
+                <h2><i class="fas fa-gift"></i> مجموعات الإكسسوارات المميزة</h2>
+                <div class="bundles-grid">
+                    ${settings.bundles.map((bundle, bundleIndex) => `
+                        <div class="bundle-card animate-in${bundleIndex ? ` delay-${Math.min(bundleIndex, 4)}` : ''}">
+                            <div class="bundle-header">
+                                <h3>${bundle.title || 'مجموعة مميزة'}</h3>
+                                <p>${bundle.subtitle || ''}</p>
+                            </div>
+                            <div class="bundle-body">
+                                <div class="bundle-items">
+                                    ${(Array.isArray(bundle.items) ? bundle.items : []).map(item => `
+                                        <div class="bundle-item">
+                                            <img src="${item.image || 'https://via.placeholder.com/200x200?text=Bundle'}" alt="${item.name || 'عنصر'}">
+                                            <div class="bundle-item-info">
+                                                <div class="bundle-item-name">${item.name || 'عنصر'}</div>
+                                                <div class="bundle-item-price">${item.price || ''}</div>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <div class="bundle-price">
+                                    <div>
+                                        <div class="current-price" style="font-size: 1.8rem;">$${bundle.currentPrice || '0.00'}</div>
+                                        ${bundle.oldPrice ? `<div class="old-price">$${bundle.oldPrice}</div>` : ''}
+                                    </div>
+                                    ${bundle.savingsText ? `<div class="bundle-savings"><i class="fas fa-tag"></i> ${bundle.savingsText}</div>` : ''}
+                                </div>
+                                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                                    <i class="fas fa-shopping-cart"></i> ${bundle.buttonText || 'إضافة المجموعة للسلة'}
+                                </button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
         }
         
-        // تحميل الهواتف
-        function loadPhones() {
-            const container = document.getElementById('phones-container');
+        // تحميل الإكسسوارات
+        function loadAccessories() {
+            const container = document.getElementById('accessories-container');
             if (!container) return;
             
-            // الحصول على هواتف من قاعدة البيانات
-            let phones = db.getProductsByCategory('phones');
+            // الحصول على إكسسوارات من قاعدة البيانات
+            let accessories = db.getProductsByCategory('accessories');
             
             // تطبيق الفلاتر
-            phones = applyPhoneFilters(phones);
+            accessories = applyAccessoryFilters(accessories);
             
-            // حساب عدد الهواتف
-            const totalPhones = phones.length;
-            document.getElementById('phones-count').textContent = totalPhones.toLocaleString();
+            // حساب عدد الإكسسوارات
+            const totalAccessories = accessories.length;
+            document.getElementById('accessories-count').textContent = totalAccessories.toLocaleString();
             
-            // إذا لم توجد هواتف
-            if (phones.length === 0) {
+            // إذا لم توجد إكسسوارات
+            if (accessories.length === 0) {
                 container.innerHTML = `
                     <div class="no-products animate-in">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>لا توجد هواتف مطابقة للبحث</h3>
+                        <i class="fas fa-headphones"></i>
+                        <h3>لا توجد إكسسوارات مطابقة للبحث</h3>
                         <p>حاول تغيير فلاتر البحث أو مسح الفلاتر</p>
                         <button class="btn btn-primary" onclick="clearFilters()">
                             <i class="fas fa-times"></i> مسح جميع الفلاتر
@@ -1160,54 +1629,60 @@
                 return;
             }
             
-            // عرض الهواتف
-            container.innerHTML = phones.map((phone, index) => createPhoneCard(phone, index)).join('');
+            // عرض الإكسسوارات
+            container.innerHTML = accessories.map((accessory, index) => createAccessoryCard(accessory, index)).join('');
         }
         
-        // إنشاء بطاقة الهاتف
-        function createPhoneCard(phone, index) {
+        // إنشاء بطاقة إكسسوار
+        function createAccessoryCard(accessory, index) {
             // البادجات
+            const primaryBadge = '<div class="badge-stack badge-stack-right"><span class="product-badge badge-accessory">إكسسوار</span></div>';
             const badges = [];
-            if (phone.featured) badges.push('<span class="product-badge badge-featured">مميز</span>');
-            if (phone.specialOffer) badges.push('<span class="product-badge badge-offer">عرض خاص</span>');
-            if (isNewProduct(phone)) badges.push('<span class="product-badge badge-new">جديد</span>');
+            if (accessory.featured) badges.push('<span class="product-badge badge-featured">مميز</span>');
+            if (accessory.specialOffer) badges.push('<span class="product-badge badge-offer">عرض خاص</span>');
+            if (isNewProduct(accessory)) badges.push('<span class="product-badge badge-new">جديد</span>');
             const secondaryBadges = badges.length ? `<div class="badge-stack badge-stack-left">${badges.join('')}</div>` : '';
+            const typeMeta = getAccessoryTypeMeta(accessory);
             
             return `
                 <div class="product-card animate-in delay-${index % 5}">
                     <div class="product-image">
-                        <img src="${phone.images[0] || 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'}" 
-                             alt="${phone.name}" 
+                        <img src="${accessory.images[0] || 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'}" 
+                             alt="${accessory.name}" 
                              loading="lazy">
+                        ${primaryBadge}
                         ${secondaryBadges}
-                        <div class="quick-view" onclick="viewProduct('${phone.id}')">
+                        <div class="quick-view" onclick="viewProduct('${accessory.id}')">
                             <i class="fas fa-eye"></i> معاينة سريعة
                         </div>
                     </div>
                     <div class="product-info">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                            <h3 class="product-name">${phone.name}</h3>
+                            <h3 class="product-name">${accessory.name}</h3>
+                            <span class="type-tag">
+                                <i class="${typeMeta.icon}"></i> ${typeMeta.label}
+                            </span>
                         </div>
                         
-                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                            ${(phone.brand || phone.subcategory) ? `<span class="category-tag">${phone.brand || phone.subcategory}</span>` : ''}
-                            ${phone.storage ? `<span class="category-tag">${phone.storage}</span>` : ''}
-                            ${phone.color ? `<span class="category-tag">${phone.color}</span>` : ''}
-                        </div>
+                        <p class="product-description">${accessory.description ? accessory.description.substring(0, 80) + (accessory.description.length > 80 ? '...' : '') : 'لا يوجد وصف للإكسسوار'}</p>
                         
-                        <p class="product-description">${phone.description ? phone.description.substring(0, 80) + (phone.description.length > 80 ? '...' : '') : 'لا يوجد وصف للهاتف'}</p>
+                        ${accessory.compatibility ? `
+                            <div style="margin: 10px 0; font-size: 0.9rem; color: var(--gray-color);">
+                                <i class="fas fa-mobile-alt"></i> متوافق مع: ${accessory.compatibility}
+                            </div>
+                        ` : ''}
                         
                         <div class="price-section">
-                            <span class="current-price">$${phone.price.toFixed(2)}</span>
-                            ${phone.oldPrice && phone.oldPrice > phone.price ? 
-                                `<span class="old-price">$${phone.oldPrice.toFixed(2)}</span>` : ''}
+                            <span class="current-price">$${accessory.price.toFixed(2)}</span>
+                            ${accessory.oldPrice && accessory.oldPrice > accessory.price ? 
+                                `<span class="old-price">$${accessory.oldPrice.toFixed(2)}</span>` : ''}
                         </div>
                         
                         <div class="product-actions">
-                            <button class="btn btn-primary btn-icon" onclick="viewProduct('${phone.id}')">
+                            <button class="btn btn-primary btn-icon" onclick="viewProduct('${accessory.id}')">
                                 <i class="fas fa-eye"></i> التفاصيل
                             </button>
-                            <button class="btn btn-outline btn-icon" onclick="addToCart('${phone.id}')">
+                            <button class="btn btn-outline btn-icon" onclick="addToCart('${accessory.id}')">
                                 <i class="fas fa-cart-plus"></i> أضف للسلة
                             </button>
                         </div>
@@ -1228,31 +1703,30 @@
             return diffDays <= 7;
         }
         
-        // تطبيق فلاتر الهواتف
-        function applyPhoneFilters(phones) {
-            let filteredPhones = [...phones];
+        // تطبيق فلاتر الإكسسوارات
+        function applyAccessoryFilters(accessories) {
+            let filteredAccessories = [...accessories];
             
-            // فلترة حسب العلامة التجارية
-            if (currentBrands.length > 0) {
-                filteredPhones = filteredPhones.filter(phone => 
-                    currentBrands.includes(getPhoneBrandValue(phone))
+            // فلترة حسب النوع
+            if (currentTypes.length > 0) {
+                filteredAccessories = filteredAccessories.filter(accessory => 
+                    currentTypes.includes(getAccessoryTypeMeta(accessory).value)
                 );
             }
             
             // فلترة حسب السعر
-            filteredPhones = filteredPhones.filter(phone => phone.price <= currentPrice);
+            filteredAccessories = filteredAccessories.filter(accessory => accessory.price <= currentPrice);
             
-            // فلترة حسب الذاكرة
-            if (currentMemory !== 'all') {
-                filteredPhones = filteredPhones.filter(phone => {
-                    if (!phone.storage) return false;
-                    const storageNum = parseInt(phone.storage);
-                    return storageNum >= parseInt(currentMemory);
+            // فلترة حسب التوافق
+            if (currentCompatibility !== 'all') {
+                filteredAccessories = filteredAccessories.filter(accessory => {
+                    if (!accessory.compatibility) return false;
+                    return accessory.compatibility.toLowerCase().includes(currentCompatibility.toLowerCase());
                 });
             }
             
             // الترتيب
-            filteredPhones.sort((a, b) => {
+            filteredAccessories.sort((a, b) => {
                 switch(currentSort) {
                     case 'price-low':
                         return a.price - b.price;
@@ -1268,14 +1742,26 @@
                 }
             });
             
-            return filteredPhones;
+            return filteredAccessories;
         }
         
-        // فلترة حسب العلامات التجارية
-        function filterPhones() {
-            const checkboxes = document.querySelectorAll('input[name="brand"]:checked');
-            currentBrands = Array.from(checkboxes).map(cb => cb.value);
-            loadPhones();
+        // فلترة حسب النوع
+        function syncAccessoryTypes() {
+            const checkboxes = document.querySelectorAll('input[name="type"]:checked');
+            currentTypes = Array.from(checkboxes).map(cb => cb.value);
+            loadAccessories();
+        }
+        
+        // فلترة حسب النوع من التصنيفات
+        function filterByType(type) {
+            currentTypes = [type];
+            
+            // تحديد العناصر المحددة
+            document.querySelectorAll('input[name="type"]').forEach(cb => {
+                cb.checked = cb.value === type;
+            });
+            
+            loadAccessories();
         }
         
         // تحديث نطاق السعر
@@ -1290,34 +1776,40 @@
             document.getElementById('max-price').textContent = `$${currentPrice.toLocaleString()}`;
         }
         
-        // ترتيب الهواتف
-        function sortPhones() {
+        // ترتيب الإكسسوارات
+        function sortAccessories() {
             currentSort = document.getElementById('sort-select').value;
-            loadPhones();
+            loadAccessories();
+        }
+        
+        // فلترة حسب التوافق
+        function syncAccessoryCompatibility() {
+            currentCompatibility = document.getElementById('compatibility-filter').value;
+            loadAccessories();
         }
         
         // تطبيق الفلاتر
         function applyFilters() {
-            loadPhones();
+            loadAccessories();
             showNotification('تم تطبيق الفلاتر بنجاح', 'success');
         }
         
         // مسح الفلاتر
         function clearFilters() {
             // إعادة تعيين كل الفلاتر
-            currentBrands = [];
+            currentTypes = [];
             currentSort = 'newest';
-            currentMemory = 'all';
-            currentPrice = 2000;
+            currentCompatibility = 'all';
+            currentPrice = 500;
             
             // إعادة تعيين عناصر واجهة المستخدم
-            document.querySelectorAll('input[name="brand"]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('input[name="type"]').forEach(cb => cb.checked = false);
             document.getElementById('sort-select').value = 'newest';
-            document.getElementById('memory-filter').value = 'all';
-            document.getElementById('price-range').value = 2000;
+            document.getElementById('compatibility-filter').value = 'all';
+            document.getElementById('price-range').value = 500;
             
             updatePriceDisplay();
-            loadPhones();
+            loadAccessories();
             showNotification('تم مسح جميع الفلاتر', 'success');
         }
         
@@ -1380,9 +1872,10 @@
         }
         
         // جعل الدوال متاحة عالمياً
-        window.filterPhones = filterPhones;
+        window.filterAccessories = filterAccessories;
+        window.filterByType = filterByType;
         window.updatePriceRange = updatePriceRange;
-        window.sortPhones = sortPhones;
+        window.sortAccessories = sortAccessories;
         window.applyFilters = applyFilters;
         window.clearFilters = clearFilters;
         window.resetFilters = resetFilters;
@@ -1392,6 +1885,7 @@
     <script src="menu-fix.js"></script>
 </body>
 </html>
+
 
 
 

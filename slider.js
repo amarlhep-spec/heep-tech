@@ -1,4 +1,4 @@
-// slider.js - نظام عرض الشرائح للمنتجات
+﻿// slider.js - نظام عرض الشرائح للمنتجات
 class ProductSlider {
     constructor(containerId, images) {
         this.container = document.getElementById(containerId);

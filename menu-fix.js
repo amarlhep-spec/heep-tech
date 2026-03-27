@@ -1,4 +1,4 @@
-// إصلاح القائمة لجميع الصفحات
+﻿// إصلاح القائمة لجميع الصفحات
 document.addEventListener('DOMContentLoaded', function() {
     // تأكد من أن ملف mobile-fix.css محمل
     if (!document.querySelector('link[href*="mobile-fix.css"]')) {

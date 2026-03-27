@@ -1,4 +1,4 @@
-// ===== مكتبة الإشعارات =====
+﻿// ===== مكتبة الإشعارات =====
 
 function showNotification(message, type = 'success') {
     // إزالة الإشعارات القديمة
@@ -46,13 +46,118 @@ function showNotification(message, type = 'success') {
 
 // ===== تحميل إعدادات الموقع =====
 
+function getAbsoluteUrl(pathOrUrl) {
+    try {
+        return new URL(pathOrUrl || window.location.href, window.location.href).href;
+    } catch (error) {
+        return window.location.href;
+    }
+}
+
+function ensureMetaTagByName(name) {
+    let tag = document.head.querySelector(`meta[name="${name}"]`);
+    if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('name', name);
+        document.head.appendChild(tag);
+    }
+    return tag;
+}
+
+function ensureMetaTagByProperty(property) {
+    let tag = document.head.querySelector(`meta[property="${property}"]`);
+    if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('property', property);
+        document.head.appendChild(tag);
+    }
+    return tag;
+}
+
+function ensureCanonicalLink() {
+    let link = document.head.querySelector('link[rel="canonical"]');
+    if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        document.head.appendChild(link);
+    }
+    return link;
+}
+
+function updateSeoMetadata({
+    title,
+    description,
+    image,
+    url,
+    type = 'website'
+} = {}) {
+    const safeTitle = title || document.title || '';
+    const safeDescription = description || '';
+    const safeUrl = getAbsoluteUrl(url);
+    const safeImage = image ? getAbsoluteUrl(image) : '';
+
+    if (safeTitle) {
+        document.title = safeTitle;
+        ensureMetaTagByProperty('og:title').setAttribute('content', safeTitle);
+        ensureMetaTagByName('twitter:title').setAttribute('content', safeTitle);
+    }
+
+    if (safeDescription) {
+        ensureMetaTagByName('description').setAttribute('content', safeDescription);
+        ensureMetaTagByProperty('og:description').setAttribute('content', safeDescription);
+        ensureMetaTagByName('twitter:description').setAttribute('content', safeDescription);
+    }
+
+    ensureMetaTagByProperty('og:type').setAttribute('content', type);
+    ensureMetaTagByProperty('og:url').setAttribute('content', safeUrl);
+    ensureMetaTagByName('twitter:card').setAttribute('content', safeImage ? 'summary_large_image' : 'summary');
+    ensureMetaTagByName('twitter:url').setAttribute('content', safeUrl);
+    ensureCanonicalLink().setAttribute('href', safeUrl);
+
+    if (safeImage) {
+        ensureMetaTagByProperty('og:image').setAttribute('content', safeImage);
+        ensureMetaTagByName('twitter:image').setAttribute('content', safeImage);
+    }
+}
+
+function updateJsonLd(id, data) {
+    let script = document.getElementById(id);
+    if (!script) {
+        script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.id = id;
+        document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(data);
+}
+
+function normalizeArabicText(value) {
+    if (typeof value !== 'string' || !/[ØÙÂ]/.test(value)) {
+        return value;
+    }
+
+    try {
+        const bytes = Array.from(value, (char) => char.charCodeAt(0) & 0xff);
+        const decoded = new TextDecoder('utf-8').decode(new Uint8Array(bytes));
+        return /[\u0600-\u06FF]/.test(decoded) ? decoded : value;
+    } catch (error) {
+        return value;
+    }
+}
+
 function loadSiteData() {
     const settings = db.getSiteSettings();
     
     if (!settings) return;
     
     // تحديث عنوان الموقع
-    document.title = settings.siteName;
+    updateSeoMetadata({
+        title: document.body?.dataset.seoTitle || document.title || settings.siteName,
+        description: document.body?.dataset.seoDescription || settings.description || '',
+        image: document.body?.dataset.seoImage || settings.mainImage || settings.logo || '',
+        url: window.location.href,
+        type: document.body?.dataset.seoType || 'website'
+    });
     
     // تحديث الشعار والاسم
     const logos = document.querySelectorAll('#site-logo, #footer-logo');
@@ -62,7 +167,7 @@ function loadSiteData() {
     
     const siteNameElements = document.querySelectorAll('#site-name');
     siteNameElements.forEach(element => {
-        if (element) element.textContent = settings.siteName;
+        if (element) element.textContent = normalizeArabicText(settings.siteName);
     });
     
     // تحديث الصورة الرئيسية
@@ -71,11 +176,11 @@ function loadSiteData() {
     
     // تحديث نص "لماذا تختارنا"
     const whyChooseText = document.getElementById('why-choose-text');
-    if (whyChooseText) whyChooseText.textContent = settings.whyChooseUs;
+    if (whyChooseText) whyChooseText.textContent = normalizeArabicText(settings.whyChooseUs);
     
     // تحديث نص الفوتر
     const footerText = document.getElementById('footer-text');
-    if (footerText) footerText.textContent = settings.footerText;
+    if (footerText) footerText.textContent = normalizeArabicText(settings.footerText);
     
     // تحديث وسائل التواصل الاجتماعي
     const socialLinks = document.getElementById('social-links');
@@ -92,15 +197,16 @@ function loadSiteData() {
     const contactInfo = document.getElementById('contact-info');
     if (contactInfo && settings.contactInfo) {
         contactInfo.innerHTML = `
-            <p><i class="fas fa-phone"></i> <span id="contact-phone">${settings.contactInfo.phone}</span></p>
-            <p><i class="fas fa-envelope"></i> <span id="contact-email">${settings.contactInfo.email}</span></p>
-            <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">${settings.contactInfo.address}</span></p>
+            <p><i class="fas fa-phone"></i> <span id="contact-phone">${normalizeArabicText(settings.contactInfo.phone)}</span></p>
+            <p><i class="fas fa-envelope"></i> <span id="contact-email">${normalizeArabicText(settings.contactInfo.email)}</span></p>
+            <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">${normalizeArabicText(settings.contactInfo.address)}</span></p>
+            ${settings.contactInfo.hours ? `<p><i class="fas fa-clock"></i> <span id="contact-hours">${normalizeArabicText(settings.contactInfo.hours)}</span></p>` : ''}
         `;
     }
     
     // تحديث حقوق النشر
     const copyrightText = document.getElementById('copyright-text');
-    if (copyrightText) copyrightText.textContent = settings.copyright;
+    if (copyrightText) copyrightText.textContent = normalizeArabicText(settings.copyright);
 }
 
 // ===== المنتجات المميزة =====

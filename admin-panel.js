@@ -601,13 +601,20 @@ function saveWhyChooseText() {
 // حفظ إعدادات الفوتر
 function saveFooterSettings() {
     const text = document.getElementById('footer-text').value;
+    const phone = document.getElementById('footer-contact-phone').value.trim();
+    const email = document.getElementById('footer-contact-email').value.trim();
+    const address = document.getElementById('footer-contact-address').value.trim();
+    const hours = document.getElementById('footer-contact-hours').value.trim();
     
     if (!text) {
         showNotification('يرجى إدخال نص الفوتر', 'error');
         return;
     }
     
-    const success = db.updateSiteSettings({ footerText: text });
+    const success = db.updateSiteSettings({
+        footerText: text,
+        contactInfo: { phone, email, address, hours }
+    });
     
     if (success) {
         showNotification('✅ تم حفظ إعدادات الفوتر بنجاح', 'success');
@@ -709,6 +716,10 @@ function loadWhyChooseSettings() {
 function loadFooterSettings() {
     const settings = db.getSiteSettings();
     document.getElementById('footer-text').value = settings.footerText || '';
+    document.getElementById('footer-contact-phone').value = (settings.contactInfo && settings.contactInfo.phone) || '';
+    document.getElementById('footer-contact-email').value = (settings.contactInfo && settings.contactInfo.email) || '';
+    document.getElementById('footer-contact-address').value = (settings.contactInfo && settings.contactInfo.address) || '';
+    document.getElementById('footer-contact-hours').value = (settings.contactInfo && settings.contactInfo.hours) || '';
 }
 
 // تحميل وسائل التواصل
@@ -847,6 +858,307 @@ function loadDashboardStats() {
     }
 }
 
+function parseLinesTextarea(text) {
+    return String(text || '')
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean);
+}
+
+function serializeLines(values) {
+    return (Array.isArray(values) ? values : []).join('\n');
+}
+
+function serializeAccessoryTypes(types) {
+    return (Array.isArray(types) ? types : [])
+        .map(type => type.label || type.value || '')
+        .join('\n');
+}
+
+function parseAccessoryTypes(text) {
+    return parseLinesTextarea(text).map((line, index) => {
+        const label = line || `نوع ${index + 1}`;
+        const value = label
+            .toLowerCase()
+            .replace(/\s+/g, '-');
+        return {
+            value,
+            label,
+            icon: 'fas fa-tag'
+        };
+    });
+}
+
+function serializeCompatibilityOptions(options) {
+    return (Array.isArray(options) ? options : [])
+        .map(option => [option.value || '', option.label || ''].join('|'))
+        .join('\n');
+}
+
+function parseCompatibilityOptions(text) {
+    return parseLinesTextarea(text).map((line, index) => {
+        const [valueRaw, labelRaw] = line.split('|').map(part => part.trim());
+        const label = labelRaw || valueRaw || `خيار ${index + 1}`;
+        const value = (valueRaw || label)
+            .toLowerCase()
+            .replace(/\s+/g, '-');
+        return {
+            value,
+            label
+        };
+    });
+}
+
+function normalizeAccessoryBundleItems(bundle, accessoryProducts) {
+    const productsById = new Map((Array.isArray(accessoryProducts) ? accessoryProducts : []).map(product => [String(product.id), product]));
+    const productIds = Array.isArray(bundle.productIds)
+        ? bundle.productIds.map(id => String(id))
+        : [];
+
+    if (productIds.length > 0) {
+        return productIds
+            .map(id => productsById.get(id))
+            .filter(Boolean)
+            .map(product => ({
+                id: product.id,
+                name: product.name,
+                price: typeof product.price === 'number' ? `$${product.price.toFixed(2)}` : '',
+                image: (product.images && product.images[0]) || ''
+            }));
+    }
+
+    return (Array.isArray(bundle.items) ? bundle.items : []).map(item => ({
+        id: item.id || '',
+        name: item.name || '',
+        price: item.price || '',
+        image: item.image || ''
+    }));
+}
+
+function calculateBundleSavingsText(currentPrice, oldPrice) {
+    const current = parseFloat(currentPrice);
+    const old = parseFloat(oldPrice);
+    if (Number.isFinite(current) && Number.isFinite(old) && old > current) {
+        return `وفر ${(old - current).toFixed(2)}`;
+    }
+    return '';
+}
+
+function createAccessoryProductCheckboxes(selectedIds) {
+    const accessories = db.getProductsByCategory('accessories') || [];
+    const selected = new Set((selectedIds || []).map(id => String(id)));
+
+    if (accessories.length === 0) {
+        return '<p style="color: #6c757d; margin: 0;">لا توجد منتجات إكسسوارات حاليًا.</p>';
+    }
+
+    return accessories.map(product => `
+        <label style="display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid #e9ecef; border-radius: 10px; background: #fff;">
+            <input type="checkbox" value="${product.id}" ${selected.has(String(product.id)) ? 'checked' : ''}>
+            <span style="flex: 1;">${product.name}</span>
+            <span style="color: #6c757d; font-size: 0.9rem;">$${Number(product.price || 0).toFixed(2)}</span>
+        </label>
+    `).join('');
+}
+
+function renderAccessoryBundlesEditor(bundles) {
+    const container = document.getElementById('accessory-bundles-editor');
+    if (!container) return;
+
+    const accessories = db.getProductsByCategory('accessories') || [];
+    const normalizedBundles = Array.isArray(bundles) && bundles.length > 0 ? bundles : [{
+        title: 'مجموعة جديدة',
+        subtitle: '',
+        currentPrice: '',
+        oldPrice: '',
+        buttonText: 'إضافة المجموعة للسلة',
+        productIds: []
+    }];
+
+    container.innerHTML = normalizedBundles.map((bundle, index) => {
+        const items = normalizeAccessoryBundleItems(bundle, accessories);
+        const productIds = Array.isArray(bundle.productIds) && bundle.productIds.length > 0
+            ? bundle.productIds
+            : items.map(item => item.id).filter(Boolean);
+        const savingsText = calculateBundleSavingsText(bundle.currentPrice, bundle.oldPrice);
+
+        return `
+            <div class="accessory-bundle-card" data-bundle-index="${index}" style="border: 1px solid #e9ecef; border-radius: 12px; padding: 16px; margin-bottom: 16px; background: #fff;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px;">
+                    <h5 style="margin: 0; color: #2c3e50;">مجموعة ${index + 1}</h5>
+                    <button type="button" class="btn btn-outline" onclick="removeAccessoryBundleEditor(${index})" style="padding: 8px 12px;">
+                        <i class="fas fa-trash"></i> حذف
+                    </button>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 6px;">العنوان</label>
+                        <input type="text" class="form-control bundle-title" value="${bundle.title || ''}" placeholder="مثال: مجموعة المسافر">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 6px;">الوصف</label>
+                        <input type="text" class="form-control bundle-subtitle" value="${bundle.subtitle || ''}" placeholder="وصف مختصر للمجموعة">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 6px;">السعر الحالي</label>
+                        <input type="number" step="0.01" min="0" class="form-control bundle-current-price" value="${bundle.currentPrice || ''}" oninput="refreshAccessoryBundleSavings(this)">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 6px;">السعر القديم</label>
+                        <input type="number" step="0.01" min="0" class="form-control bundle-old-price" value="${bundle.oldPrice || ''}" oninput="refreshAccessoryBundleSavings(this)">
+                    </div>
+                </div>
+                <div style="margin-top: 14px;">
+                    <label style="display: block; margin-bottom: 6px;">المنتجات داخل المجموعة</label>
+                    <div class="bundle-products-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;">
+                        ${createAccessoryProductCheckboxes(productIds)}
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 14px;">
+                    <div class="bundle-savings-preview" style="color: #198754; font-weight: 700;">${savingsText}</div>
+                    <input type="hidden" class="bundle-button-text" value="${bundle.buttonText || 'إضافة المجموعة للسلة'}">
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function collectAccessoryBundlesFromEditor() {
+    const accessories = db.getProductsByCategory('accessories') || [];
+    const productsById = new Map(accessories.map(product => [String(product.id), product]));
+    const cards = document.querySelectorAll('#accessory-bundles-editor .accessory-bundle-card');
+
+    return Array.from(cards).map((card, index) => {
+        const title = card.querySelector('.bundle-title')?.value.trim() || `مجموعة ${index + 1}`;
+        const subtitle = card.querySelector('.bundle-subtitle')?.value.trim() || '';
+        const currentPrice = card.querySelector('.bundle-current-price')?.value.trim() || '';
+        const oldPrice = card.querySelector('.bundle-old-price')?.value.trim() || '';
+        const buttonText = card.querySelector('.bundle-button-text')?.value.trim() || 'إضافة المجموعة للسلة';
+        const productIds = Array.from(card.querySelectorAll('.bundle-products-list input[type="checkbox"]:checked'))
+            .map(input => String(input.value));
+        const items = productIds
+            .map(id => productsById.get(id))
+            .filter(Boolean)
+            .map(product => ({
+                id: product.id,
+                name: product.name,
+                price: typeof product.price === 'number' ? `$${product.price.toFixed(2)}` : '',
+                image: (product.images && product.images[0]) || ''
+            }));
+
+        return {
+            title,
+            subtitle,
+            currentPrice,
+            oldPrice,
+            savingsText: calculateBundleSavingsText(currentPrice, oldPrice),
+            buttonText,
+            productIds,
+            items
+        };
+    }).filter(bundle => bundle.title || bundle.productIds.length > 0);
+}
+
+function addAccessoryBundleEditor() {
+    const currentBundles = collectAccessoryBundlesFromEditor();
+    currentBundles.push({
+        title: `مجموعة ${currentBundles.length + 1}`,
+        subtitle: '',
+        currentPrice: '',
+        oldPrice: '',
+        buttonText: 'إضافة المجموعة للسلة',
+        productIds: []
+    });
+    renderAccessoryBundlesEditor(currentBundles);
+}
+
+function removeAccessoryBundleEditor(index) {
+    const currentBundles = collectAccessoryBundlesFromEditor();
+    currentBundles.splice(index, 1);
+    renderAccessoryBundlesEditor(currentBundles);
+}
+
+function refreshAccessoryBundleSavings(element) {
+    const card = element.closest('.accessory-bundle-card');
+    if (!card) return;
+    const currentPrice = card.querySelector('.bundle-current-price')?.value || '';
+    const oldPrice = card.querySelector('.bundle-old-price')?.value || '';
+    const preview = card.querySelector('.bundle-savings-preview');
+    if (preview) {
+        preview.textContent = calculateBundleSavingsText(currentPrice, oldPrice);
+    }
+}
+
+function loadProductManagementSettings() {
+    const categoryConfig = typeof db.getProductCategoriesConfig === 'function'
+        ? db.getProductCategoriesConfig()
+        : {};
+    const accessorySettings = typeof db.getAccessorySettings === 'function'
+        ? db.getAccessorySettings()
+        : {};
+
+    const phonesField = document.getElementById('phones-subcategories');
+    const accessoriesField = document.getElementById('accessories-subcategories');
+    const usedPhonesField = document.getElementById('used-phones-subcategories');
+    const accessoryTypesField = document.getElementById('accessory-types-config');
+    const compatibilityField = document.getElementById('accessory-compatibility-config');
+
+    if (phonesField) phonesField.value = serializeLines((categoryConfig.phones || {}).subcategories || []);
+    if (accessoriesField) accessoriesField.value = serializeLines((categoryConfig.accessories || {}).subcategories || []);
+    if (usedPhonesField) usedPhonesField.value = serializeLines((categoryConfig['used-phones'] || {}).subcategories || []);
+    if (accessoryTypesField) accessoryTypesField.value = serializeAccessoryTypes(accessorySettings.types || []);
+    if (compatibilityField) compatibilityField.value = serializeCompatibilityOptions(accessorySettings.compatibilityOptions || []);
+    renderAccessoryBundlesEditor(accessorySettings.bundles || []);
+}
+
+function saveProductCategoriesSettings() {
+    const categorySettings = {
+        phones: {
+            name: 'هواتف',
+            subcategories: parseLinesTextarea(document.getElementById('phones-subcategories')?.value)
+        },
+        accessories: {
+            name: 'إكسسوارات',
+            subcategories: parseLinesTextarea(document.getElementById('accessories-subcategories')?.value)
+        },
+        'used-phones': {
+            name: 'هواتف مستعملة',
+            subcategories: parseLinesTextarea(document.getElementById('used-phones-subcategories')?.value)
+        }
+    };
+
+    const success = db.updateSiteSettings({ productCategories: categorySettings });
+    showNotification(success ? 'تم حفظ التصنيفات بنجاح' : 'تعذر حفظ التصنيفات', success ? 'success' : 'error');
+    if (success) {
+        initProductsTab();
+    }
+}
+
+function saveAccessoryOptionsSettings() {
+    const current = typeof db.getAccessorySettings === 'function' ? db.getAccessorySettings() : {};
+    const accessorySettings = {
+        ...current,
+        types: parseAccessoryTypes(document.getElementById('accessory-types-config')?.value),
+        compatibilityOptions: parseCompatibilityOptions(document.getElementById('accessory-compatibility-config')?.value)
+    };
+
+    const success = db.updateSiteSettings({ accessorySettings });
+    showNotification(success ? 'تم حفظ إعدادات الإكسسوارات بنجاح' : 'تعذر حفظ إعدادات الإكسسوارات', success ? 'success' : 'error');
+}
+
+function saveAccessoryBundlesSettings() {
+    const current = typeof db.getAccessorySettings === 'function' ? db.getAccessorySettings() : {};
+    const bundles = collectAccessoryBundlesFromEditor();
+
+    const accessorySettings = {
+        ...current,
+        bundles
+    };
+
+    const success = db.updateSiteSettings({ accessorySettings });
+    showNotification(success ? 'تم حفظ مجموعات الإكسسوارات بنجاح' : 'تعذر حفظ مجموعات الإكسسوارات', success ? 'success' : 'error');
+}
+
 // ===== 6. إدارة المنتجات =====
 
 function initProductsTab() {
@@ -873,7 +1185,7 @@ function initProductsTab() {
             
             let html = `
                 <h3><i class="fas fa-box"></i> إدارة المنتجات</h3>
-                
+                 
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <button class="btn btn-primary" onclick="showAddProductModal()">
@@ -891,6 +1203,46 @@ function initProductsTab() {
                         <input type="text" id="product-search" class="form-control" placeholder="بحث عن منتج..." 
                                onkeyup="searchProducts()">
                     </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                    <div style="background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 18px;">
+                        <h4 style="margin-bottom: 15px; color: #2c3e50;"><i class="fas fa-sitemap"></i> التصنيفات العامة</h4>
+                        <label style="display: block; margin-bottom: 8px;">تصنيفات الهواتف</label>
+                        <textarea id="phones-subcategories" class="form-control" rows="4" placeholder="كل تصنيف في سطر"></textarea>
+                        <label style="display: block; margin: 12px 0 8px;">تصنيفات الإكسسوارات</label>
+                        <textarea id="accessories-subcategories" class="form-control" rows="4" placeholder="كل تصنيف في سطر"></textarea>
+                        <label style="display: block; margin: 12px 0 8px;">تصنيفات المستعمل</label>
+                        <textarea id="used-phones-subcategories" class="form-control" rows="4" placeholder="كل تصنيف في سطر"></textarea>
+                        <button class="btn btn-primary" onclick="saveProductCategoriesSettings()" style="margin-top: 14px; width: 100%;">
+                            <i class="fas fa-save"></i> حفظ التصنيفات
+                        </button>
+                    </div>
+
+                    <div style="background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 18px;">
+                        <h4 style="margin-bottom: 15px; color: #2c3e50;"><i class="fas fa-headphones"></i> إعدادات الإكسسوارات</h4>
+                        <label style="display: block; margin-bottom: 8px;">أنواع الإكسسوارات</label>
+                        <textarea id="accessory-types-config" class="form-control" rows="5" placeholder="كل نوع في سطر"></textarea>
+                        <small style="display: block; color: #6c757d; margin-top: 6px;">مثال: سماعات</small>
+                        <label style="display: block; margin: 12px 0 8px;">خيارات التوافق</label>
+                        <textarea id="accessory-compatibility-config" class="form-control" rows="5" placeholder="value|label"></textarea>
+                        <small style="display: block; color: #6c757d; margin-top: 6px;">مثال: iphone|iPhone</small>
+                        <button class="btn btn-primary" onclick="saveAccessoryOptionsSettings()" style="margin-top: 14px; width: 100%;">
+                            <i class="fas fa-save"></i> حفظ إعدادات الإكسسوارات
+                        </button>
+                    </div>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 18px; margin-bottom: 25px;">
+                    <h4 style="margin-bottom: 15px; color: #2c3e50;"><i class="fas fa-gift"></i> مجموعات الإكسسوارات المميزة</h4>
+                    <div id="accessory-bundles-editor"></div>
+                    <button class="btn" type="button" onclick="addAccessoryBundleEditor()" style="background: #f8f9fa; color: #333; margin-top: 6px;">
+                        <i class="fas fa-plus"></i> إضافة مجموعة
+                    </button>
+                    <small style="display: block; color: #6c757d; margin-top: 8px;">اختر المنتجات من القائمة، ثم أدخل السعر الحالي والقديم. التوفير يُحسب تلقائيًا.</small>
+                    <button class="btn btn-primary" onclick="saveAccessoryBundlesSettings()" style="margin-top: 14px;">
+                        <i class="fas fa-save"></i> حفظ المجموعات المميزة
+                    </button>
                 </div>
             `;
             
@@ -963,6 +1315,7 @@ function initProductsTab() {
             }
             
             container.innerHTML = html;
+            loadProductManagementSettings();
             console.log('✅ تم تحميل تبويب المنتجات');
             
         } catch (error) {
@@ -1238,11 +1591,14 @@ function initMessagesTab() {
 // ===== 9. دوال المنتجات =====
 
 function showAddProductModal() {
-    const categories = {
-        'phones': { name: 'هواتف', subcategories: ['جديد', 'مستعمل', 'مجدول'] },
-        'accessories': { name: 'إكسسوارات', subcategories: ['بنوك طاقة', 'كابلات', 'أغطية', 'شواحن', 'سماعات', 'أخرى'] },
-        'used-phones': { name: 'هواتف مستعملة', subcategories: ['آيفون', 'سامسونج', 'شاومي', 'أخرى'] }
-    };
+    const categories = typeof db.getProductCategoriesConfig === 'function'
+        ? db.getProductCategoriesConfig()
+        : {
+            'phones': { name: 'هواتف', subcategories: ['جديد', 'مستعمل', 'مجدول'] },
+            'accessories': { name: 'إكسسوارات', subcategories: ['بنوك طاقة', 'كابلات', 'أغطية', 'شواحن', 'سماعات', 'أخرى'] },
+            'used-phones': { name: 'هواتف مستعملة', subcategories: ['آيفون', 'سامسونج', 'شاومي', 'أخرى'] }
+        };
+    const accessorySettings = typeof db.getAccessorySettings === 'function' ? db.getAccessorySettings() : { types: [], compatibilityOptions: [] };
     
     let categoryOptions = '';
     for (const [key, cat] of Object.entries(categories)) {
@@ -1355,6 +1711,21 @@ function showAddProductModal() {
                                 <option value="refurbished">مجدول</option>
                             </select>
                         </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                            <div>
+                                <label><i class="fas fa-shapes"></i> نوع الإكسسوار</label>
+                                <select id="modal-product-accessory-type" class="form-control">
+                                    <option value="">بدون</option>
+                                    ${((accessorySettings.types || []).map(type => `<option value="${type.value}">${type.label}</option>`).join(''))}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label><i class="fas fa-mobile-alt"></i> التوافق</label>
+                                <input type="text" id="modal-product-compatibility" class="form-control" placeholder="مثال: iPhone, Samsung">
+                            </div>
+                        </div>
                     </div>
                     
                     <div>
@@ -1414,17 +1785,15 @@ function showAddProductModal() {
 function updateSubcategories() {
     const categorySelect = document.getElementById('modal-product-category');
     const subcategorySelect = document.getElementById('modal-product-subcategory');
+    const productTypeSelect = document.getElementById('modal-product-type');
+    const accessoryTypeSelect = document.getElementById('modal-product-accessory-type');
+    const compatibilityField = document.getElementById('modal-product-compatibility');
     
     if (!categorySelect || !subcategorySelect) return;
     
-    const categories = {
-        'phones': ['جديد', 'مستعمل', 'مجدول'],
-        'accessories': ['بنوك طاقة', 'كابلات', 'أغطية', 'شواحن', 'سماعات', 'أخرى'],
-        'used-phones': ['آيفون', 'سامسونج', 'شاومي', 'أخرى']
-    };
-    
     const category = categorySelect.value;
-    const subcategories = categories[category] || ['عام'];
+    const categories = typeof db.getProductCategoriesConfig === 'function' ? db.getProductCategoriesConfig() : {};
+    const subcategories = ((categories[category] || {}).subcategories || ['عام']);
     
     // تفريغ القائمة الحالية
     subcategorySelect.innerHTML = '';
@@ -1436,6 +1805,28 @@ function updateSubcategories() {
         option.textContent = sub;
         subcategorySelect.appendChild(option);
     });
+
+    if (productTypeSelect) {
+        if (category === 'used-phones') {
+            productTypeSelect.value = 'used';
+        } else if (category === 'accessories' && !productTypeSelect.value) {
+            productTypeSelect.value = 'new';
+        }
+    }
+
+    if (accessoryTypeSelect) {
+        accessoryTypeSelect.disabled = category !== 'accessories';
+        if (category !== 'accessories') {
+            accessoryTypeSelect.value = '';
+        }
+    }
+
+    if (compatibilityField) {
+        compatibilityField.disabled = category !== 'accessories';
+        if (category !== 'accessories') {
+            compatibilityField.value = '';
+        }
+    }
 }
 
 function saveNewProduct() {
@@ -1455,6 +1846,8 @@ function saveNewProduct() {
         category: document.getElementById('modal-product-category').value,
         subcategory: document.getElementById('modal-product-subcategory').value,
         categoryType: document.getElementById('modal-product-type').value,
+        type: document.getElementById('modal-product-accessory-type').value,
+        compatibility: document.getElementById('modal-product-compatibility').value.trim(),
         featured: document.getElementById('modal-product-featured').checked,
         specialOffer: document.getElementById('modal-product-special').checked,
         inStock: true
@@ -1491,6 +1884,8 @@ function editProductInPanel(productId) {
         document.getElementById('modal-product-image').value = product.images[0] || '';
         document.getElementById('modal-product-category').value = product.category || 'phones';
         document.getElementById('modal-product-type').value = product.categoryType || 'new';
+        document.getElementById('modal-product-accessory-type').value = product.type || '';
+        document.getElementById('modal-product-compatibility').value = product.compatibility || '';
         document.getElementById('modal-product-featured').checked = product.featured || false;
         document.getElementById('modal-product-special').checked = product.specialOffer || false;
         
@@ -1532,6 +1927,8 @@ function updateProduct(productId) {
         category: document.getElementById('modal-product-category').value,
         subcategory: document.getElementById('modal-product-subcategory').value,
         categoryType: document.getElementById('modal-product-type').value,
+        type: document.getElementById('modal-product-accessory-type').value,
+        compatibility: document.getElementById('modal-product-compatibility').value.trim(),
         featured: document.getElementById('modal-product-featured').checked,
         specialOffer: document.getElementById('modal-product-special').checked
     };
@@ -1952,3 +2349,9 @@ window.updateSubcategories = updateSubcategories;
 window.initProductsTab = initProductsTab;
 window.initOrdersTab = initOrdersTab;
 window.initMessagesTab = initMessagesTab;
+window.saveProductCategoriesSettings = saveProductCategoriesSettings;
+window.saveAccessoryOptionsSettings = saveAccessoryOptionsSettings;
+window.saveAccessoryBundlesSettings = saveAccessoryBundlesSettings;
+window.addAccessoryBundleEditor = addAccessoryBundleEditor;
+window.removeAccessoryBundleEditor = removeAccessoryBundleEditor;
+window.refreshAccessoryBundleSavings = refreshAccessoryBundleSavings;

@@ -1,6 +1,8 @@
-/* إصلاح نهائي للقائمة على الجوال */
+﻿/* إصلاح نهائي للقائمة على الجوال */
 
 /* 1. زر القائمة - مخفي على الشاشات الكبيرة */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
+
 #menu-toggle {
     display: none !important;
     visibility: hidden !important;

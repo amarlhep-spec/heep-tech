@@ -619,7 +619,7 @@ admin_send_security_headers();
                     <li><a href="customers-management.html"><i class="fas fa-users"></i> <span>العملاء</span></a></li>
                     <li><a href="reports.html"><i class="fas fa-chart-bar"></i> <span>التقارير</span></a></li>
                     <li><a href="settings.html"><i class="fas fa-cog"></i> <span>الإعدادات</span></a></li>
-                    <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> <span>العودة للمتجر</span></a></li>
+                    <li><a href="home.html"><i class="fas fa-sign-out-alt"></i> <span>العودة للمتجر</span></a></li>
                 </ul>
             </nav>
         </aside>
