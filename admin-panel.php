@@ -576,7 +576,7 @@ admin_send_security_headers();
                     <button class="btn btn-outline" onclick="switchTab('orders')">
                         <i class="fas fa-eye"></i> عرض الطلبات
                     </button>
-                    <a href="index.html" target="_blank" class="btn btn-info">
+                    <a href="home.html" target="_blank" class="btn btn-info">
                         <i class="fas fa-external-link-alt"></i> زيارة الموقع
                     </a>
                 </div>
@@ -738,7 +738,26 @@ admin_send_security_headers();
         <div id="footer" class="tab-content">
             <div class="dashboard-section">
                 <h3><i class="fas fa-shoe-prints"></i> إعدادات الفوتر</h3>
-                <textarea id="footer-text" class="form-control" rows="3"></textarea>
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> رقم الهاتف:</label>
+                    <input type="text" id="footer-contact-phone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> البريد الإلكتروني:</label>
+                    <input type="text" id="footer-contact-email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> العنوان:</label>
+                    <input type="text" id="footer-contact-address" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-clock"></i> ساعات العمل:</label>
+                    <input type="text" id="footer-contact-hours" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-align-left"></i> نص الفوتر:</label>
+                    <textarea id="footer-text" class="form-control" rows="3"></textarea>
+                </div>
                 <button type="button" class="btn btn-primary mt-3" onclick="saveFooterSettings()">
                     <i class="fas fa-save"></i> حفظ الإعدادات
                 </button>

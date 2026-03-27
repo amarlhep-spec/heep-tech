@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="mobile-fix.css">
     
     <style>
-        /* نفس أنماط الصفحة الرئيسية */
+        /* Ù†ÙØ³ Ø£Ù†Ù…Ø§Ø· Ø§Ù„ØµÙØ­Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
@@ -36,6 +36,7 @@
             line-height: 1.6;
             opacity: 0;
             animation: fadeIn 0.5s ease-out forwards;
+            padding-top: 92px;
         }
         
         @keyframes fadeIn {
@@ -53,12 +54,14 @@
             padding: 0 15px;
         }
         
-        /* ===== الهيدر ===== */
+        /* ===== Ø§Ù„Ù‡ÙŠØ¯Ø± ===== */
         .header {
             background-color: var(--primary-color);
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
         }
         
@@ -152,7 +155,7 @@
             cursor: pointer;
         }
         
-        /* ===== ترويسة الصفحة ===== */
+        /* ===== ØªØ±ÙˆÙŠØ³Ø© Ø§Ù„ØµÙØ­Ø© ===== */
         .page-header {
             text-align: center;
             margin: 40px 0;
@@ -209,7 +212,7 @@
             line-height: 1.6;
         }
         
-        /* ===== معلومات هامة ===== */
+        /* ===== Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ù‡Ø§Ù…Ø© ===== */
         .important-info {
             background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%);
             border-radius: 15px;
@@ -263,7 +266,7 @@
             line-height: 1.6;
         }
         
-        /* ===== شروط الشراء ===== */
+        /* ===== Ø´Ø±ÙˆØ· Ø§Ù„Ø´Ø±Ø§Ø¡ ===== */
         .terms-section {
             background: white;
             border-radius: 15px;
@@ -325,12 +328,13 @@
             line-height: 1.6;
         }
         
-        /* ===== قائمة الهواتف المستعملة ===== */
+        /* ===== Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„Ù‡ÙˆØ§ØªÙ Ø§Ù„Ù…Ø³ØªØ¹Ù…Ù„Ø© ===== */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 20px;
+            align-items: stretch;
         }
         
         .product-card {
@@ -342,6 +346,9 @@
             border: 1px solid #f0f0f0;
             position: relative;
             animation: fadeInUp 0.6s ease-out;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .product-card:hover {
@@ -350,15 +357,20 @@
         }
         
         .product-image {
-            height: 220px;
+            height: var(--product-card-image-height);
             overflow: hidden;
             position: relative;
+            background: var(--product-card-image-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            padding: 16px;
             transition: transform 0.5s ease;
         }
         
@@ -377,6 +389,31 @@
             color: white;
             z-index: 2;
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .badge-stack {
+            position: absolute;
+            top: 15px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .badge-stack-left {
+            left: 15px;
+        }
+
+        .badge-stack-right {
+            right: 15px;
+            align-items: flex-end;
+        }
+
+        .badge-stack .product-badge {
+            position: static;
+            top: auto;
+            left: auto;
         }
         
         .badge-used {
@@ -421,6 +458,9 @@
         
         .product-info {
             padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
         
         .product-name {
@@ -428,7 +468,7 @@
             color: var(--primary-color);
             margin-bottom: 12px;
             line-height: 1.4;
-            height: 70px;
+            min-height: 70px;
             overflow: hidden;
         }
         
@@ -462,6 +502,7 @@
             font-size: 0.95rem;
             margin-bottom: 15px;
             line-height: 1.6;
+            min-height: 108px;
         }
         
         .detail-item {
@@ -506,7 +547,7 @@
         .product-actions {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: auto;
         }
         
         .btn {
@@ -556,7 +597,7 @@
             padding: 12px 20px;
         }
         
-        /* ===== رسالة عدم وجود منتجات ===== */
+        /* ===== Ø±Ø³Ø§Ù„Ø© Ø¹Ø¯Ù… ÙˆØ¬ÙˆØ¯ Ù…Ù†ØªØ¬Ø§Øª ===== */
         .no-products {
             text-align: center;
             padding: 60px 20px;
@@ -584,7 +625,7 @@
             font-size: 1.1rem;
         }
         
-        /* ===== قسم المعلومات الإضافية ===== */
+        /* ===== Ù‚Ø³Ù… Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ø¥Ø¶Ø§ÙÙŠØ© ===== */
         .extra-info {
             background: linear-gradient(135deg, var(--primary-color) 0%, #1a252f 100%);
             color: white;
@@ -630,7 +671,7 @@
             z-index: 2;
         }
         
-        /* ===== الفوتر ===== */
+        /* ===== Ø§Ù„ÙÙˆØªØ± ===== */
         .footer {
             background-color: var(--primary-color);
             color: white;
@@ -723,7 +764,7 @@
             margin-top: 30px;
         }
         
-        /* ===== الأنيميشن ===== */
+        /* ===== Ø§Ù„Ø£Ù†ÙŠÙ…ÙŠØ´Ù† ===== */
         .animate-in {
             animation: fadeInUp 0.6s ease-out;
         }
@@ -741,7 +782,7 @@
             }
         }
         
-        /* ===== التوافق مع الأجهزة المحمولة ===== */
+        /* ===== Ø§Ù„ØªÙˆØ§ÙÙ‚ Ù…Ø¹ Ø§Ù„Ø£Ø¬Ù‡Ø²Ø© Ø§Ù„Ù…Ø­Ù…ÙˆÙ„Ø© ===== */
         @media (max-width: 992px) {
             .nav-menu ul {
                 flex-direction: column;
@@ -833,12 +874,12 @@
     </style>
 </head>
 <body>
-    <!-- الهيدر -->
+    <!-- Ø§Ù„Ù‡ÙŠØ¯Ø± -->
     <header class="header">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-brand">
-                    <a href="index.html" class="logo">
+                    <a href="home.html" class="logo">
                         <img id="site-logo" src="images/logo.png" alt="شعار المتجر">
                         <span id="site-name">متجر الإلكترونيات</span>
                     </a>
@@ -846,7 +887,7 @@
                 
                 <div class="nav-menu" id="nav-menu">
                     <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                        <li><a href="home.html"><i class="fas fa-home"></i> الرئيسية</a></li>
                         <li><a href="products.html"><i class="fas fa-box"></i> جميع المنتجات</a></li>
                         <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
                         <li><a href="used-phones.html" class="active"><i class="fas fa-mobile"></i> مستعملة</a></li>
@@ -868,16 +909,21 @@
         </nav>
     </header>
 
-    <!-- محتوى صفحة الهواتف المستعملة -->
+    <!-- Ù…Ø­ØªÙˆÙ‰ ØµÙØ­Ø© Ø§Ù„Ù‡ÙˆØ§ØªÙ Ø§Ù„Ù…Ø³ØªØ¹Ù…Ù„Ø© -->
     <main class="used-phones-page">
         <div class="container">
-            <!-- ترويسة الصفحة -->
+            <!-- ØªØ±ÙˆÙŠØ³Ø© Ø§Ù„ØµÙØ­Ø© -->
             <div class="page-header">
                 <h1><i class="fas fa-mobile"></i> الهواتف المستعملة</h1>
                 <p>هواتف ذكية مستعملة بحالة ممتازة وبأسعار مناسبة مع ضمان شامل</p>
             </div>
             
-            <!-- معلومات هامة -->
+            <!-- Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„Ù‡ÙˆØ§ØªÙ Ø§Ù„Ù…Ø³ØªØ¹Ù…Ù„Ø© -->
+            <div class="products-grid" id="used-phones-container">
+                <!-- Ø³ÙŠØªÙ… ØªØ¹Ø¨Ø¦ØªÙ‡Ø§ Ø¨Ø§Ù„Ø¬Ø§ÙØ§Ø³ÙƒØ±ÙŠØ¨Øª -->
+            </div>
+
+            <!-- Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ù‡Ø§Ù…Ø© -->
             <div class="important-info">
                 <h3><i class="fas fa-info-circle"></i> معلومات هامة عن الهواتف المستعملة</h3>
                 <ul>
@@ -904,7 +950,7 @@
                 </ul>
             </div>
             
-            <!-- شروط الشراء -->
+            <!-- Ø´Ø±ÙˆØ· Ø§Ù„Ø´Ø±Ø§Ø¡ -->
             <div class="terms-section">
                 <h3><i class="fas fa-clipboard-check"></i> مزايا شراء هاتف مستعمل من متجرنا</h3>
                 <div class="terms-grid">
@@ -934,17 +980,12 @@
                 </div>
             </div>
             
-            <!-- قائمة الهواتف المستعملة -->
-            <div class="products-grid" id="used-phones-container">
-                <!-- سيتم تعبئتها بالجافاسكريبت -->
-            </div>
-            
-            <!-- معلومات إضافية -->
+            <!-- Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø¥Ø¶Ø§ÙÙŠØ© -->
             <div class="extra-info animate-in delay-3">
-                <h3>لماذا تشتري هاتفاً مستعملاً؟</h3>
+                <h3>لماذا تشتري هاتفًا مستعملًا؟</h3>
                 <p>
-                    شراء هاتف مستعمل يمكن أن يكون خياراً ممتازاً للحصول على جهاز عالي الجودة بسعر أقل. 
-                    جميع هواتفنا المستعملة تمر بفحص شامل وتكون في حالة ممتازة. نوفر لك ضماناً كاملاً 
+                    شراء هاتف مستعمل يمكن أن يكون خيارًا ممتازًا للحصول على جهاز عالي الجودة بسعر أقل.
+                    جميع هواتفنا المستعملة تمر بفحص شامل وتكون في حالة ممتازة. نوفر لك ضمانًا كاملًا
                     وخدمة ما بعد البيع لضمان راحتك ورضاك.
                 </p>
                 <a href="contact.html" class="btn btn-primary" style="background: white; color: var(--warning-color);">
@@ -954,7 +995,7 @@
         </div>
     </main>
 
-    <!-- الفوتر -->
+    <!-- Ø§Ù„ÙÙˆØªØ± -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -974,7 +1015,7 @@
                 <div class="footer-col">
                     <h3>روابط سريعة</h3>
                     <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                        <li><a href="home.html"><i class="fas fa-home"></i> الرئيسية</a></li>
                         <li><a href="products.html"><i class="fas fa-box"></i> المنتجات</a></li>
                         <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
                         <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
@@ -988,7 +1029,7 @@
                         <p><i class="fas fa-phone"></i> <span id="contact-phone">+963 123 456 789</span></p>
                         <p><i class="fas fa-envelope"></i> <span id="contact-email">info@store.com</span></p>
                         <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">دمشق، سوريا</span></p>
-                        <p><i class="fas fa-clock"></i> <span>9:00 ص - 6:00 م</span></p>
+                        <p><i class="fas fa-clock"></i> <span id="contact-hours">9:00 ص - 6:00 م</span></p>
                     </div>
                 </div>
             </div>
@@ -999,16 +1040,16 @@
         </div>
     </footer>
 
-    <!-- الروابط الخارجية -->
+    <!-- Ø§Ù„Ø±ÙˆØ§Ø¨Ø· Ø§Ù„Ø®Ø§Ø±Ø¬ÙŠØ© -->
     <script src="database.js"></script>
     <script src="script.js"></script>
     <script>
-        // تحميل الموقع عند بدء التشغيل
+        // ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù…ÙˆÙ‚Ø¹ Ø¹Ù†Ø¯ Ø¨Ø¯Ø¡ Ø§Ù„ØªØ´ØºÙŠÙ„
         document.addEventListener('DOMContentLoaded', function() {
             loadSiteData();
             loadUsedPhones();
             
-            // إعداد القائمة المتحركة
+            // Ø¥Ø¹Ø¯Ø§Ø¯ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„Ù…ØªØ­Ø±ÙƒØ©
             const menuToggle = document.getElementById('menu-toggle');
             const navMenu = document.getElementById('nav-menu');
             
@@ -1017,7 +1058,7 @@
                     navMenu.classList.toggle('show');
                 });
                 
-                // إغلاق القائمة عند النقر خارجها
+                // Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø¹Ù†Ø¯ Ø§Ù„Ù†Ù‚Ø± Ø®Ø§Ø±Ø¬Ù‡Ø§
                 document.addEventListener('click', function(event) {
                     if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
                         navMenu.classList.remove('show');
@@ -1025,24 +1066,24 @@
                 });
             }
             
-            // إعداد الأنيميشن
+            // Ø¥Ø¹Ø¯Ø§Ø¯ Ø§Ù„Ø£Ù†ÙŠÙ…ÙŠØ´Ù†
             setupAnimations();
         });
         
-        // تحميل الهواتف المستعملة
+        // ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù‡ÙˆØ§ØªÙ Ø§Ù„Ù…Ø³ØªØ¹Ù…Ù„Ø©
         function loadUsedPhones() {
             const container = document.getElementById('used-phones-container');
             if (!container) return;
             
-            // الحصول على هواتف مستعملة من قاعدة البيانات
+            // Ø§Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ù‡ÙˆØ§ØªÙ Ù…Ø³ØªØ¹Ù…Ù„Ø© Ù…Ù† Ù‚Ø§Ø¹Ø¯Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª
             const usedPhones = db.getProductsByCategory('used-phones');
             
             if (usedPhones.length === 0) {
                 container.innerHTML = `
                     <div class="no-products animate-in">
                         <i class="fas fa-mobile-alt"></i>
-                        <h3>لا توجد هواتف مستعملة حالياً</h3>
-                        <p>سيتم إضافة هواتف مستعملة جديدة قريباً. تابعنا!</p>
+                        <h3>لا توجد هواتف مستعملة حاليًا</h3>
+                        <p>سيتم إضافة هواتف مستعملة جديدة قريبًا. تابعنا!</p>
                         <a href="phones.html" class="btn btn-primary">
                             <i class="fas fa-arrow-left"></i> تصفح الهواتف الجديدة
                         </a>
@@ -1051,13 +1092,13 @@
                 return;
             }
             
-            // عرض الهواتف المستعملة
+            // Ø¹Ø±Ø¶ Ø§Ù„Ù‡ÙˆØ§ØªÙ Ø§Ù„Ù…Ø³ØªØ¹Ù…Ù„Ø©
             container.innerHTML = usedPhones.map((phone, index) => createUsedPhoneCard(phone, index)).join('');
         }
         
-        // إنشاء بطاقة هاتف مستعمل
+        // Ø¥Ù†Ø´Ø§Ø¡ Ø¨Ø·Ø§Ù‚Ø© Ù‡Ø§ØªÙ Ù…Ø³ØªØ¹Ù…Ù„
         function createUsedPhoneCard(phone, index) {
-            // تحديد حالة الهاتف وبادجته
+            // ØªØ­Ø¯ÙŠØ¯ Ø­Ø§Ù„Ø© Ø§Ù„Ù‡Ø§ØªÙ ÙˆØ¨Ø§Ø¯Ø¬ØªÙ‡
             let conditionBadge = '';
             let conditionClass = '';
             let conditionText = '';
@@ -1093,18 +1134,19 @@
                 conditionClass = 'condition-good';
             }
             
-            // البادجات الإضافية
+            // Ø§Ù„Ø¨Ø§Ø¯Ø¬Ø§Øª Ø§Ù„Ø¥Ø¶Ø§ÙÙŠØ©
+            const primaryBadge = `<div class="badge-stack badge-stack-right">${conditionBadge}</div>`;
             const badges = [];
-            badges.push(conditionBadge);
             if (phone.specialOffer) badges.push('<span class="product-badge badge-offer">عرض خاص</span>');
-            if (isNewArrival(phone)) badges.push('<span class="product-badge badge-new">وصل حديثاً</span>');
+            if (isNewArrival(phone)) badges.push('<span class="product-badge badge-new">وصل حديثًا</span>');
+            const secondaryBadges = badges.length ? `<div class="badge-stack badge-stack-left">${badges.join('')}</div>` : '';
             
-            // تفاصيل إضافية
+            // ØªÙØ§ØµÙŠÙ„ Ø¥Ø¶Ø§ÙÙŠØ©
             const details = [];
-            if (phone.storage) details.push({ label: 'التخزين', value: phone.storage });
-            if (phone.color) details.push({ label: 'اللون', value: phone.color });
-            if (phone.battery) details.push({ label: 'البطارية', value: phone.battery });
-            if (phone.warranty) details.push({ label: 'الضمان', value: phone.warranty });
+            if (phone.storage) details.push({ label: 'Ø§Ù„ØªØ®Ø²ÙŠÙ†', value: phone.storage });
+            if (phone.color) details.push({ label: 'Ø§Ù„Ù„ÙˆÙ†', value: phone.color });
+            if (phone.battery) details.push({ label: 'Ø§Ù„Ø¨Ø·Ø§Ø±ÙŠØ©', value: phone.battery });
+            if (phone.warranty) details.push({ label: 'Ø§Ù„Ø¶Ù…Ø§Ù†', value: phone.warranty });
             
             return `
                 <div class="product-card animate-in delay-${index % 5}">
@@ -1112,7 +1154,8 @@
                         <img src="${phone.images[0] || 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'}" 
                              alt="${phone.name}" 
                              loading="lazy">
-                        ${badges.join('')}
+                        ${primaryBadge}
+                        ${secondaryBadges}
                         <div class="quick-view" onclick="viewProduct('${phone.id}')">
                             <i class="fas fa-eye"></i> معاينة سريعة
                         </div>
@@ -1151,7 +1194,7 @@
             `;
         }
         
-        // التحقق إذا كان المنتج جديد الوصول
+        // Ø§Ù„ØªØ­Ù‚Ù‚ Ø¥Ø°Ø§ ÙƒØ§Ù† Ø§Ù„Ù…Ù†ØªØ¬ Ø¬Ø¯ÙŠØ¯ Ø§Ù„ÙˆØµÙˆÙ„
         function isNewArrival(product) {
             if (!product.createdAt) return false;
             
@@ -1160,10 +1203,10 @@
             const diffTime = Math.abs(now - productDate);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             
-            return diffDays <= 3; // منتجات أقل من 3 أيام تعتبر جديدة الوصول
+            return diffDays <= 3; // Ù…Ù†ØªØ¬Ø§Øª Ø£Ù‚Ù„ Ù…Ù† 3 Ø£ÙŠØ§Ù… ØªØ¹ØªØ¨Ø± Ø¬Ø¯ÙŠØ¯Ø© Ø§Ù„ÙˆØµÙˆÙ„
         }
         
-        // إعداد الأنيميشن
+        // Ø¥Ø¹Ø¯Ø§Ø¯ Ø§Ù„Ø£Ù†ÙŠÙ…ÙŠØ´Ù†
         function setupAnimations() {
             const elements = document.querySelectorAll('.animate-in');
             elements.forEach((element, index) => {
@@ -1178,7 +1221,7 @@
             });
         }
         
-        // إشعارات
+        // Ø¥Ø´Ø¹Ø§Ø±Ø§Øª
         function showNotification(message, type = 'success') {
             if (typeof window.showEnhancedNotification === 'function') {
                 window.showEnhancedNotification(message, type);
@@ -1187,10 +1230,11 @@
             }
         }
         
-        // جعل الدوال متاحة عالمياً
+        // Ø¬Ø¹Ù„ Ø§Ù„Ø¯ÙˆØ§Ù„ Ù…ØªØ§Ø­Ø© Ø¹Ø§Ù„Ù…ÙŠØ§Ù‹
         window.viewProduct = viewProduct;
         window.addToCart = addToCart;
     </script>
     <script src="menu-fix.js"></script>
 </body>
 </html>
+

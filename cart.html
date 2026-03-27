@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سلة التسوق - متجر الإلكترونيات</title>
+    <title>Ø³Ù„Ø© Ø§Ù„ØªØ³ÙˆÙ‚ - Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="mobile-fix.css">
     <style>
-        /* نفس أنماط الصفحة الرئيسية */
+        /* Ù†ÙØ³ Ø£Ù†Ù…Ø§Ø· Ø§Ù„ØµÙØ­Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
@@ -35,6 +35,7 @@
             line-height: 1.6;
             opacity: 0;
             animation: fadeIn 0.5s ease-out forwards;
+            padding-top: 92px;
         }
         
         @keyframes fadeIn {
@@ -52,12 +53,14 @@
             padding: 0 15px;
         }
         
-        /* ===== الهيدر ===== */
+        /* ===== Ø§Ù„Ù‡ÙŠØ¯Ø± ===== */
         .header {
             background-color: var(--primary-color);
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
         }
         
@@ -156,7 +159,7 @@
             cursor: pointer;
         }
         
-        /* ===== ترويسة الصفحة ===== */
+        /* ===== ØªØ±ÙˆÙŠØ³Ø© Ø§Ù„ØµÙØ­Ø© ===== */
         .page-header {
             text-align: center;
             margin: 40px 0;
@@ -213,7 +216,7 @@
             line-height: 1.6;
         }
         
-        /* ===== محتوى السلة ===== */
+        /* ===== Ù…Ø­ØªÙˆÙ‰ Ø§Ù„Ø³Ù„Ø© ===== */
         .cart-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -231,7 +234,7 @@
             }
         }
         
-        /* ===== عناصر السلة ===== */
+        /* ===== Ø¹Ù†Ø§ØµØ± Ø§Ù„Ø³Ù„Ø© ===== */
         .cart-items {
             background: white;
             border-radius: 15px;
@@ -378,7 +381,7 @@
             transform: rotate(90deg);
         }
         
-        /* ===== السلة الفارغة ===== */
+        /* ===== Ø§Ù„Ø³Ù„Ø© Ø§Ù„ÙØ§Ø±ØºØ© ===== */
         .empty-cart {
             text-align: center;
             padding: 60px 20px;
@@ -448,7 +451,7 @@
             transform: translateY(-3px);
         }
         
-        /* ===== ملخص السلة ===== */
+        /* ===== Ù…Ù„Ø®Øµ Ø§Ù„Ø³Ù„Ø© ===== */
         .cart-summary {
             background: white;
             border-radius: 15px;
@@ -513,7 +516,7 @@
             margin-bottom: 15px;
         }
         
-        /* ===== قسم الخصومات ===== */
+        /* ===== Ù‚Ø³Ù… Ø§Ù„Ø®ØµÙˆÙ…Ø§Øª ===== */
         .coupon-section {
             background: #f8f9fa;
             border-radius: var(--border-radius);
@@ -566,7 +569,7 @@
             transform: translateY(-2px);
         }
         
-        /* ===== قسم الشام كاش فقط ===== */
+        /* ===== Ù‚Ø³Ù… Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´ ÙÙ‚Ø· ===== */
         .payment-methods {
             margin: 30px 0;
         }
@@ -671,7 +674,7 @@
             border-color: var(--secondary-color);
         }
         
-        /* ===== رفع صورة الإشعار ===== */
+        /* ===== Ø±ÙØ¹ ØµÙˆØ±Ø© Ø§Ù„Ø¥Ø´Ø¹Ø§Ø± ===== */
         .receipt-upload {
             margin: 20px 0;
             padding: 20px;
@@ -752,7 +755,7 @@
             font-size: 0.9rem;
         }
         
-        /* ===== قسم الأمان ===== */
+        /* ===== Ù‚Ø³Ù… Ø§Ù„Ø£Ù…Ø§Ù† ===== */
         .security-info {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: var(--border-radius);
@@ -773,7 +776,7 @@
             color: var(--success-color);
         }
         
-        /* ===== قسم مواصلة التسوق ===== */
+        /* ===== Ù‚Ø³Ù… Ù…ÙˆØ§ØµÙ„Ø© Ø§Ù„ØªØ³ÙˆÙ‚ ===== */
         .continue-shopping {
             text-align: center;
             margin: 50px 0;
@@ -816,7 +819,7 @@
             margin: 0 auto 25px;
         }
         
-        /* ===== الفوتر ===== */
+        /* ===== Ø§Ù„ÙÙˆØªØ± ===== */
         .footer {
             background-color: var(--primary-color);
             color: white;
@@ -909,7 +912,7 @@
             margin-top: 30px;
         }
         
-        /* ===== الأنيميشن ===== */
+        /* ===== Ø§Ù„Ø£Ù†ÙŠÙ…ÙŠØ´Ù† ===== */
         .animate-in {
             animation: fadeInUp 0.6s ease-out;
         }
@@ -919,7 +922,7 @@
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
         
-        /* ===== التوافق مع الأجهزة المحمولة ===== */
+        /* ===== Ø§Ù„ØªÙˆØ§ÙÙ‚ Ù…Ø¹ Ø§Ù„Ø£Ø¬Ù‡Ø²Ø© Ø§Ù„Ù…Ø­Ù…ÙˆÙ„Ø© ===== */
         @media (max-width: 992px) {
             .cart-content {
                 grid-template-columns: 1fr;
@@ -1010,25 +1013,25 @@
     </style>
 </head>
 <body>
-    <!-- الهيدر -->
+    <!-- Ø§Ù„Ù‡ÙŠØ¯Ø± -->
     <header class="header">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-brand">
-                    <a href="index.html" class="logo">
-                        <img id="site-logo" src="images/logo.png" alt="شعار المتجر">
-                        <span id="site-name">متجر الإلكترونيات</span>
+                    <a href="home.html" class="logo">
+                        <img id="site-logo" src="images/logo.png" alt="Ø´Ø¹Ø§Ø± Ø§Ù„Ù…ØªØ¬Ø±">
+                        <span id="site-name">Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª</span>
                     </a>
                 </div>
                 
                 <div class="nav-menu" id="nav-menu">
                     <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
-                        <li><a href="products.html"><i class="fas fa-box"></i> جميع المنتجات</a></li>
-                        <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
-                        <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
-                        <li><a href="accessories.html"><i class="fas fa-headphones"></i> إكسسوارات</a></li>
-                        <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                        <li><a href="home.html"><i class="fas fa-home"></i> Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©</a></li>
+                        <li><a href="products.html"><i class="fas fa-box"></i> Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª</a></li>
+                        <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> Ø§Ù„Ù‡ÙˆØ§ØªÙ</a></li>
+                        <li><a href="used-phones.html"><i class="fas fa-mobile"></i> Ù…Ø³ØªØ¹Ù…Ù„Ø©</a></li>
+                        <li><a href="accessories.html"><i class="fas fa-headphones"></i> Ø¥ÙƒØ³Ø³ÙˆØ§Ø±Ø§Øª</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Ø§ØªØµÙ„ Ø¨Ù†Ø§</a></li>
                     </ul>
                 </div>
                 
@@ -1045,47 +1048,47 @@
         </nav>
     </header>
 
-    <!-- محتوى صفحة السلة -->
+    <!-- Ù…Ø­ØªÙˆÙ‰ ØµÙØ­Ø© Ø§Ù„Ø³Ù„Ø© -->
     <main class="cart-page">
         <div class="container">
-            <!-- ترويسة الصفحة -->
+            <!-- ØªØ±ÙˆÙŠØ³Ø© Ø§Ù„ØµÙØ­Ø© -->
             <div class="page-header">
-                <h1><i class="fas fa-shopping-cart"></i> سلة التسوق</h1>
-                <p>راجع مشترياتك وأكمل عملية الشراء بسهولة وأمان</p>
+                <h1><i class="fas fa-shopping-cart"></i> Ø³Ù„Ø© Ø§Ù„ØªØ³ÙˆÙ‚</h1>
+                <p>Ø±Ø§Ø¬Ø¹ Ù…Ø´ØªØ±ÙŠØ§ØªÙƒ ÙˆØ£ÙƒÙ…Ù„ Ø¹Ù…Ù„ÙŠØ© Ø§Ù„Ø´Ø±Ø§Ø¡ Ø¨Ø³Ù‡ÙˆÙ„Ø© ÙˆØ£Ù…Ø§Ù†</p>
             </div>
             
-            <!-- محتوى السلة -->
+            <!-- Ù…Ø­ØªÙˆÙ‰ Ø§Ù„Ø³Ù„Ø© -->
             <div id="cart-content-container">
-                <!-- سيتم تعبئتها بالجافاسكريبت -->
+                <!-- Ø³ÙŠØªÙ… ØªØ¹Ø¨Ø¦ØªÙ‡Ø§ Ø¨Ø§Ù„Ø¬Ø§ÙØ§Ø³ÙƒØ±ÙŠØ¨Øª -->
             </div>
             
-            <!-- قسم مواصلة التسوق -->
+            <!-- Ù‚Ø³Ù… Ù…ÙˆØ§ØµÙ„Ø© Ø§Ù„ØªØ³ÙˆÙ‚ -->
             <div class="continue-shopping">
-                <h3>لم تنتهي من التسوق بعد؟</h3>
-                <p>تابع تصفح منتجاتنا واكتشف المزيد من العروض المميزة</p>
+                <h3>Ù„Ù… ØªÙ†ØªÙ‡ÙŠ Ù…Ù† Ø§Ù„ØªØ³ÙˆÙ‚ Ø¨Ø¹Ø¯ØŸ</h3>
+                <p>ØªØ§Ø¨Ø¹ ØªØµÙØ­ Ù…Ù†ØªØ¬Ø§ØªÙ†Ø§ ÙˆØ§ÙƒØªØ´Ù Ø§Ù„Ù…Ø²ÙŠØ¯ Ù…Ù† Ø§Ù„Ø¹Ø±ÙˆØ¶ Ø§Ù„Ù…Ù…ÙŠØ²Ø©</p>
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2;">
                     <a href="products.html" class="btn btn-outline" style="background: rgba(255,255,255,0.1); color: white; border-color: white;">
-                        <i class="fas fa-box"></i> جميع المنتجات
+                        <i class="fas fa-box"></i> Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª
                     </a>
                     <a href="phones.html" class="btn btn-outline" style="background: rgba(255,255,255,0.1); color: white; border-color: white;">
-                        <i class="fas fa-mobile-alt"></i> الهواتف
+                        <i class="fas fa-mobile-alt"></i> Ø§Ù„Ù‡ÙˆØ§ØªÙ
                     </a>
                     <a href="accessories.html" class="btn btn-outline" style="background: rgba(255,255,255,0.1); color: white; border-color: white;">
-                        <i class="fas fa-headphones"></i> إكسسوارات
+                        <i class="fas fa-headphones"></i> Ø¥ÙƒØ³Ø³ÙˆØ§Ø±Ø§Øª
                     </a>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- الفوتر -->
+    <!-- Ø§Ù„ÙÙˆØªØ± -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img id="footer-logo" src="images/logo.png" alt="شعار المتجر" class="footer-logo">
+                    <img id="footer-logo" src="images/logo.png" alt="Ø´Ø¹Ø§Ø± Ø§Ù„Ù…ØªØ¬Ø±" class="footer-logo">
                     <p id="footer-text" class="footer-about">
-                        متجر الإلكترونيات - نقدم لكم أحدث المنتجات التكنولوجية بأفضل الأسعار. تسوق بثقة وتمتع بتجربة شراء آمنة.
+                        Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª - Ù†Ù‚Ø¯Ù… Ù„ÙƒÙ… Ø£Ø­Ø¯Ø« Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª Ø§Ù„ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ© Ø¨Ø£ÙØ¶Ù„ Ø§Ù„Ø£Ø³Ø¹Ø§Ø±. ØªØ³ÙˆÙ‚ Ø¨Ø«Ù‚Ø© ÙˆØªÙ…ØªØ¹ Ø¨ØªØ¬Ø±Ø¨Ø© Ø´Ø±Ø§Ø¡ Ø¢Ù…Ù†Ø©.
                     </p>
                     <div class="social-links" id="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -1096,50 +1099,50 @@
                 </div>
                 
                 <div class="footer-col">
-                    <h3>روابط سريعة</h3>
+                    <h3>Ø±ÙˆØ§Ø¨Ø· Ø³Ø±ÙŠØ¹Ø©</h3>
                     <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
-                        <li><a href="products.html"><i class="fas fa-box"></i> المنتجات</a></li>
-                        <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
-                        <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
-                        <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                        <li><a href="home.html"><i class="fas fa-home"></i> Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©</a></li>
+                        <li><a href="products.html"><i class="fas fa-box"></i> Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª</a></li>
+                        <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> Ø§Ù„Ù‡ÙˆØ§ØªÙ</a></li>
+                        <li><a href="used-phones.html"><i class="fas fa-mobile"></i> Ù…Ø³ØªØ¹Ù…Ù„Ø©</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Ø§ØªØµÙ„ Ø¨Ù†Ø§</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>معلومات الاتصال</h3>
+                    <h3>Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ø§ØªØµØ§Ù„</h3>
                     <div class="contact-info" id="contact-info">
                         <p><i class="fas fa-phone"></i> <span id="contact-phone">+963 123 456 789</span></p>
                         <p><i class="fas fa-envelope"></i> <span id="contact-email">info@store.com</span></p>
-                        <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">دمشق، سوريا</span></p>
-                        <p><i class="fas fa-clock"></i> <span>9:00 ص - 6:00 م</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">Ø¯Ù…Ø´Ù‚ØŒ Ø³ÙˆØ±ÙŠØ§</span></p>
+                        <p><i class="fas fa-clock"></i> <span id="contact-hours">9:00 Øµ - 6:00 Ù…</span></p>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p id="copyright-text">© 2024 متجر الإلكترونيات. جميع الحقوق محفوظة.</p>
+                <p id="copyright-text">Â© 2024 Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª. Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸Ø©.</p>
             </div>
         </div>
     </footer>
 
-    <!-- الروابط الخارجية -->
+    <!-- Ø§Ù„Ø±ÙˆØ§Ø¨Ø· Ø§Ù„Ø®Ø§Ø±Ø¬ÙŠØ© -->
     <script src="database.js"></script>
     <script>
-        // ========== تهيئة الصفحة ==========
+        // ========== ØªÙ‡ÙŠØ¦Ø© Ø§Ù„ØµÙØ­Ø© ==========
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🛒 تحميل صفحة السلة...');
+            console.log('ðŸ›’ ØªØ­Ù…ÙŠÙ„ ØµÙØ­Ø© Ø§Ù„Ø³Ù„Ø©...');
             
-            // تهيئة قاعدة البيانات
+            // ØªÙ‡ÙŠØ¦Ø© Ù‚Ø§Ø¹Ø¯Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª
             if (window.db) {
                 db.init();
                 syncSiteBranding();
             }
             
-            // تحميل السلة
+            // ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ø³Ù„Ø©
             loadCart();
             
-            // إعداد القائمة المتحركة
+            // Ø¥Ø¹Ø¯Ø§Ø¯ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„Ù…ØªØ­Ø±ÙƒØ©
             setupMobileMenu();
         });
         
@@ -1157,7 +1160,7 @@
 
             if (headerLogo && settings.logo) headerLogo.src = settings.logo;
             if (footerLogo && settings.logo) footerLogo.src = settings.logo;
-            if (siteName) siteName.textContent = settings.siteName || 'متجر الإلكترونيات';
+            if (siteName) siteName.textContent = settings.siteName || 'Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª';
             if (footerText && settings.footerText) footerText.textContent = settings.footerText;
 
             if (settings.contactInfo) {
@@ -1167,17 +1170,17 @@
             }
         }
 
-        // ========== دوال السلة ==========
+        // ========== Ø¯ÙˆØ§Ù„ Ø§Ù„Ø³Ù„Ø© ==========
         function loadCart() {
             const container = document.getElementById('cart-content-container');
             if (!container) return;
             
-            // الحصول على السلة من قاعدة البيانات
+            // Ø§Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ø§Ù„Ø³Ù„Ø© Ù…Ù† Ù‚Ø§Ø¹Ø¯Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª
             let cart = [];
             if (window.db && db.getCartItems) {
                 cart = db.getCartItems();
             } else {
-                // محاولة من localStorage مباشرة
+                // Ù…Ø­Ø§ÙˆÙ„Ø© Ù…Ù† localStorage Ù…Ø¨Ø§Ø´Ø±Ø©
                 try {
                     const cartData = localStorage.getItem('cartItems');
                     if (cartData) {
@@ -1188,28 +1191,28 @@
                 }
             }
             
-            console.log('📊 السلة المحملة:', cart);
+            console.log('ðŸ“Š Ø§Ù„Ø³Ù„Ø© Ø§Ù„Ù…Ø­Ù…Ù„Ø©:', cart);
             
-            // تحديث عداد السلة
+            // ØªØ­Ø¯ÙŠØ« Ø¹Ø¯Ø§Ø¯ Ø§Ù„Ø³Ù„Ø©
             updateCartCount(cart);
             
-            // الحصول على إعدادات الباركود
+            // Ø§Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§Ù„Ø¨Ø§Ø±ÙƒÙˆØ¯
             const settings = db ? db.getSiteSettings() : {};
             const barcodeUrl = settings.barcode || '';
             
-            // إذا كانت السلة فارغة
+            // Ø¥Ø°Ø§ ÙƒØ§Ù†Øª Ø§Ù„Ø³Ù„Ø© ÙØ§Ø±ØºØ©
             if (cart.length === 0) {
                 container.innerHTML = `
                     <div class="empty-cart animate-in">
                         <i class="fas fa-shopping-cart"></i>
-                        <h3>سلة التسوق فارغة</h3>
-                        <p>لم تقم بإضافة أي منتجات إلى سلة التسوق بعد. تصفح منتجاتنا وأضف ما يعجبك.</p>
+                        <h3>Ø³Ù„Ø© Ø§Ù„ØªØ³ÙˆÙ‚ ÙØ§Ø±ØºØ©</h3>
+                        <p>Ù„Ù… ØªÙ‚Ù… Ø¨Ø¥Ø¶Ø§ÙØ© Ø£ÙŠ Ù…Ù†ØªØ¬Ø§Øª Ø¥Ù„Ù‰ Ø³Ù„Ø© Ø§Ù„ØªØ³ÙˆÙ‚ Ø¨Ø¹Ø¯. ØªØµÙØ­ Ù…Ù†ØªØ¬Ø§ØªÙ†Ø§ ÙˆØ£Ø¶Ù Ù…Ø§ ÙŠØ¹Ø¬Ø¨Ùƒ.</p>
                         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                             <a href="products.html" class="btn btn-primary">
-                                <i class="fas fa-box"></i> تصفح المنتجات
+                                <i class="fas fa-box"></i> ØªØµÙØ­ Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª
                             </a>
-                            <a href="index.html" class="btn btn-outline">
-                                <i class="fas fa-home"></i> العودة للرئيسية
+                            <a href="home.html" class="btn btn-outline">
+                                <i class="fas fa-home"></i> Ø§Ù„Ø¹ÙˆØ¯Ø© Ù„Ù„Ø±Ø¦ÙŠØ³ÙŠØ©
                             </a>
                         </div>
                     </div>
@@ -1217,7 +1220,7 @@
                 return;
             }
             
-            // حساب المجاميع
+            // Ø­Ø³Ø§Ø¨ Ø§Ù„Ù…Ø¬Ø§Ù…ÙŠØ¹
             let subtotal = 0;
             cart.forEach(item => {
                 const price = parseFloat(item.price) || 0;
@@ -1227,80 +1230,80 @@
             
             let total = subtotal;
             
-            // عرض محتويات السلة
+            // Ø¹Ø±Ø¶ Ù…Ø­ØªÙˆÙŠØ§Øª Ø§Ù„Ø³Ù„Ø©
             container.innerHTML = `
                 <div class="cart-content">
-                    <!-- عناصر السلة -->
+                    <!-- Ø¹Ù†Ø§ØµØ± Ø§Ù„Ø³Ù„Ø© -->
                     <div class="cart-items">
-                        <h3><i class="fas fa-shopping-basket"></i> مشترياتك (${cart.length})</h3>
+                        <h3><i class="fas fa-shopping-basket"></i> Ù…Ø´ØªØ±ÙŠØ§ØªÙƒ (${cart.length})</h3>
                         
                         ${cart.map((item, index) => createCartItem(item, index)).join('')}
                         
-                        <!-- قسم الخصومات -->
+                        <!-- Ù‚Ø³Ù… Ø§Ù„Ø®ØµÙˆÙ…Ø§Øª -->
                         <div class="coupon-section">
-                            <h4><i class="fas fa-tag"></i> كود خصم</h4>
+                            <h4><i class="fas fa-tag"></i> ÙƒÙˆØ¯ Ø®ØµÙ…</h4>
                             <div class="coupon-form">
-                                <input type="text" class="coupon-input" placeholder="أدخل كود الخصم">
-                                <button class="coupon-btn" onclick="applyCoupon()">تطبيق</button>
+                                <input type="text" class="coupon-input" placeholder="Ø£Ø¯Ø®Ù„ ÙƒÙˆØ¯ Ø§Ù„Ø®ØµÙ…">
+                                <button class="coupon-btn" onclick="applyCoupon()">ØªØ·Ø¨ÙŠÙ‚</button>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- ملخص السلة -->
+                    <!-- Ù…Ù„Ø®Øµ Ø§Ù„Ø³Ù„Ø© -->
                     <div class="cart-summary">
-                        <h3><i class="fas fa-receipt"></i> ملخص الطلب</h3>
+                        <h3><i class="fas fa-receipt"></i> Ù…Ù„Ø®Øµ Ø§Ù„Ø·Ù„Ø¨</h3>
                         
                         <div class="summary-item">
-                            <span class="summary-label">المجموع الفرعي</span>
+                            <span class="summary-label">Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹ Ø§Ù„ÙØ±Ø¹ÙŠ</span>
                             <span class="summary-value">$${subtotal.toFixed(2)}</span>
                         </div>
                         
                         <div class="summary-item">
-                            <span class="summary-label">رسوم الشحن</span>
-                            <span class="summary-value" style="color: var(--success-color); font-weight: bold;">شركة خاصة</span>
+                            <span class="summary-label">Ø±Ø³ÙˆÙ… Ø§Ù„Ø´Ø­Ù†</span>
+                            <span class="summary-value" style="color: var(--success-color); font-weight: bold;">Ø´Ø±ÙƒØ© Ø®Ø§ØµØ©</span>
                         </div>
                         
                         <div class="summary-item summary-total">
-                            <span class="summary-label">الإجمالي النهائي</span>
+                            <span class="summary-label">Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠ Ø§Ù„Ù†Ù‡Ø§Ø¦ÙŠ</span>
                             <span class="summary-value">$${total.toFixed(2)}</span>
                         </div>
                         
-                        <!-- طريقة الدفع - الشام كاش فقط -->
+                        <!-- Ø·Ø±ÙŠÙ‚Ø© Ø§Ù„Ø¯ÙØ¹ - Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´ ÙÙ‚Ø· -->
                         <div class="payment-methods">
-                            <h4><i class="fas fa-credit-card"></i> طريقة الدفع</h4>
+                            <h4><i class="fas fa-credit-card"></i> Ø·Ø±ÙŠÙ‚Ø© Ø§Ù„Ø¯ÙØ¹</h4>
                             <div style="display: flex; align-items: center; gap: 15px; background: #f8f9fa; padding: 15px; border-radius: var(--border-radius); border: 2px solid var(--secondary-color);">
                                 <i class="fas fa-qrcode" style="font-size: 2rem; color: var(--secondary-color);"></i>
                                 <div>
-                                    <h5 style="color: var(--primary-color); margin: 0;">الشام كاش</h5>
-                                    <p style="color: var(--gray-color); font-size: 0.9rem; margin: 5px 0 0 0;">الدفع الإلكتروني الآمن</p>
+                                    <h5 style="color: var(--primary-color); margin: 0;">Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´</h5>
+                                    <p style="color: var(--gray-color); font-size: 0.9rem; margin: 5px 0 0 0;">Ø§Ù„Ø¯ÙØ¹ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ Ø§Ù„Ø¢Ù…Ù†</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- تفاصيل الشام كاش -->
+                        <!-- ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´ -->
                         <div class="shamcash-details">
                             <div class="barcode-container">
-                                <h5 style="color: var(--primary-color); margin-bottom: 15px;">باركود الدفع عبر الشام كاش</h5>
+                                <h5 style="color: var(--primary-color); margin-bottom: 15px;">Ø¨Ø§Ø±ÙƒÙˆØ¯ Ø§Ù„Ø¯ÙØ¹ Ø¹Ø¨Ø± Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´</h5>
                                 ${barcodeUrl 
-                                    ? `<img src="${barcodeUrl}" alt="باركود الدفع" style="max-width: 200px; max-height: 200px; display: block; margin: 0 auto; border: 1px solid #ddd; padding: 5px; background: white; border-radius: 5px;">`
+                                    ? `<img src="${barcodeUrl}" alt="Ø¨Ø§Ø±ÙƒÙˆØ¯ Ø§Ù„Ø¯ÙØ¹" style="max-width: 200px; max-height: 200px; display: block; margin: 0 auto; border: 1px solid #ddd; padding: 5px; background: white; border-radius: 5px;">`
                                     : `<div class="barcode-placeholder">SHAMCASH-${Date.now().toString().slice(-8)}</div>`
                                 }
-                                <p style="color: var(--gray-color); font-size: 0.9rem; margin-top: 10px;">املأ معلوماتك للتواصل</p>
+                                <p style="color: var(--gray-color); font-size: 0.9rem; margin-top: 10px;">Ø§Ù…Ù„Ø£ Ù…Ø¹Ù„ÙˆÙ…Ø§ØªÙƒ Ù„Ù„ØªÙˆØ§ØµÙ„</p>
                             </div>
                             
                             <div class="customer-info">
-                                <input type="text" id="customer-name" placeholder="الاسم الكامل *" required>
-                                <input type="tel" id="customer-phone" placeholder="رقم الهاتف *" required pattern="[0-9+]{8,15}" title="يرجى إدخال رقم هاتف صحيح">
+                                <input type="text" id="customer-name" placeholder="Ø§Ù„Ø§Ø³Ù… Ø§Ù„ÙƒØ§Ù…Ù„ *" required>
+                                <input type="tel" id="customer-phone" placeholder="Ø±Ù‚Ù… Ø§Ù„Ù‡Ø§ØªÙ *" required pattern="[0-9+]{8,15}" title="ÙŠØ±Ø¬Ù‰ Ø¥Ø¯Ø®Ø§Ù„ Ø±Ù‚Ù… Ù‡Ø§ØªÙ ØµØ­ÙŠØ­">
                             </div>
                             
-                            <!-- رفع صورة إشعار الدفع -->
+                            <!-- Ø±ÙØ¹ ØµÙˆØ±Ø© Ø¥Ø´Ø¹Ø§Ø± Ø§Ù„Ø¯ÙØ¹ -->
                             <div class="receipt-upload">
-                                <h5><i class="fas fa-receipt"></i> إشعار الدفع</h5>
-                                <p style="color: var(--gray-color); font-size: 0.9rem; margin-bottom: 10px;">يرجى رفع صورة إشعار الدفع من تطبيق الشام كاش</p>
+                                <h5><i class="fas fa-receipt"></i> Ø¥Ø´Ø¹Ø§Ø± Ø§Ù„Ø¯ÙØ¹</h5>
+                                <p style="color: var(--gray-color); font-size: 0.9rem; margin-bottom: 10px;">ÙŠØ±Ø¬Ù‰ Ø±ÙØ¹ ØµÙˆØ±Ø© Ø¥Ø´Ø¹Ø§Ø± Ø§Ù„Ø¯ÙØ¹ Ù…Ù† ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´</p>
                                 <div class="upload-area" onclick="document.getElementById('receipt-file').click()">
                                     <i class="fas fa-cloud-upload-alt"></i>
-                                    <p>انقر لرفع صورة الإشعار</p>
-                                    <small>الملفات المسموح بها: JPG, PNG, PDF (الحجم الأقصى: 5MB)</small>
+                                    <p>Ø§Ù†Ù‚Ø± Ù„Ø±ÙØ¹ ØµÙˆØ±Ø© Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±</p>
+                                    <small>Ø§Ù„Ù…Ù„ÙØ§Øª Ø§Ù„Ù…Ø³Ù…ÙˆØ­ Ø¨Ù‡Ø§: JPG, PNG, PDF (Ø§Ù„Ø­Ø¬Ù… Ø§Ù„Ø£Ù‚ØµÙ‰: 5MB)</small>
                                 </div>
                                 <input type="file" id="receipt-file" class="file-input" accept="image/*,.pdf" onchange="handleReceiptUpload(event)">
                                 <div class="file-preview" id="receipt-preview"></div>
@@ -1309,54 +1312,54 @@
                             <div class="shamcash-step">
                                 <div class="step-number">1</div>
                                 <div class="step-content">
-                                    <h5>افتح تطبيق الشام كاش</h5>
-                                    <p>افتح تطبيق الشام كاش على هاتفك</p>
+                                    <h5>Ø§ÙØªØ­ ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´</h5>
+                                    <p>Ø§ÙØªØ­ ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´ Ø¹Ù„Ù‰ Ù‡Ø§ØªÙÙƒ</p>
                                 </div>
                             </div>
                             
                             <div class="shamcash-step">
                                 <div class="step-number">2</div>
                                 <div class="step-content">
-                                    <h5>اسكن الباركود</h5>
-                                    <p>استخدم ماسح الباركود في التطبيق لسكن الباركود أعلاه</p>
+                                    <h5>Ø§Ø³ÙƒÙ† Ø§Ù„Ø¨Ø§Ø±ÙƒÙˆØ¯</h5>
+                                    <p>Ø§Ø³ØªØ®Ø¯Ù… Ù…Ø§Ø³Ø­ Ø§Ù„Ø¨Ø§Ø±ÙƒÙˆØ¯ ÙÙŠ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ Ù„Ø³ÙƒÙ† Ø§Ù„Ø¨Ø§Ø±ÙƒÙˆØ¯ Ø£Ø¹Ù„Ø§Ù‡</p>
                                 </div>
                             </div>
                             
                             <div class="shamcash-step">
                                 <div class="step-number">3</div>
                                 <div class="step-content">
-                                    <h5>أكد الدفع</h5>
-                                    <p>أكد عملية الدفع داخل التطبيق</p>
+                                    <h5>Ø£ÙƒØ¯ Ø§Ù„Ø¯ÙØ¹</h5>
+                                    <p>Ø£ÙƒØ¯ Ø¹Ù…Ù„ÙŠØ© Ø§Ù„Ø¯ÙØ¹ Ø¯Ø§Ø®Ù„ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚</p>
                                 </div>
                             </div>
                             
                             <div class="shamcash-step">
                                 <div class="step-number">4</div>
                                 <div class="step-content">
-                                    <h5>احتفظ بالإيصال</h5>
-                                    <p>احتفظ برقم الإيصال كإثبات للدفع ثم ارفع صورة الإشعار أعلاه</p>
+                                    <h5>Ø§Ø­ØªÙØ¸ Ø¨Ø§Ù„Ø¥ÙŠØµØ§Ù„</h5>
+                                    <p>Ø§Ø­ØªÙØ¸ Ø¨Ø±Ù‚Ù… Ø§Ù„Ø¥ÙŠØµØ§Ù„ ÙƒØ¥Ø«Ø¨Ø§Øª Ù„Ù„Ø¯ÙØ¹ Ø«Ù… Ø§Ø±ÙØ¹ ØµÙˆØ±Ø© Ø§Ù„Ø¥Ø´Ø¹Ø§Ø± Ø£Ø¹Ù„Ø§Ù‡</p>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="summary-actions">
                             <button class="btn btn-primary" onclick="checkout()">
-                                <i class="fas fa-lock"></i> إتمام عملية الشراء
+                                <i class="fas fa-lock"></i> Ø¥ØªÙ…Ø§Ù… Ø¹Ù…Ù„ÙŠØ© Ø§Ù„Ø´Ø±Ø§Ø¡
                             </button>
                             <button class="btn btn-outline" onclick="continueShopping()">
-                                <i class="fas fa-shopping-bag"></i> مواصلة التسوق
+                                <i class="fas fa-shopping-bag"></i> Ù…ÙˆØ§ØµÙ„Ø© Ø§Ù„ØªØ³ÙˆÙ‚
                             </button>
                         </div>
                         
-                        <!-- معلومات الأمان -->
+                        <!-- Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ø£Ù…Ø§Ù† -->
                         <div class="security-info">
-                            <p><i class="fas fa-shield-alt"></i> عملية شراء آمنة. بياناتك محمية بتقنية التشفير.</p>
+                            <p><i class="fas fa-shield-alt"></i> Ø¹Ù…Ù„ÙŠØ© Ø´Ø±Ø§Ø¡ Ø¢Ù…Ù†Ø©. Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ù…Ø­Ù…ÙŠØ© Ø¨ØªÙ‚Ù†ÙŠØ© Ø§Ù„ØªØ´ÙÙŠØ±.</p>
                         </div>
                     </div>
                 </div>
             `;
             
-            // إعداد التحقق من رقم الهاتف
+            // Ø¥Ø¹Ø¯Ø§Ø¯ Ø§Ù„ØªØ­Ù‚Ù‚ Ù…Ù† Ø±Ù‚Ù… Ø§Ù„Ù‡Ø§ØªÙ
             const phoneInput = document.getElementById('customer-phone');
             if (phoneInput) {
                 phoneInput.addEventListener('input', function(e) {
@@ -1366,24 +1369,24 @@
         }
         
         function createCartItem(item, index) {
-            const itemName = item.name || 'منتج غير معروف';
+            const itemName = item.name || 'Ù…Ù†ØªØ¬ ØºÙŠØ± Ù…Ø¹Ø±ÙˆÙ';
             const itemPrice = parseFloat(item.price) || 0;
             const itemQuantity = parseInt(item.quantity) || 1;
             const itemTotal = itemPrice * itemQuantity;
             const productId = item.productId || item.id || 'unknown';
             
-            // الحصول على الصورة
+            // Ø§Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ø§Ù„ØµÙˆØ±Ø©
             let itemImage = item.image || 'images/placeholder.jpg';
             
-            // الحصول على الفئة
-            let categoryName = 'غير مصنف';
+            // Ø§Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ø§Ù„ÙØ¦Ø©
+            let categoryName = 'ØºÙŠØ± Ù…ØµÙ†Ù';
             if (window.db && db.getProductById && productId) {
                 const product = db.getProductById(productId);
                 if (product && product.category) {
                     const categoryNames = {
-                        'phones': 'هواتف',
-                        'accessories': 'إكسسوارات',
-                        'used-phones': 'مستعملة'
+                        'phones': 'Ù‡ÙˆØ§ØªÙ',
+                        'accessories': 'Ø¥ÙƒØ³Ø³ÙˆØ§Ø±Ø§Øª',
+                        'used-phones': 'Ù…Ø³ØªØ¹Ù…Ù„Ø©'
                     };
                     categoryName = categoryNames[product.category] || product.category;
                 }
@@ -1393,7 +1396,7 @@
                 <div class="cart-item animate-in delay-${index % 5}" data-product-id="${productId}">
                     <div class="item-image">
                         <img src="${itemImage}" alt="${itemName}" onerror="this.src='images/placeholder.jpg'">
-                        ${item.specialOffer ? '<span class="item-badge">عرض</span>' : ''}
+                        ${item.specialOffer ? '<span class="item-badge">Ø¹Ø±Ø¶</span>' : ''}
                     </div>
                     
                     <div class="item-details">
@@ -1423,7 +1426,7 @@
                 totalItems = cart.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0);
             }
             
-            // تحديث العداد
+            // ØªØ­Ø¯ÙŠØ« Ø§Ù„Ø¹Ø¯Ø§Ø¯
             document.querySelectorAll('.cart-count').forEach(element => {
                 element.textContent = totalItems;
             });
@@ -1438,27 +1441,27 @@
             if (window.db && db.updateCartItem) {
                 if (db.updateCartItem(productId, newQuantity)) {
                     loadCart();
-                    showNotification('تم تحديث الكمية بنجاح', 'success');
+                    showNotification('ØªÙ… ØªØ­Ø¯ÙŠØ« Ø§Ù„ÙƒÙ…ÙŠØ© Ø¨Ù†Ø¬Ø§Ø­', 'success');
                 }
             } else {
-                showNotification('حدث خطأ في تحديث الكمية', 'error');
+                showNotification('Ø­Ø¯Ø« Ø®Ø·Ø£ ÙÙŠ ØªØ­Ø¯ÙŠØ« Ø§Ù„ÙƒÙ…ÙŠØ©', 'error');
             }
         }
         
         function removeFromCart(productId) {
-            if (confirm('هل أنت متأكد من حذف هذا المنتج من السلة؟')) {
+            if (confirm('Ù‡Ù„ Ø£Ù†Øª Ù…ØªØ£ÙƒØ¯ Ù…Ù† Ø­Ø°Ù Ù‡Ø°Ø§ Ø§Ù„Ù…Ù†ØªØ¬ Ù…Ù† Ø§Ù„Ø³Ù„Ø©ØŸ')) {
                 if (window.db && db.removeFromCart) {
                     if (db.removeFromCart(productId)) {
                         loadCart();
-                        showNotification('تم حذف المنتج من السلة', 'success');
+                        showNotification('ØªÙ… Ø­Ø°Ù Ø§Ù„Ù…Ù†ØªØ¬ Ù…Ù† Ø§Ù„Ø³Ù„Ø©', 'success');
                     }
                 } else {
-                    showNotification('حدث خطأ في حذف المنتج', 'error');
+                    showNotification('Ø­Ø¯Ø« Ø®Ø·Ø£ ÙÙŠ Ø­Ø°Ù Ø§Ù„Ù…Ù†ØªØ¬', 'error');
                 }
             }
         }
         
-        // ========== دوال الدفع والطلبات ==========
+        // ========== Ø¯ÙˆØ§Ù„ Ø§Ù„Ø¯ÙØ¹ ÙˆØ§Ù„Ø·Ù„Ø¨Ø§Øª ==========
         let receiptFile = null;
         let receiptFileName = '';
         
@@ -1467,7 +1470,7 @@
             const couponCode = couponInput.value.trim();
             
             if (!couponCode) {
-                showNotification('يرجى إدخال كود الخصم', 'error');
+                showNotification('ÙŠØ±Ø¬Ù‰ Ø¥Ø¯Ø®Ø§Ù„ ÙƒÙˆØ¯ Ø§Ù„Ø®ØµÙ…', 'error');
                 return;
             }
             
@@ -1479,10 +1482,10 @@
             
             if (validCoupons[couponCode]) {
                 const discount = validCoupons[couponCode];
-                showNotification(`تم تطبيق خصم ${discount}% بنجاح`, 'success');
+                showNotification(`ØªÙ… ØªØ·Ø¨ÙŠÙ‚ Ø®ØµÙ… ${discount}% Ø¨Ù†Ø¬Ø§Ø­`, 'success');
                 couponInput.value = '';
             } else {
-                showNotification('كود الخصم غير صالح أو منتهي الصلاحية', 'error');
+                showNotification('ÙƒÙˆØ¯ Ø§Ù„Ø®ØµÙ… ØºÙŠØ± ØµØ§Ù„Ø­ Ø£Ùˆ Ù…Ù†ØªÙ‡ÙŠ Ø§Ù„ØµÙ„Ø§Ø­ÙŠØ©', 'error');
             }
         }
         
@@ -1491,13 +1494,13 @@
             if (!file) return;
             
             if (file.size > 5 * 1024 * 1024) {
-                showNotification('حجم الملف كبير جداً. الحد الأقصى 5MB', 'error');
+                showNotification('Ø­Ø¬Ù… Ø§Ù„Ù…Ù„Ù ÙƒØ¨ÙŠØ± Ø¬Ø¯Ø§Ù‹. Ø§Ù„Ø­Ø¯ Ø§Ù„Ø£Ù‚ØµÙ‰ 5MB', 'error');
                 return;
             }
             
             const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
             if (!validTypes.includes(file.type)) {
-                showNotification('نوع الملف غير مدعوم. يرجى رفع صورة JPG, PNG أو PDF', 'error');
+                showNotification('Ù†ÙˆØ¹ Ø§Ù„Ù…Ù„Ù ØºÙŠØ± Ù…Ø¯Ø¹ÙˆÙ…. ÙŠØ±Ø¬Ù‰ Ø±ÙØ¹ ØµÙˆØ±Ø© JPG, PNG Ø£Ùˆ PDF', 'error');
                 return;
             }
             
@@ -1511,9 +1514,9 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     preview.innerHTML = `
-                        <img src="${e.target.result}" alt="معاينة الإشعار">
+                        <img src="${e.target.result}" alt="Ù…Ø¹Ø§ÙŠÙ†Ø© Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±">
                         <div class="file-name">${file.name}</div>
-                        <button class="remove-file" onclick="removeReceiptFile()">إزالة الملف</button>
+                        <button class="remove-file" onclick="removeReceiptFile()">Ø¥Ø²Ø§Ù„Ø© Ø§Ù„Ù…Ù„Ù</button>
                     `;
                 };
                 reader.readAsDataURL(file);
@@ -1522,12 +1525,12 @@
                     <div style="text-align: center; padding: 20px;">
                         <i class="fas fa-file-pdf" style="font-size: 3rem; color: #e74c3c;"></i>
                         <div class="file-name">${file.name}</div>
-                        <button class="remove-file" onclick="removeReceiptFile()">إزالة الملف</button>
+                        <button class="remove-file" onclick="removeReceiptFile()">Ø¥Ø²Ø§Ù„Ø© Ø§Ù„Ù…Ù„Ù</button>
                     </div>
                 `;
             }
             
-            showNotification('تم رفع ملف الإشعار بنجاح', 'success');
+            showNotification('ØªÙ… Ø±ÙØ¹ Ù…Ù„Ù Ø§Ù„Ø¥Ø´Ø¹Ø§Ø± Ø¨Ù†Ø¬Ø§Ø­', 'success');
         }
         
         function removeReceiptFile() {
@@ -1535,54 +1538,54 @@
             receiptFileName = '';
             document.getElementById('receipt-file').value = '';
             document.getElementById('receipt-preview').style.display = 'none';
-            showNotification('تم إزالة ملف الإشعار', 'info');
+            showNotification('ØªÙ… Ø¥Ø²Ø§Ù„Ø© Ù…Ù„Ù Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±', 'info');
         }
         
         function checkout() {
-            // الحصول على السلة
+            // Ø§Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ø§Ù„Ø³Ù„Ø©
             const cart = db ? db.getCartItems() : [];
             
             if (cart.length === 0) {
-                showNotification('السلة فارغة. أضف منتجات قبل الإتمام', 'error');
+                showNotification('Ø§Ù„Ø³Ù„Ø© ÙØ§Ø±ØºØ©. Ø£Ø¶Ù Ù…Ù†ØªØ¬Ø§Øª Ù‚Ø¨Ù„ Ø§Ù„Ø¥ØªÙ…Ø§Ù…', 'error');
                 return;
             }
             
-            // التحقق من معلومات الزبون
+            // Ø§Ù„ØªØ­Ù‚Ù‚ Ù…Ù† Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ø²Ø¨ÙˆÙ†
             const customerName = document.getElementById('customer-name')?.value.trim();
             const customerPhone = document.getElementById('customer-phone')?.value.trim();
             
             if (!customerName) {
-                showNotification('يرجى إدخال الاسم الكامل', 'error');
+                showNotification('ÙŠØ±Ø¬Ù‰ Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„Ø§Ø³Ù… Ø§Ù„ÙƒØ§Ù…Ù„', 'error');
                 document.getElementById('customer-name')?.focus();
                 return;
             }
             
             if (!customerPhone) {
-                showNotification('يرجى إدخال رقم الهاتف', 'error');
+                showNotification('ÙŠØ±Ø¬Ù‰ Ø¥Ø¯Ø®Ø§Ù„ Ø±Ù‚Ù… Ø§Ù„Ù‡Ø§ØªÙ', 'error');
                 document.getElementById('customer-phone')?.focus();
                 return;
             }
             
             const phoneRegex = /^[0-9+]{8,15}$/;
             if (!phoneRegex.test(customerPhone)) {
-                showNotification('يرجى إدخال رقم هاتف صحيح (8-15 رقم)', 'error');
+                showNotification('ÙŠØ±Ø¬Ù‰ Ø¥Ø¯Ø®Ø§Ù„ Ø±Ù‚Ù… Ù‡Ø§ØªÙ ØµØ­ÙŠØ­ (8-15 Ø±Ù‚Ù…)', 'error');
                 document.getElementById('customer-phone')?.focus();
                 return;
             }
             
             if (!receiptFile) {
-                showNotification('يرجى رفع صورة إشعار الدفع من تطبيق الشام كاش', 'error');
+                showNotification('ÙŠØ±Ø¬Ù‰ Ø±ÙØ¹ ØµÙˆØ±Ø© Ø¥Ø´Ø¹Ø§Ø± Ø§Ù„Ø¯ÙØ¹ Ù…Ù† ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´', 'error');
                 return;
             }
             
-            // عرض نموذج التأكيد
+            // Ø¹Ø±Ø¶ Ù†Ù…ÙˆØ°Ø¬ Ø§Ù„ØªØ£ÙƒÙŠØ¯
             showCheckoutModal(customerName, customerPhone);
         }
         
         function showCheckoutModal(customerName, customerPhone) {
             const cart = db ? db.getCartItems() : [];
             
-            // حساب الإجمالي
+            // Ø­Ø³Ø§Ø¨ Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠ
             let subtotal = 0;
             cart.forEach(item => {
                 const price = parseFloat(item.price) || 0;
@@ -1617,43 +1620,43 @@
                     <div style="background: white; border-radius: 15px; padding: 40px; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
                             <h3 style="color: var(--primary-color); font-size: 1.8rem; display: flex; align-items: center; gap: 10px;">
-                                <i class="fas fa-check-circle" style="color: var(--success-color);"></i> تأكيد الطلب
+                                <i class="fas fa-check-circle" style="color: var(--success-color);"></i> ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ø·Ù„Ø¨
                             </h3>
-                            <button onclick="this.closest('.checkout-modal').remove()" style="background: none; border: none; font-size: 1.5rem; color: var(--gray-color); cursor: pointer;">×</button>
+                            <button onclick="this.closest('.checkout-modal').remove()" style="background: none; border: none; font-size: 1.5rem; color: var(--gray-color); cursor: pointer;">Ã—</button>
                         </div>
                         
                         <div style="margin-bottom: 25px;">
                             <p style="color: var(--gray-color); line-height: 1.6; margin-bottom: 20px;">
-                                هل أنت متأكد من إتمام عملية الشراء؟ سيتم إنشاء طلبك وسنتواصل معك قريباً.
+                                Ù‡Ù„ Ø£Ù†Øª Ù…ØªØ£ÙƒØ¯ Ù…Ù† Ø¥ØªÙ…Ø§Ù… Ø¹Ù…Ù„ÙŠØ© Ø§Ù„Ø´Ø±Ø§Ø¡ØŸ Ø³ÙŠØªÙ… Ø¥Ù†Ø´Ø§Ø¡ Ø·Ù„Ø¨Ùƒ ÙˆØ³Ù†ØªÙˆØ§ØµÙ„ Ù…Ø¹Ùƒ Ù‚Ø±ÙŠØ¨Ø§Ù‹.
                             </p>
                             
                             <div style="background: #f8f9fa; padding: 20px; border-radius: var(--border-radius); margin: 20px 0;">
                                 <h4 style="color: var(--primary-color); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-receipt"></i> ملخص الطلب
+                                    <i class="fas fa-receipt"></i> Ù…Ù„Ø®Øµ Ø§Ù„Ø·Ù„Ø¨
                                 </h4>
                                 <div style="display: grid; gap: 10px;">
                                     <div style="display: flex; justify-content: space-between;">
-                                        <span>رقم الطلب:</span>
+                                        <span>Ø±Ù‚Ù… Ø§Ù„Ø·Ù„Ø¨:</span>
                                         <span style="font-weight: bold; color: var(--secondary-color);">${orderId}</span>
                                     </div>
                                     <div style="display: flex; justify-content: space-between;">
-                                        <span>الاسم:</span>
+                                        <span>Ø§Ù„Ø§Ø³Ù…:</span>
                                         <span style="font-weight: bold;">${customerName}</span>
                                     </div>
                                     <div style="display: flex; justify-content: space-between;">
-                                        <span>رقم الهاتف:</span>
+                                        <span>Ø±Ù‚Ù… Ø§Ù„Ù‡Ø§ØªÙ:</span>
                                         <span style="font-weight: bold;">${customerPhone}</span>
                                     </div>
                                     <div style="display: flex; justify-content: space-between;">
-                                        <span>عدد المنتجات:</span>
+                                        <span>Ø¹Ø¯Ø¯ Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª:</span>
                                         <span style="font-weight: bold;">${cart.length}</span>
                                     </div>
                                     <div style="display: flex; justify-content: space-between;">
-                                        <span>طريقة الدفع:</span>
-                                        <span style="font-weight: bold; color: var(--success-color);">الشام كاش</span>
+                                        <span>Ø·Ø±ÙŠÙ‚Ø© Ø§Ù„Ø¯ÙØ¹:</span>
+                                        <span style="font-weight: bold; color: var(--success-color);">Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´</span>
                                     </div>
                                     <div style="display: flex; justify-content: space-between;">
-                                        <span>الإجمالي:</span>
+                                        <span>Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠ:</span>
                                         <span style="font-weight: bold; color: var(--success-color);">$${total.toFixed(2)}</span>
                                     </div>
                                 </div>
@@ -1661,20 +1664,20 @@
                             
                             <div style="background: #f0f8ff; padding: 15px; border-radius: var(--border-radius); border-right: 4px solid var(--secondary-color); margin: 15px 0;">
                                 <p style="color: var(--primary-color); font-weight: bold; margin-bottom: 5px;">
-                                    <i class="fas fa-shipping-fast" style="color: var(--success-color);"></i> رسوم الشحن على الشركة
+                                    <i class="fas fa-shipping-fast" style="color: var(--success-color);"></i> Ø±Ø³ÙˆÙ… Ø§Ù„Ø´Ø­Ù† Ø¹Ù„Ù‰ Ø§Ù„Ø´Ø±ÙƒØ©
                                 </p>
                                 <p style="color: var(--gray-color); font-size: 0.9rem;">
-                                    لا نتحمل تكاليف الشحن، شركة الشحن ستأخذ اجرتها منك عن توصيل الطلب.
+                                    Ù„Ø§ Ù†ØªØ­Ù…Ù„ ØªÙƒØ§Ù„ÙŠÙ Ø§Ù„Ø´Ø­Ù†ØŒ Ø´Ø±ÙƒØ© Ø§Ù„Ø´Ø­Ù† Ø³ØªØ£Ø®Ø° Ø§Ø¬Ø±ØªÙ‡Ø§ Ù…Ù†Ùƒ Ø¹Ù† ØªÙˆØµÙŠÙ„ Ø§Ù„Ø·Ù„Ø¨.
                                 </p>
                             </div>
                         </div>
                         
                         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                             <button onclick="confirmCheckout('${orderId}', '${customerName}', '${customerPhone}', '${receiptBase64}', '${receiptFileName}')" style="flex: 1; padding: 15px; background: linear-gradient(135deg, var(--success-color), #229954); color: white; border: none; border-radius: var(--border-radius); font-weight: bold; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                                <i class="fas fa-check"></i> تأكيد الطلب
+                                <i class="fas fa-check"></i> ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ø·Ù„Ø¨
                             </button>
                             <button onclick="this.closest('.checkout-modal').remove()" style="flex: 1; padding: 15px; background: transparent; border: 2px solid var(--gray-color); color: var(--gray-color); border-radius: var(--border-radius); font-weight: bold; cursor: pointer; transition: all 0.3s ease;">
-                                إلغاء
+                                Ø¥Ù„ØºØ§Ø¡
                             </button>
                         </div>
                     </div>
@@ -1698,11 +1701,11 @@
             const cart = db ? db.getCartItems() : [];
             
             if (cart.length === 0) {
-                showNotification('السلة فارغة. أضف منتجات قبل الإتمام', 'error');
+                showNotification('Ø§Ù„Ø³Ù„Ø© ÙØ§Ø±ØºØ©. Ø£Ø¶Ù Ù…Ù†ØªØ¬Ø§Øª Ù‚Ø¨Ù„ Ø§Ù„Ø¥ØªÙ…Ø§Ù…', 'error');
                 return;
             }
             
-            // حساب الإجمالي
+            // Ø­Ø³Ø§Ø¨ Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠ
             let subtotal = 0;
             cart.forEach(item => {
                 const price = parseFloat(item.price) || 0;
@@ -1712,12 +1715,12 @@
             
             let total = subtotal;
             
-            // إنشاء كائن الطلب
+            // Ø¥Ù†Ø´Ø§Ø¡ ÙƒØ§Ø¦Ù† Ø§Ù„Ø·Ù„Ø¨
             const order = {
                 id: orderId,
                 customerName: customerName,
                 customerPhone: customerPhone,
-                customerAddress: 'سيتم الاتصال للتأكيد',
+                customerAddress: 'Ø³ÙŠØªÙ… Ø§Ù„Ø§ØªØµØ§Ù„ Ù„Ù„ØªØ£ÙƒÙŠØ¯',
                 items: cart.map(item => ({
                     productId: item.productId || item.id,
                     name: item.name,
@@ -1729,49 +1732,49 @@
                 paymentMethod: 'sham-cash',
                 paymentProof: receiptBase64,
                 receiptFileName: receiptFileName,
-                notes: 'تم الدفع عبر الشام كاش',
+                notes: 'ØªÙ… Ø§Ù„Ø¯ÙØ¹ Ø¹Ø¨Ø± Ø§Ù„Ø´Ø§Ù… ÙƒØ§Ø´',
                 status: 'pending',
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()
             };
             
-            // حفظ الطلب باستخدام قاعدة البيانات
+            // Ø­ÙØ¸ Ø§Ù„Ø·Ù„Ø¨ Ø¨Ø§Ø³ØªØ®Ø¯Ø§Ù… Ù‚Ø§Ø¹Ø¯Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª
             let orderSaved = false;
             if (window.db && db.addOrder) {
                 orderSaved = db.addOrder(order);
             }
             
             if (orderSaved) {
-                // إغلاق الـmodal
+                // Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù€modal
                 const modal = document.querySelector('.checkout-modal');
                 if (modal) modal.remove();
                 
-                // تفريغ السلة
+                // ØªÙØ±ÙŠØº Ø§Ù„Ø³Ù„Ø©
                 if (window.db && db.clearCart) {
                     db.clearCart();
                 }
                 
-                // إعادة تحميل السلة
+                // Ø¥Ø¹Ø§Ø¯Ø© ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ø³Ù„Ø©
                 loadCart();
                 
-                // عرض رسالة نجاح
-                showNotification(`تم تأكيد طلبك بنجاح! رقم الطلب: ${orderId}`, 'success');
+                // Ø¹Ø±Ø¶ Ø±Ø³Ø§Ù„Ø© Ù†Ø¬Ø§Ø­
+                showNotification(`ØªÙ… ØªØ£ÙƒÙŠØ¯ Ø·Ù„Ø¨Ùƒ Ø¨Ù†Ø¬Ø§Ø­! Ø±Ù‚Ù… Ø§Ù„Ø·Ù„Ø¨: ${orderId}`, 'success');
                 
-                // عرض رسالة تأكيد
+                // Ø¹Ø±Ø¶ Ø±Ø³Ø§Ù„Ø© ØªØ£ÙƒÙŠØ¯
                 setTimeout(() => {
-                    if (confirm(`تم إنشاء الطلب بنجاح!
+                    if (confirm(`ØªÙ… Ø¥Ù†Ø´Ø§Ø¡ Ø§Ù„Ø·Ù„Ø¨ Ø¨Ù†Ø¬Ø§Ø­!
                     
-رقم الطلب: ${orderId}
-الإجمالي: $${total.toFixed(2)}
-اسم العميل: ${customerName}
+Ø±Ù‚Ù… Ø§Ù„Ø·Ù„Ø¨: ${orderId}
+Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠ: $${total.toFixed(2)}
+Ø§Ø³Ù… Ø§Ù„Ø¹Ù…ÙŠÙ„: ${customerName}
 
-سيتم التواصل معك قريباً لتأكيد الطلب.
-هل تريد العودة للرئيسية؟`)) {
-                        window.location.href = 'index.html';
+Ø³ÙŠØªÙ… Ø§Ù„ØªÙˆØ§ØµÙ„ Ù…Ø¹Ùƒ Ù‚Ø±ÙŠØ¨Ø§Ù‹ Ù„ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ø·Ù„Ø¨.
+Ù‡Ù„ ØªØ±ÙŠØ¯ Ø§Ù„Ø¹ÙˆØ¯Ø© Ù„Ù„Ø±Ø¦ÙŠØ³ÙŠØ©ØŸ`)) {
+                        window.location.href = 'home.html';
                     }
                 }, 1000);
             } else {
-                showNotification('حدث خطأ في حفظ الطلب. يرجى المحاولة مرة أخرى.', 'error');
+                showNotification('Ø­Ø¯Ø« Ø®Ø·Ø£ ÙÙŠ Ø­ÙØ¸ Ø§Ù„Ø·Ù„Ø¨. ÙŠØ±Ø¬Ù‰ Ø§Ù„Ù…Ø­Ø§ÙˆÙ„Ø© Ù…Ø±Ø© Ø£Ø®Ø±Ù‰.', 'error');
             }
         }
         
@@ -1779,7 +1782,7 @@
             window.location.href = 'products.html';
         }
         
-        // ========== دوال المساعدة ==========
+        // ========== Ø¯ÙˆØ§Ù„ Ø§Ù„Ù…Ø³Ø§Ø¹Ø¯Ø© ==========
         function setupMobileMenu() {
             const menuToggle = document.getElementById('menu-toggle');
             const navMenu = document.getElementById('nav-menu');
@@ -1814,7 +1817,7 @@
             }, 3000);
         }
         
-        // ========== جعل الدوال متاحة عالمياً ==========
+        // ========== Ø¬Ø¹Ù„ Ø§Ù„Ø¯ÙˆØ§Ù„ Ù…ØªØ§Ø­Ø© Ø¹Ø§Ù„Ù…ÙŠØ§Ù‹ ==========
         window.updateCartQuantity = updateCartQuantity;
         window.removeFromCart = removeFromCart;
         window.applyCoupon = applyCoupon;
@@ -1827,3 +1830,4 @@
     </script>
 </body>
 </html>
+

@@ -1,15 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفاصيل المنتج - متجر الإلكترونيات</title>
+    <title>ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬ - Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª</title>
+    <meta name="description" content="تفاصيل المنتج في متجر الإلكترونيات مع الصورة والسعر والوصف الكامل.">
+    <meta name="robots" content="index,follow">
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="تفاصيل المنتج - متجر الإلكترونيات">
+    <meta property="og:description" content="تفاصيل المنتج في متجر الإلكترونيات مع الصورة والسعر والوصف الكامل.">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="product.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="تفاصيل المنتج - متجر الإلكترونيات">
+    <meta name="twitter:description" content="تفاصيل المنتج في متجر الإلكترونيات مع الصورة والسعر والوصف الكامل.">
+    <meta name="twitter:image" content="images/logo.png">
+    <link rel="canonical" href="product.html">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="mobile-fix.css">
     <style>
-        /* نفس أنماط الصفحة الرئيسية */
+        /* Ù†ÙØ³ Ø£Ù†Ù…Ø§Ø· Ø§Ù„ØµÙØ­Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
@@ -35,6 +47,7 @@
             color: #333;
             line-height: 1.6;
             animation: fadeIn 0.5s ease-out;
+            padding-top: 92px;
         }
         
         @keyframes fadeIn {
@@ -49,12 +62,14 @@
             padding: 0 15px;
         }
         
-        /* ===== الهيدر ===== */
+        /* ===== Ø§Ù„Ù‡ÙŠØ¯Ø± ===== */
         .header {
             background-color: var(--primary-color);
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
         }
         
@@ -148,7 +163,7 @@
             cursor: pointer;
         }
         
-        /* ===== صفحة تفاصيل المنتج ===== */
+        /* ===== ØµÙØ­Ø© ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬ ===== */
         .product-detail-page {
             padding: 40px 0;
             min-height: 70vh;
@@ -204,17 +219,17 @@
             }
         }
         
-        /* معرض الصور */
+        /* Ù…Ø¹Ø±Ø¶ Ø§Ù„ØµÙˆØ± */
         .product-gallery {
             position: relative;
         }
         
         .main-product-image {
             width: 100%;
-            height: 400px;
+            height: 440px;
             border-radius: 12px;
             overflow: hidden;
-            background: var(--light-color);
+            background: var(--product-card-image-bg, linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%));
             margin-bottom: 20px;
             position: relative;
         }
@@ -283,10 +298,12 @@
         .thumbnail-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: var(--product-card-image-bg, linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%));
+            padding: 6px;
         }
         
-        /* تفاصيل المنتج */
+        /* ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬ */
         .product-info {
             padding: 20px 0;
         }
@@ -501,7 +518,7 @@
             font-weight: bold;
         }
         
-        /* منتجات ذات صلة */
+        /* Ù…Ù†ØªØ¬Ø§Øª Ø°Ø§Øª ØµÙ„Ø© */
         .related-products {
             margin-top: 60px;
         }
@@ -532,6 +549,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
+            align-items: stretch;
         }
         
         .product-card {
@@ -541,6 +559,9 @@
             box-shadow: var(--box-shadow);
             transition: var(--transition);
             border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .product-card:hover {
@@ -549,15 +570,20 @@
         }
         
         .product-card .product-image {
-            height: 220px;
+            height: var(--product-card-image-height, 240px);
             overflow: hidden;
             position: relative;
+            background: var(--product-card-image-bg, linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%));
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .product-card .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            padding: 16px;
             transition: transform 0.5s ease;
         }
         
@@ -567,13 +593,16 @@
         
         .product-card .product-info {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
         
         .product-card .product-name {
             font-size: 1.2rem;
             color: var(--primary-color);
             margin-bottom: 10px;
-            height: 60px;
+            min-height: 60px;
             overflow: hidden;
             line-height: 1.4;
         }
@@ -597,7 +626,7 @@
             text-decoration: line-through;
         }
         
-        /* ===== الفوتر ===== */
+        /* ===== Ø§Ù„ÙÙˆØªØ± ===== */
         .footer {
             background-color: var(--primary-color);
             color: white;
@@ -690,7 +719,7 @@
             margin-top: 30px;
         }
         
-        /* ===== الأنيميشن ===== */
+        /* ===== Ø§Ù„Ø£Ù†ÙŠÙ…ÙŠØ´Ù† ===== */
         .animate-in {
             animation: fadeInUp 0.6s ease-out;
         }
@@ -710,7 +739,7 @@
             }
         }
         
-        /* ===== التوافق مع الأجهزة المحمولة ===== */
+        /* ===== Ø§Ù„ØªÙˆØ§ÙÙ‚ Ù…Ø¹ Ø§Ù„Ø£Ø¬Ù‡Ø²Ø© Ø§Ù„Ù…Ø­Ù…ÙˆÙ„Ø© ===== */
         @media (max-width: 992px) {
             .product-detail-container {
                 grid-template-columns: 1fr;
@@ -798,26 +827,26 @@
         }
     </style>
 </head>
-<body>
-    <!-- الهيدر -->
+<body data-seo-title="تفاصيل المنتج - متجر الإلكترونيات" data-seo-description="تفاصيل المنتج في متجر الإلكترونيات مع الصورة والسعر والوصف الكامل." data-seo-image="images/logo.png" data-seo-type="product">
+    <!-- Ø§Ù„Ù‡ÙŠØ¯Ø± -->
     <header class="header">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-brand">
-                    <a href="index.html" class="logo">
-                        <img id="site-logo" src="images/logo.png" alt="شعار المتجر">
-                        <span id="site-name">متجر الإلكترونيات</span>
+                    <a href="home.html" class="logo">
+                        <img id="site-logo" src="images/logo.png" alt="Ø´Ø¹Ø§Ø± Ø§Ù„Ù…ØªØ¬Ø±">
+                        <span id="site-name">Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª</span>
                     </a>
                 </div>
                 
                 <div class="nav-menu" id="nav-menu">
                     <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
-                        <li><a href="products.html"><i class="fas fa-box"></i> جميع المنتجات</a></li>
-                        <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> الهواتف</a></li>
-                        <li><a href="used-phones.html"><i class="fas fa-mobile"></i> مستعملة</a></li>
-                        <li><a href="accessories.html"><i class="fas fa-headphones"></i> إكسسوارات</a></li>
-                        <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+                        <li><a href="home.html"><i class="fas fa-home"></i> Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©</a></li>
+                        <li><a href="products.html"><i class="fas fa-box"></i> Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª</a></li>
+                        <li><a href="phones.html"><i class="fas fa-mobile-alt"></i> Ø§Ù„Ù‡ÙˆØ§ØªÙ</a></li>
+                        <li><a href="used-phones.html"><i class="fas fa-mobile"></i> Ù…Ø³ØªØ¹Ù…Ù„Ø©</a></li>
+                        <li><a href="accessories.html"><i class="fas fa-headphones"></i> Ø¥ÙƒØ³Ø³ÙˆØ§Ø±Ø§Øª</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Ø§ØªØµÙ„ Ø¨Ù†Ø§</a></li>
                     </ul>
                 </div>
                 
@@ -834,44 +863,44 @@
         </nav>
     </header>
 
-    <!-- صفحة تفاصيل المنتج -->
+    <!-- ØµÙØ­Ø© ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬ -->
     <main class="product-detail-page">
         <div class="container">
-            <!-- مسار التنقل -->
+            <!-- Ù…Ø³Ø§Ø± Ø§Ù„ØªÙ†Ù‚Ù„ -->
             <div class="product-breadcrumb">
                 <div class="breadcrumb-links">
-                    <a href="index.html">الرئيسية</a>
+                    <a href="home.html">Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©</a>
                     <span class="separator">/</span>
-                    <a href="products.html">المنتجات</a>
+                    <a href="products.html">Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª</a>
                     <span class="separator">/</span>
-                    <span id="product-category-breadcrumb">تفاصيل المنتج</span>
+                    <span id="product-category-breadcrumb">ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬</span>
                 </div>
             </div>
             
-            <!-- المنتج الرئيسي -->
+            <!-- Ø§Ù„Ù…Ù†ØªØ¬ Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠ -->
             <div class="product-detail-container">
-                <!-- معرض الصور -->
+                <!-- Ù…Ø¹Ø±Ø¶ Ø§Ù„ØµÙˆØ± -->
                 <div class="product-gallery">
                     <div class="main-product-image">
-                        <img id="main-product-image" src="" alt="صورة المنتج">
+                        <img id="main-product-image" src="" alt="ØµÙˆØ±Ø© Ø§Ù„Ù…Ù†ØªØ¬">
                         <div class="product-badges" id="product-badges">
-                            <!-- سيتم تعبئتها بالجافاسكريبت -->
+                            <!-- Ø³ÙŠØªÙ… ØªØ¹Ø¨Ø¦ØªÙ‡Ø§ Ø¨Ø§Ù„Ø¬Ø§ÙØ§Ø³ÙƒØ±ÙŠØ¨Øª -->
                         </div>
                     </div>
                     
                     <div class="thumbnail-gallery" id="thumbnail-gallery">
-                        <!-- سيتم تعبئتها بالجافاسكريبت -->
+                        <!-- Ø³ÙŠØªÙ… ØªØ¹Ø¨Ø¦ØªÙ‡Ø§ Ø¨Ø§Ù„Ø¬Ø§ÙØ§Ø³ÙƒØ±ÙŠØ¨Øª -->
                     </div>
                 </div>
                 
-                <!-- تفاصيل المنتج -->
+                <!-- ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬ -->
                 <div class="product-info">
                     <div class="product-category" id="product-category">
                         <i class="fas fa-tag"></i>
-                        <span id="category-name">فئة المنتج</span>
+                        <span id="category-name">ÙØ¦Ø© Ø§Ù„Ù…Ù†ØªØ¬</span>
                     </div>
                     
-                    <h1 class="product-title" id="product-title">اسم المنتج</h1>
+                    <h1 class="product-title" id="product-title">Ø§Ø³Ù… Ø§Ù„Ù…Ù†ØªØ¬</h1>
                     
                     <div class="product-rating">
                         <div class="stars">
@@ -881,10 +910,10 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
                         </div>
-                        <span class="rating-count">(4.5) - 120 تقييم</span>
+                        <span class="rating-count">(4.5) - 120 ØªÙ‚ÙŠÙŠÙ…</span>
                     </div>
                     
-                    <p class="product-description" id="product-description">وصف المنتج سيكون هنا...</p>
+                    <p class="product-description" id="product-description">ÙˆØµÙ Ø§Ù„Ù…Ù†ØªØ¬ Ø³ÙŠÙƒÙˆÙ† Ù‡Ù†Ø§...</p>
                     
                     <div class="product-price-section">
                         <div class="price-display">
@@ -902,72 +931,72 @@
                         </div>
                         
                         <button class="btn btn-primary" onclick="addToCart(currentProductId)">
-                            <i class="fas fa-cart-plus"></i> أضف إلى السلة
+                            <i class="fas fa-cart-plus"></i> Ø£Ø¶Ù Ø¥Ù„Ù‰ Ø§Ù„Ø³Ù„Ø©
                         </button>
                         
                         <button class="btn btn-outline" onclick="addToWishlist()">
-                            <i class="far fa-heart"></i> المفضلة
+                            <i class="far fa-heart"></i> Ø§Ù„Ù…ÙØ¶Ù„Ø©
                         </button>
                     </div>
                     
                     <div class="product-meta">
                         <div class="meta-item">
                             <span class="meta-label">
-                                <i class="fas fa-barcode"></i> رمز المنتج:
+                                <i class="fas fa-barcode"></i> Ø±Ù…Ø² Ø§Ù„Ù…Ù†ØªØ¬:
                             </span>
                             <span class="meta-value" id="product-id">--</span>
                         </div>
                         
                         <div class="meta-item">
                             <span class="meta-label">
-                                <i class="fas fa-box"></i> التوفر:
+                                <i class="fas fa-box"></i> Ø§Ù„ØªÙˆÙØ±:
                             </span>
-                            <span class="meta-value in-stock" id="stock-status">متوفر</span>
+                            <span class="meta-value in-stock" id="stock-status">Ù…ØªÙˆÙØ±</span>
                         </div>
                         
                         <div class="meta-item">
                             <span class="meta-label">
-                                <i class="fas fa-shipping-fast"></i> التوصيل:
+                                <i class="fas fa-shipping-fast"></i> Ø§Ù„ØªÙˆØµÙŠÙ„:
                             </span>
-                            <span class="meta-value">2-5 أيام عمل</span>
+                            <span class="meta-value">2-5 Ø£ÙŠØ§Ù… Ø¹Ù…Ù„</span>
                         </div>
                         
                         <div class="meta-item">
                             <span class="meta-label">
-                                <i class="fas fa-shield-alt"></i> الضمان:
+                                <i class="fas fa-shield-alt"></i> Ø§Ù„Ø¶Ù…Ø§Ù†:
                             </span>
-                            <span class="meta-value">سنة واحدة</span>
+                            <span class="meta-value">Ø³Ù†Ø© ÙˆØ§Ø­Ø¯Ø©</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- منتجات ذات صلة -->
+            <!-- Ù…Ù†ØªØ¬Ø§Øª Ø°Ø§Øª ØµÙ„Ø© -->
             <div class="related-products">
                 <div class="section-header animate-in">
                     <h2 class="section-title">
-                        <i class="fas fa-random"></i> منتجات ذات صلة
+                        <i class="fas fa-random"></i> Ù…Ù†ØªØ¬Ø§Øª Ø°Ø§Øª ØµÙ„Ø©
                     </h2>
                     <p class="section-subtitle">
-                        اكتشف منتجات مشابهة قد تعجبك
+                        Ø§ÙƒØªØ´Ù Ù…Ù†ØªØ¬Ø§Øª Ù…Ø´Ø§Ø¨Ù‡Ø© Ù‚Ø¯ ØªØ¹Ø¬Ø¨Ùƒ
                     </p>
                 </div>
                 
                 <div class="products-grid" id="related-products">
-                    <!-- سيتم تعبئتها بالجافاسكريبت -->
+                    <!-- Ø³ÙŠØªÙ… ØªØ¹Ø¨Ø¦ØªÙ‡Ø§ Ø¨Ø§Ù„Ø¬Ø§ÙØ§Ø³ÙƒØ±ÙŠØ¨Øª -->
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- الفوتر -->
+    <!-- Ø§Ù„ÙÙˆØªØ± -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img id="footer-logo" src="images/logo.png" alt="شعار المتجر" class="footer-logo">
+                    <img id="footer-logo" src="images/logo.png" alt="Ø´Ø¹Ø§Ø± Ø§Ù„Ù…ØªØ¬Ø±" class="footer-logo">
                     <p id="footer-text" class="footer-about">
-                        متجر الإلكترونيات - نقدم لكم أحدث المنتجات التكنولوجية بأفضل الأسعار.
+                        Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª - Ù†Ù‚Ø¯Ù… Ù„ÙƒÙ… Ø£Ø­Ø¯Ø« Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª Ø§Ù„ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ© Ø¨Ø£ÙØ¶Ù„ Ø§Ù„Ø£Ø³Ø¹Ø§Ø±.
                     </p>
                     <div class="social-links" id="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -978,46 +1007,46 @@
                 </div>
                 
                 <div class="footer-col">
-                    <h3>روابط سريعة</h3>
+                    <h3>Ø±ÙˆØ§Ø¨Ø· Ø³Ø±ÙŠØ¹Ø©</h3>
                     <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="products.html">المنتجات</a></li>
-                        <li><a href="phones.html">الهواتف</a></li>
-                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="home.html">Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©</a></li>
+                        <li><a href="products.html">Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª</a></li>
+                        <li><a href="phones.html">Ø§Ù„Ù‡ÙˆØ§ØªÙ</a></li>
+                        <li><a href="contact.html">Ø§ØªØµÙ„ Ø¨Ù†Ø§</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>معلومات الاتصال</h3>
+                    <h3>Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ø§ØªØµØ§Ù„</h3>
                     <div class="contact-info" id="contact-info">
                         <p><i class="fas fa-phone"></i> <span id="contact-phone">+963 123 456 789</span></p>
                         <p><i class="fas fa-envelope"></i> <span id="contact-email">info@store.com</span></p>
-                        <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">دمشق، سوريا</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="contact-address">Ø¯Ù…Ø´Ù‚ØŒ Ø³ÙˆØ±ÙŠØ§</span></p>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p id="copyright-text">© 2024 متجر الإلكترونيات. جميع الحقوق محفوظة.</p>
+                <p id="copyright-text">Â© 2024 Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª. Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸Ø©.</p>
             </div>
         </div>
     </footer>
 
-    <!-- الروابط الخارجية -->
+    <!-- Ø§Ù„Ø±ÙˆØ§Ø¨Ø· Ø§Ù„Ø®Ø§Ø±Ø¬ÙŠØ© -->
     <script src="database.js"></script>
     <script src="script.js"></script>
     <script>
-        // متغيرات المنتج الحالي
+        // Ù…ØªØºÙŠØ±Ø§Øª Ø§Ù„Ù…Ù†ØªØ¬ Ø§Ù„Ø­Ø§Ù„ÙŠ
         let currentProductId = null;
         let currentProduct = null;
         let currentQuantity = 1;
         
-        // تحميل الموقع عند بدء التشغيل
+        // ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù…ÙˆÙ‚Ø¹ Ø¹Ù†Ø¯ Ø¨Ø¯Ø¡ Ø§Ù„ØªØ´ØºÙŠÙ„
         document.addEventListener('DOMContentLoaded', function() {
             loadSiteData();
             loadProductDetails();
             
-            // إعداد القائمة المتحركة
+            // Ø¥Ø¹Ø¯Ø§Ø¯ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„Ù…ØªØ­Ø±ÙƒØ©
             const menuToggle = document.getElementById('menu-toggle');
             const navMenu = document.getElementById('nav-menu');
             
@@ -1026,7 +1055,7 @@
                     navMenu.classList.toggle('show');
                 });
                 
-                // إغلاق القائمة عند النقر خارجها
+                // Ø¥ØºÙ„Ø§Ù‚ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø¹Ù†Ø¯ Ø§Ù„Ù†Ù‚Ø± Ø®Ø§Ø±Ø¬Ù‡Ø§
                 document.addEventListener('click', function(event) {
                     if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
                         navMenu.classList.remove('show');
@@ -1034,18 +1063,18 @@
                 });
             }
             
-            // إعداد الأنيميشن
+            // Ø¥Ø¹Ø¯Ø§Ø¯ Ø§Ù„Ø£Ù†ÙŠÙ…ÙŠØ´Ù†
             setupAnimations();
         });
         
-        // تحميل تفاصيل المنتج
+        // ØªØ­Ù…ÙŠÙ„ ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬
         function loadProductDetails() {
-            // الحصول على معرف المنتج من الرابط
+            // Ø§Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ù…Ø¹Ø±Ù Ø§Ù„Ù…Ù†ØªØ¬ Ù…Ù† Ø§Ù„Ø±Ø§Ø¨Ø·
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
             
             if (!productId) {
-                // إذا لم يكن هناك معرف منتج، نعود إلى صفحة المنتجات
+                // Ø¥Ø°Ø§ Ù„Ù… ÙŠÙƒÙ† Ù‡Ù†Ø§Ùƒ Ù…Ø¹Ø±Ù Ù…Ù†ØªØ¬ØŒ Ù†Ø¹ÙˆØ¯ Ø¥Ù„Ù‰ ØµÙØ­Ø© Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª
                 window.location.href = 'products.html';
                 return;
             }
@@ -1054,14 +1083,14 @@
             const product = db.getProductById(productId);
             
             if (!product) {
-                // إذا لم يتم العثور على المنتج
+                // Ø¥Ø°Ø§ Ù„Ù… ÙŠØªÙ… Ø§Ù„Ø¹Ø«ÙˆØ± Ø¹Ù„Ù‰ Ø§Ù„Ù…Ù†ØªØ¬
                 document.getElementById('product-detail-container').innerHTML = `
                     <div class="empty-state" style="text-align: center; padding: 100px 20px; grid-column: 1 / -1;">
                         <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #f39c12; margin-bottom: 20px;"></i>
-                        <h3 style="color: var(--primary-color); margin-bottom: 15px;">المنتج غير موجود</h3>
-                        <p style="color: var(--gray-color); margin-bottom: 25px;">لم يتم العثور على المنتج المطلوب</p>
+                        <h3 style="color: var(--primary-color); margin-bottom: 15px;">Ø§Ù„Ù…Ù†ØªØ¬ ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯</h3>
+                        <p style="color: var(--gray-color); margin-bottom: 25px;">Ù„Ù… ÙŠØªÙ… Ø§Ù„Ø¹Ø«ÙˆØ± Ø¹Ù„Ù‰ Ø§Ù„Ù…Ù†ØªØ¬ Ø§Ù„Ù…Ø·Ù„ÙˆØ¨</p>
                         <a href="products.html" class="btn btn-primary">
-                            <i class="fas fa-arrow-left"></i> العودة إلى المنتجات
+                            <i class="fas fa-arrow-left"></i> Ø§Ù„Ø¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª
                         </a>
                     </div>
                 `;
@@ -1070,65 +1099,113 @@
             
             currentProduct = product;
             
-            // تحديث البيانات
+            // ØªØ­Ø¯ÙŠØ« Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª
             updateProductDetails(product);
             
-            // تحميل المنتجات ذات الصلة
+            // ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª Ø°Ø§Øª Ø§Ù„ØµÙ„Ø©
             loadRelatedProducts(product);
             
-            // تحديث عنوان الصفحة
-            document.title = product.name + ' - متجر الإلكترونيات';
+            // ØªØ­Ø¯ÙŠØ« Ø¹Ù†ÙˆØ§Ù† Ø§Ù„ØµÙØ­Ø©
+            document.title = product.name + ' - Ù…ØªØ¬Ø± Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª';
         }
         
-        // تحديث تفاصيل المنتج
+        // ØªØ­Ø¯ÙŠØ« ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬
         function updateProductDetails(product) {
-            // المعلومات الأساسية
+            // Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ø£Ø³Ø§Ø³ÙŠØ©
             document.getElementById('product-title').textContent = product.name;
             document.getElementById('product-description').textContent = product.description;
             document.getElementById('product-id').textContent = product.id;
             
-            // الفئة
+            // Ø§Ù„ÙØ¦Ø©
             const categoryNames = {
-                'phones': 'هواتف',
-                'accessories': 'إكسسوارات',
-                'used-phones': 'هواتف مستعملة'
+                'phones': 'Ù‡ÙˆØ§ØªÙ',
+                'accessories': 'Ø¥ÙƒØ³Ø³ÙˆØ§Ø±Ø§Øª',
+                'used-phones': 'Ù‡ÙˆØ§ØªÙ Ù…Ø³ØªØ¹Ù…Ù„Ø©'
             };
             const categoryName = categoryNames[product.category] || product.category;
             document.getElementById('category-name').textContent = categoryName;
             document.getElementById('product-category-breadcrumb').textContent = product.name;
+            applyProductSeo(product, categoryName);
             
-            // السعر
+            // Ø§Ù„Ø³Ø¹Ø±
             document.getElementById('current-price').textContent = `$${product.price.toFixed(2)}`;
             
             if (product.oldPrice && product.oldPrice > product.price) {
                 document.getElementById('old-price').textContent = `$${product.oldPrice.toFixed(2)}`;
                 const discount = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
-                document.getElementById('discount-percentage').textContent = `خصم ${discount}%`;
+                document.getElementById('discount-percentage').textContent = `Ø®ØµÙ… ${discount}%`;
                 document.getElementById('discount-percentage').style.display = 'inline-block';
             } else {
                 document.getElementById('old-price').style.display = 'none';
                 document.getElementById('discount-percentage').style.display = 'none';
             }
             
-            // البادجات
+            // Ø§Ù„Ø¨Ø§Ø¯Ø¬Ø§Øª
             const badgesContainer = document.getElementById('product-badges');
             badgesContainer.innerHTML = '';
             
             if (product.featured) {
-                badgesContainer.innerHTML += '<div class="product-badge badge-featured">مميز</div>';
+                badgesContainer.innerHTML += '<div class="product-badge badge-featured">Ù…Ù…ÙŠØ²</div>';
             }
             if (product.specialOffer) {
-                badgesContainer.innerHTML += '<div class="product-badge badge-special">عرض خاص</div>';
+                badgesContainer.innerHTML += '<div class="product-badge badge-special">Ø¹Ø±Ø¶ Ø®Ø§Øµ</div>';
             }
             if (isNewProduct(product)) {
-                badgesContainer.innerHTML += '<div class="product-badge badge-new">جديد</div>';
+                badgesContainer.innerHTML += '<div class="product-badge badge-new">Ø¬Ø¯ÙŠØ¯</div>';
             }
             
-            // الصور
+            // Ø§Ù„ØµÙˆØ±
             updateProductImages(product.images);
         }
+
+        function applyProductSeo(product, categoryName) {
+            const image = product.images && product.images.length
+                ? product.images[0]
+                : 'images/logo.png';
+            const description = (product.description || 'تفاصيل المنتج في متجر الإلكترونيات.')
+                .trim()
+                .slice(0, 160);
+            const title = `${product.name} - ${categoryName} | متجر الإلكترونيات`;
+            const url = `${window.location.pathname}?id=${encodeURIComponent(product.id)}`;
+
+            document.body.dataset.seoTitle = title;
+            document.body.dataset.seoDescription = description;
+            document.body.dataset.seoImage = image;
+            document.body.dataset.seoType = 'product';
+
+            if (typeof updateSeoMetadata === 'function') {
+                updateSeoMetadata({
+                    title,
+                    description,
+                    image,
+                    url,
+                    type: 'product'
+                });
+            }
+
+            if (typeof updateJsonLd === 'function') {
+                updateJsonLd('product-json-ld', {
+                    '@context': 'https://schema.org',
+                    '@type': 'Product',
+                    name: product.name,
+                    image: (product.images || []).map((item) => new URL(item, window.location.href).href),
+                    description,
+                    sku: product.id,
+                    category: categoryName,
+                    offers: {
+                        '@type': 'Offer',
+                        priceCurrency: 'USD',
+                        price: Number(product.price || 0).toFixed(2),
+                        availability: product.stock > 0
+                            ? 'https://schema.org/InStock'
+                            : 'https://schema.org/OutOfStock',
+                        url: new URL(url, window.location.href).href
+                    }
+                });
+            }
+        }
         
-        // التحقق إذا كان المنتج جديداً
+        // Ø§Ù„ØªØ­Ù‚Ù‚ Ø¥Ø°Ø§ ÙƒØ§Ù† Ø§Ù„Ù…Ù†ØªØ¬ Ø¬Ø¯ÙŠØ¯Ø§Ù‹
         function isNewProduct(product) {
             if (!product.createdAt) return false;
             
@@ -1137,47 +1214,49 @@
             const diffTime = Math.abs(now - productDate);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             
-            return diffDays <= 7; // منتجات أقل من 7 أيام تعتبر جديدة
+            return diffDays <= 7; // Ù…Ù†ØªØ¬Ø§Øª Ø£Ù‚Ù„ Ù…Ù† 7 Ø£ÙŠØ§Ù… ØªØ¹ØªØ¨Ø± Ø¬Ø¯ÙŠØ¯Ø©
         }
         
-        // تحديث صور المنتج
+        // ØªØ­Ø¯ÙŠØ« ØµÙˆØ± Ø§Ù„Ù…Ù†ØªØ¬
         function updateProductImages(images) {
             const mainImage = document.getElementById('main-product-image');
             const thumbnailGallery = document.getElementById('thumbnail-gallery');
             
             if (images.length === 0) {
                 mainImage.src = 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80';
+                mainImage.alt = 'صورة المنتج';
                 thumbnailGallery.innerHTML = '';
                 return;
             }
             
-            // الصورة الرئيسية
+            // Ø§Ù„ØµÙˆØ±Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©
             mainImage.src = images[0];
+            mainImage.alt = currentProduct ? currentProduct.name : 'صورة المنتج';
             
-            // الصور المصغرة
+            // Ø§Ù„ØµÙˆØ± Ø§Ù„Ù…ØµØºØ±Ø©
             thumbnailGallery.innerHTML = images.map((img, index) => `
                 <div class="thumbnail-item ${index === 0 ? 'active' : ''}" 
                      onclick="changeMainImage(${index})">
-                    <img src="${img}" alt="صورة ${index + 1}">
+                    <img src="${img}" alt="ØµÙˆØ±Ø© ${index + 1}">
                 </div>
             `).join('');
         }
         
-        // تغيير الصورة الرئيسية
+        // ØªØºÙŠÙŠØ± Ø§Ù„ØµÙˆØ±Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©
         function changeMainImage(index) {
             const product = db.getProductById(currentProductId);
             if (!product || !product.images[index]) return;
             
-            // تغيير الصورة الرئيسية
+            // ØªØºÙŠÙŠØ± Ø§Ù„ØµÙˆØ±Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©
             document.getElementById('main-product-image').src = product.images[index];
             
-            // تحديث الصور المصغرة النشطة
+            // ØªØ­Ø¯ÙŠØ« Ø§Ù„ØµÙˆØ± Ø§Ù„Ù…ØµØºØ±Ø© Ø§Ù„Ù†Ø´Ø·Ø©
             document.querySelectorAll('.thumbnail-item').forEach((item, i) => {
                 item.classList.toggle('active', i === index);
             });
         }
         
-        // تحديث الكمية
+        // ØªØ­Ø¯ÙŠØ« Ø§Ù„ÙƒÙ…ÙŠØ©
         function updateQuantity(change) {
             const newQuantity = currentQuantity + change;
             if (newQuantity >= 1 && newQuantity <= 99) {
@@ -1186,7 +1265,7 @@
             }
         }
         
-        // إضافة إلى المفضلة
+        // Ø¥Ø¶Ø§ÙØ© Ø¥Ù„Ù‰ Ø§Ù„Ù…ÙØ¶Ù„Ø©
         function addToWishlist() {
             const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
             
@@ -1194,28 +1273,28 @@
                 wishlist.push(currentProductId);
                 localStorage.setItem('wishlist', JSON.stringify(wishlist));
                 
-                // عرض إشعار
-                showNotification('تم إضافة المنتج إلى المفضلة', 'success');
+                // Ø¹Ø±Ø¶ Ø¥Ø´Ø¹Ø§Ø±
+                showNotification('ØªÙ… Ø¥Ø¶Ø§ÙØ© Ø§Ù„Ù…Ù†ØªØ¬ Ø¥Ù„Ù‰ Ø§Ù„Ù…ÙØ¶Ù„Ø©', 'success');
             } else {
-                showNotification('المنتج موجود بالفعل في المفضلة', 'info');
+                showNotification('Ø§Ù„Ù…Ù†ØªØ¬ Ù…ÙˆØ¬ÙˆØ¯ Ø¨Ø§Ù„ÙØ¹Ù„ ÙÙŠ Ø§Ù„Ù…ÙØ¶Ù„Ø©', 'info');
             }
         }
         
-        // تحميل المنتجات ذات الصلة
+        // ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª Ø°Ø§Øª Ø§Ù„ØµÙ„Ø©
         function loadRelatedProducts(currentProduct) {
             const container = document.getElementById('related-products');
             if (!container) return;
             
-            // الحصول على منتجات من نفس الفئة (باستثناء المنتج الحالي)
+            // Ø§Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ù…Ù†ØªØ¬Ø§Øª Ù…Ù† Ù†ÙØ³ Ø§Ù„ÙØ¦Ø© (Ø¨Ø§Ø³ØªØ«Ù†Ø§Ø¡ Ø§Ù„Ù…Ù†ØªØ¬ Ø§Ù„Ø­Ø§Ù„ÙŠ)
             const relatedProducts = db.getProducts()
                 .filter(p => p.id !== currentProductId && p.category === currentProduct.category)
-                .slice(0, 4); // عرض أول 4 منتجات فقط
+                .slice(0, 4); // Ø¹Ø±Ø¶ Ø£ÙˆÙ„ 4 Ù…Ù†ØªØ¬Ø§Øª ÙÙ‚Ø·
             
             if (relatedProducts.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
                         <i class="fas fa-info-circle" style="font-size: 3rem; color: #ddd; margin-bottom: 15px;"></i>
-                        <p style="color: var(--gray-color);">لا توجد منتجات ذات صلة حالياً</p>
+                        <p style="color: var(--gray-color);">Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ù†ØªØ¬Ø§Øª Ø°Ø§Øª ØµÙ„Ø© Ø­Ø§Ù„ÙŠØ§Ù‹</p>
                     </div>
                 `;
                 return;
@@ -1234,7 +1313,7 @@
                         </div>
                         <div class="product-actions" style="margin-top: 15px;">
                             <button class="btn btn-outline" onclick="window.location.href='product.html?id=${product.id}'" style="padding: 10px 20px; width: 100%;">
-                                <i class="fas fa-eye"></i> عرض التفاصيل
+                                <i class="fas fa-eye"></i> Ø¹Ø±Ø¶ Ø§Ù„ØªÙØ§ØµÙŠÙ„
                             </button>
                         </div>
                     </div>
@@ -1242,7 +1321,7 @@
             `).join('');
         }
         
-        // إعداد الأنيميشن
+        // Ø¥Ø¹Ø¯Ø§Ø¯ Ø§Ù„Ø£Ù†ÙŠÙ…ÙŠØ´Ù†
         function setupAnimations() {
             const elements = document.querySelectorAll('.animate-in');
             elements.forEach((element, index) => {
@@ -1257,9 +1336,9 @@
             });
         }
         
-        // إشعارات
+        // Ø¥Ø´Ø¹Ø§Ø±Ø§Øª
         function showNotification(message, type = 'success') {
-            // كود الإشعار موجود في script.js
+            // ÙƒÙˆØ¯ Ø§Ù„Ø¥Ø´Ø¹Ø§Ø± Ù…ÙˆØ¬ÙˆØ¯ ÙÙŠ script.js
             if (typeof window.showEnhancedNotification === 'function') {
                 window.showEnhancedNotification(message, type);
             } else {
@@ -1267,16 +1346,16 @@
             }
         }
         
-        // جعل الدوال متاحة عالمياً
+        // Ø¬Ø¹Ù„ Ø§Ù„Ø¯ÙˆØ§Ù„ Ù…ØªØ§Ø­Ø© Ø¹Ø§Ù„Ù…ÙŠØ§Ù‹
         window.changeMainImage = changeMainImage;
         window.updateQuantity = updateQuantity;
         window.addToCart = addToCart;
         window.addToWishlist = addToWishlist;
     </script>
     
-    <!-- أنماط إضافية للتفاعل -->
+    <!-- Ø£Ù†Ù…Ø§Ø· Ø¥Ø¶Ø§ÙÙŠØ© Ù„Ù„ØªÙØ§Ø¹Ù„ -->
     <style>
-        /* تأثيرات hover */
+        /* ØªØ£Ø«ÙŠØ±Ø§Øª hover */
         .thumbnail-item {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -1306,7 +1385,7 @@
             transform: translateY(-10px) scale(1.02);
         }
         
-        /* تأثير للصور */
+        /* ØªØ£Ø«ÙŠØ± Ù„Ù„ØµÙˆØ± */
         .main-product-image img {
             transition: transform 0.8s ease;
         }
@@ -1315,17 +1394,17 @@
             transform: scale(1.05);
         }
         
-        /* تأثيرات focus */
+        /* ØªØ£Ø«ÙŠØ±Ø§Øª focus */
         .quantity-input:focus {
             outline: none;
         }
         
-        /* تأثيرات النقر */
+        /* ØªØ£Ø«ÙŠØ±Ø§Øª Ø§Ù„Ù†Ù‚Ø± */
         .btn:active {
             transform: translateY(-1px);
         }
         
-        /* تأثير التحميل */
+        /* ØªØ£Ø«ÙŠØ± Ø§Ù„ØªØ­Ù…ÙŠÙ„ */
         @keyframes pulse {
             0% { opacity: 0.6; }
             50% { opacity: 1; }
@@ -1339,3 +1418,4 @@
     <script src="menu-fix.js"></script>
 </body>
 </html>
+

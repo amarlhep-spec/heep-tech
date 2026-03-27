@@ -252,7 +252,7 @@ $csrfToken = admin_issue_csrf_token();
             </p>
 
             <div class="login-footer">
-                <a href="index.html"><i class="fas fa-arrow-right"></i> العودة إلى الموقع الرئيسي</a>
+                <a href="home.html"><i class="fas fa-arrow-right"></i> العودة إلى الموقع الرئيسي</a>
             </div>
         </form>
     </div>
